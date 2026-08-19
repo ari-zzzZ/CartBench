@@ -6,6 +6,17 @@ import litellm
 from litellm import completion, completion_cost
 from litellm.caching.caching import Cache
 from litellm.main import ModelResponse, Usage
+from litellm.types.llms.openai import (
+    ChatCompletionReasoningSummaryTextBlock,
+)
+from litellm.types.utils import Message as LiteLLMMessage
+
+LiteLLMMessage.model_rebuild(
+    _types_namespace={
+        "ChatCompletionReasoningSummaryTextBlock":
+            ChatCompletionReasoningSummaryTextBlock,
+    }
+)
 from loguru import logger
 
 from tau2.config import (
