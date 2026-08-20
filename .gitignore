@@ -13,3 +13,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+.项目文档/
+项目文档/
