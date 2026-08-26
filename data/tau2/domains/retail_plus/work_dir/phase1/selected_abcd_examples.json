@@ -1,0 +1,1051 @@
+{
+    "seed": 20260824,
+    "records": [
+        {
+            "task_id": "rp_abcd_refund_status_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 8102,
+            "abcd_flow": "product_defect",
+            "abcd_intent": "refund_status",
+            "retail_plus_intent": "refund_status",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hello, I have completed a return and would like to check on the status of my refund please",
+                "Great, the name is David Williams",
+                "sure, dwilliams468, dwilliams468@email.com, 7771293491",
+                "No problem",
+                "Perfect, can you tell me if it will just be refunded to the same debit card?",
+                "Great, thank you for your help today",
+                "No, have a good day."
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "You want the status of refund REF-PLUS-1001 for order #W6378322.",
+                    "known_info": "You are Raj Anderson. Your email is raj.anderson6756@example.com. You know refund ID REF-PLUS-1001 and order ID #W6378322.",
+                    "unknown_info": "You do not know its internal status, expected date, or failure reason.",
+                    "task_instructions": "Ask when the refund will arrive and which payment method it uses. Finish once the status and expected date are clear."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's unstructured refund timing; replaced with executable RefundCase dates and status"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_refund_status_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "raj.anderson6756@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_refund_status_normal_1",
+                        "name": "get_refund_status",
+                        "arguments": {
+                            "refund_id": "REF-PLUS-1001"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_refund_status_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 8354,
+            "abcd_flow": "product_defect",
+            "abcd_intent": "refund_status",
+            "retail_plus_intent": "refund_status",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hi there just checking on the status of my refund.",
+                " Albert Sanders",
+                "I just want to double check the status.",
+                "albertsanders679",
+                "albertsanders679@email.com",
+                "7853533684",
+                "Okay any idea how much longer? It's already been awhile...",
+                "Okay that's helpful",
+                "No thanks"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "You want the status of refund REF-PLUS-1002 for order #W5931168.",
+                    "known_info": "You are Evelyn Anderson. Your email is evelyn.anderson6912@example.com. You know refund ID REF-PLUS-1002 and order ID #W5931168.",
+                    "unknown_info": "You do not know its internal status, expected date, or failure reason.",
+                    "task_instructions": "You have waited a long time. Ask for human help if the refund failed; accept the transfer after the agent explains the failure."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's unstructured refund timing; replaced with executable RefundCase dates and status"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_refund_status_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "evelyn.anderson6912@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_refund_status_edge_1",
+                        "name": "get_refund_status",
+                        "arguments": {
+                            "refund_id": "REF-PLUS-1002"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_refund_status_edge_2",
+                        "name": "open_support_case",
+                        "arguments": {
+                            "case_type": "delayed_refund",
+                            "reference_id": "REF-PLUS-1002",
+                            "summary": "Failed refund REF-PLUS-1002 for order #W5931168"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_refund_status_edge_3",
+                        "name": "transfer_to_human_agents",
+                        "arguments": {
+                            "summary": "Failed refund REF-PLUS-1002 for order #W5931168"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_mistimed_billing_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 431,
+            "abcd_flow": "purchase_dispute",
+            "abcd_intent": "mistimed_billing_already_returned",
+            "retail_plus_intent": "mistimed_billing_already_returned",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hi, I returned an item and the charge on my statement hasn't been reversed even though the return shows as completed",
+                "Rodriguez Domingo",
+                "Yes, I still need my refund",
+                "I have my order ID but I don't know my account ID",
+                "Username: rodriguezdomingo096",
+                "rodriguezdomingo096@email.com",
+                "2189904431",
+                "No problem",
+                "then why aren't I seeing a refund on my card?",
+                "Do you know how many days?",
+                "Oh ok. Thanks",
+                "No that's it",
+                "thanks"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "You returned all items from order #W8587412, but refund REF-PLUS-1003 is not visible.",
+                    "known_info": "You are Ava Sanchez. Your email is ava.sanchez1133@example.com. You know order ID #W8587412 and refund ID REF-PLUS-1003.",
+                    "unknown_info": "You do not know whether the case is overdue or requires manual review.",
+                    "task_instructions": "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created. Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's unstructured refund timing; replaced with executable RefundCase dates and status"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_mistimed_billing_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "ava.sanchez1133@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mistimed_billing_normal_1",
+                        "name": "review_returned_item_billing",
+                        "arguments": {
+                            "refund_id": "REF-PLUS-1003"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_mistimed_billing_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 4761,
+            "abcd_flow": "purchase_dispute",
+            "abcd_intent": "mistimed_billing_already_returned",
+            "retail_plus_intent": "mistimed_billing_already_returned",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "I have been waiting for ten days now and my charge has not been reversed on my billing statement",
+                "yes for a tommy hilfiger shirt",
+                "Norman Bouchard",
+                "the id for the order was 9354424637 as well",
+                "nb077260 nb077260@email.com",
+                "yes that is right",
+                "alright",
+                "thank you i appreciate it",
+                "no that was everything, thanks again",
+                "you too"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "You returned all items from order #W8068454, but refund REF-PLUS-1004 is not visible.",
+                    "known_info": "You are Daiki Patel. Your email is daiki.patel3402@example.com. You know order ID #W8068454 and refund ID REF-PLUS-1004.",
+                    "unknown_info": "You do not know whether the case is overdue or requires manual review.",
+                    "task_instructions": "Explain that the return credit is overdue and insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's unstructured refund timing; replaced with executable RefundCase dates and status"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_mistimed_billing_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "daiki.patel3402@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mistimed_billing_edge_1",
+                        "name": "review_returned_item_billing",
+                        "arguments": {
+                            "refund_id": "REF-PLUS-1004"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mistimed_billing_edge_2",
+                        "name": "open_support_case",
+                        "arguments": {
+                            "case_type": "delayed_refund",
+                            "reference_id": "REF-PLUS-1004",
+                            "summary": "Overdue high-value returned-item refund REF-PLUS-1004"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mistimed_billing_edge_3",
+                        "name": "transfer_to_human_agents",
+                        "arguments": {
+                            "summary": "Overdue high-value returned-item refund REF-PLUS-1004"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_promo_invalid_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 3631,
+            "abcd_flow": "purchase_dispute",
+            "abcd_intent": "promo_code_invalid",
+            "retail_plus_intent": "promo_code_invalid",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hello",
+                "I'm trying to use a promo code but the site says its invalid",
+                "Rodriguez Domingo",
+                "No, I got it 5 days ago",
+                "Okay great",
+                "Awesome, thanks. I can buy my jeans now",
+                "Nope, that is it. Thank you"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Voucher PLUS-MINIMUM-20 does not work on pending order #W4296426.",
+                    "known_info": "You are Chen Brown. Your email is chen.brown4062@example.com. You know voucher code PLUS-MINIMUM-20 and order ID #W4296426.",
+                    "unknown_info": "You do not know the voucher's validation reason.",
+                    "task_instructions": "Ask why the voucher fails. Accept that this order does not meet the minimum amount."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's seven-day promo convention and replacement-code behavior; replaced with per-voucher state"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_promo_invalid_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "chen.brown4062@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_promo_invalid_normal_1",
+                        "name": "validate_voucher",
+                        "arguments": {
+                            "code": "PLUS-MINIMUM-20",
+                            "order_id": "#W4296426"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_promo_invalid_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 6233,
+            "abcd_flow": "purchase_dispute",
+            "abcd_intent": "promo_code_invalid",
+            "retail_plus_intent": "promo_code_invalid",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hi there, the promo code I'm trying to use is wrong, it isn't working.  Can you help me?",
+                "Thank you so much.",
+                "Of course.  My name is Albert Sanders, and my account ID is QRTD12874UI4.  I received the code 2 days ago so it should still be good.",
+                "Thanks a lot. :)",
+                "Thanks so much!  That's all I needed, you were a great help. :)",
+                "You too1"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Voucher PLUS-PRIVATE-30 does not work on pending order #W3282177.",
+                    "known_info": "You are Harper Johansson. Your email is harper.johansson4006@example.com. You know voucher code PLUS-PRIVATE-30 and order ID #W3282177.",
+                    "unknown_info": "You do not know the voucher's validation reason.",
+                    "task_instructions": "After learning the code is invalid for your account, ask to receive its value as cash. Accept the refusal."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's seven-day promo convention and replacement-code behavior; replaced with per-voucher state"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_promo_invalid_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "harper.johansson4006@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_promo_invalid_edge_1",
+                        "name": "validate_voucher",
+                        "arguments": {
+                            "code": "PLUS-PRIVATE-30",
+                            "order_id": "#W3282177"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_promo_expired_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 6965,
+            "abcd_flow": "purchase_dispute",
+            "abcd_intent": "promo_code_out_of_date",
+            "retail_plus_intent": "promo_code_out_of_date",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hello I recieved a promo code 8 days ago and I am trying to use it on this order but it is saying the code is invalid, can you please help me with this?",
+                "The name is Joyce Wu",
+                "I see, I do not see an expiration date on the promo ad",
+                "I am a guest",
+                "Would it be possible to receive the discount as I am a first time buyer here?",
+                "Ok thank you for your help today",
+                "No thank you, have a good day"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Voucher PLUS-EXPIRED-10 does not work on pending order #W8704143.",
+                    "known_info": "You are Raj Smith. Your email is raj.smith2661@example.com. You know voucher code PLUS-EXPIRED-10 and order ID #W8704143.",
+                    "unknown_info": "You do not know the voucher's validation reason.",
+                    "task_instructions": "Ask why the voucher fails and when it expired. Accept the expiration explanation."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's seven-day promo convention and replacement-code behavior; replaced with per-voucher state"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_promo_expired_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "raj.smith2661@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_promo_expired_normal_1",
+                        "name": "validate_voucher",
+                        "arguments": {
+                            "code": "PLUS-EXPIRED-10",
+                            "order_id": "#W8704143"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_promo_expired_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 6395,
+            "abcd_flow": "purchase_dispute",
+            "abcd_intent": "promo_code_out_of_date",
+            "retail_plus_intent": "promo_code_out_of_date",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hey, I need some help with my promo code. It keeps saying invalid.",
+                "Sure, my name is Albert Sanders.",
+                "How old is the promo code?",
+                "Okay, so I got this code 9 days ago. Is that okay?",
+                "Oh okay, that's too bad",
+                "Silver",
+                "Great! Thank you!",
+                "I knew being a silver member would come in handy.",
+                "No, that's all",
+                "Thank you"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Voucher PLUS-EXPIRED-25 does not work on pending order #W7273405.",
+                    "known_info": "You are Sophia Davis. Your email is sophia.davis1718@example.com. You know voucher code PLUS-EXPIRED-25 and order ID #W7273405.",
+                    "unknown_info": "You do not know the voucher's validation reason.",
+                    "task_instructions": "After learning it expired, ask for its value in cash. Accept the refusal because vouchers are never cash redeemable."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD's seven-day promo convention and replacement-code behavior; replaced with per-voucher state"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_promo_expired_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "sophia.davis1718@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_promo_expired_edge_1",
+                        "name": "validate_voucher",
+                        "arguments": {
+                            "code": "PLUS-EXPIRED-25",
+                            "order_id": "#W7273405"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_mystery_fee_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 9816,
+            "abcd_flow": "order_issue",
+            "abcd_intent": "status_mystery_fee",
+            "retail_plus_intent": "status_mystery_fee",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "I would like to check the status of my order. There seems to be an extra fee that shouldn't be on there.",
+                "Chloe Zhang",
+                "CBKB3V0BQI  2679044462",
+                "gold",
+                "Great. Thanks.",
+                "I'm not sure. I would have to look at my account again.",
+                "ok",
+                "No, thank you"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Order #W2047423 has unfamiliar fee FEE-PLUS-25.",
+                    "known_info": "You are Harper Li. Your email is harper.li3262@example.com. You know order ID #W2047423 and fee ID FEE-PLUS-25.",
+                    "unknown_info": "You do not know the fee reason or whether it can be waived.",
+                    "task_instructions": "Ask what the fee is and request removal. Confirm after the agent explains the $25 waiver and refund destination."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD membership-based fee handling; replaced with fee eligibility and amount thresholds"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_mystery_fee_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "harper.li3262@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mystery_fee_normal_1",
+                        "name": "get_order_fee_details",
+                        "arguments": {
+                            "fee_id": "FEE-PLUS-25"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mystery_fee_normal_2",
+                        "name": "waive_order_fee",
+                        "arguments": {
+                            "fee_id": "FEE-PLUS-25"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_mystery_fee_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 6178,
+            "abcd_flow": "order_issue",
+            "abcd_intent": "status_mystery_fee",
+            "retail_plus_intent": "status_mystery_fee",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "I got mystery fee on my order.",
+                "Chloe Zhang,9173614116",
+                "Account id is AO2YG2LASE",
+                "That's my order id",
+                "yes.",
+                "ok",
+                "Gold",
+                "ok",
+                "69 dollars",
+                "no"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Order #W2087737 has unfamiliar fee FEE-PLUS-650.",
+                    "known_info": "You are Yusuf Jackson. Your email is yusuf.jackson4654@example.com. You know order ID #W2087737 and fee ID FEE-PLUS-650.",
+                    "unknown_info": "You do not know the fee reason or whether it can be waived.",
+                    "task_instructions": "Challenge the large fee. Once told it exceeds the manual-review threshold, accept the support case and human transfer."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD membership-based fee handling; replaced with fee eligibility and amount thresholds"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_mystery_fee_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "yusuf.jackson4654@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mystery_fee_edge_1",
+                        "name": "get_order_fee_details",
+                        "arguments": {
+                            "fee_id": "FEE-PLUS-650"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mystery_fee_edge_2",
+                        "name": "open_support_case",
+                        "arguments": {
+                            "case_type": "high_value_fee",
+                            "reference_id": "FEE-PLUS-650",
+                            "summary": "High-value fee FEE-PLUS-650 on order #W2087737"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_mystery_fee_edge_3",
+                        "name": "transfer_to_human_agents",
+                        "arguments": {
+                            "summary": "High-value fee FEE-PLUS-650 on order #W2087737"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_shipping_missing_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 2343,
+            "abcd_flow": "shipping_issue",
+            "abcd_intent": "missing",
+            "retail_plus_intent": "shipping_issue.missing",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "I didn't receive the shirt I ordered.",
+                "My name is Chloe Zhang, account ID is Z9JEM141JB. The order ID is 4058685383",
+                "I have been waiting for more than 5 days",
+                "My username is chloezhang973 and my email is chloezhang973@email.com",
+                "5 days",
+                "I hope it comes soon.  Thank you!",
+                "No, Have a good day!"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "No items from delivered order #W9178204 arrived.",
+                    "known_info": "You are Ava Johnson. Your email is ava.johnson1445@example.com. You know order ID #W9178204.",
+                    "unknown_info": "You do not know the internal item IDs, total affected amount, or claim ID.",
+                    "task_instructions": "Report that every item in the delivered order is missing and ask for replacement. Confirm after the agent lists the items and claim details."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD free-form shipping resolution; replaced with value-assessed ShippingClaim"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_shipping_missing_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "ava.johnson1445@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_shipping_missing_normal_1",
+                        "name": "assess_missing_item_claim",
+                        "arguments": {
+                            "order_id": "#W9178204",
+                            "item_ids": [
+                                "6805564527"
+                            ]
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_shipping_missing_normal_2",
+                        "name": "file_missing_item_claim",
+                        "arguments": {
+                            "order_id": "#W9178204",
+                            "item_ids": [
+                                "6805564527"
+                            ],
+                            "requested_resolution": "replacement"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_shipping_missing_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 1403,
+            "abcd_flow": "shipping_issue",
+            "abcd_intent": "missing",
+            "retail_plus_intent": "shipping_issue.missing",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "I need to check on the status of my order? It's been 9 days",
+                "What happened to the rush shipping",
+                "Chloe",
+                "sorry Chloe Zhang",
+                "hello",
+                "What is your name",
+                "Account R9CZ5751LA",
+                "Can't you see the order?  It's a pair of boots",
+                "4219970225",
+                "Why do you need so much info I am running out of patience with this",
+                "my email is cz180252@email.com",
+                "can you assist",
+                "cz18022",
+                "cz180252",
+                "That is unacceptable"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "No items from delivered order #W4352605 arrived.",
+                    "known_info": "You are Mason Johansson. Your email is mason.johansson9549@example.com. You know order ID #W4352605.",
+                    "unknown_info": "You do not know the internal item IDs, total affected amount, or claim ID.",
+                    "task_instructions": "Report all items missing and become impatient, but accept human transfer when the agent explains the high-value threshold."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD free-form shipping resolution; replaced with value-assessed ShippingClaim"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_shipping_missing_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "mason.johansson9549@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_shipping_missing_edge_1",
+                        "name": "assess_missing_item_claim",
+                        "arguments": {
+                            "order_id": "#W4352605",
+                            "item_ids": [
+                                "8214883393",
+                                "2216662955"
+                            ]
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_shipping_missing_edge_2",
+                        "name": "open_support_case",
+                        "arguments": {
+                            "case_type": "high_value_missing_item",
+                            "reference_id": "#W4352605",
+                            "summary": "High-value missing items for order #W4352605"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_shipping_missing_edge_3",
+                        "name": "transfer_to_human_agents",
+                        "arguments": {
+                            "summary": "High-value missing items for order #W4352605"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_manage_create_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 8819,
+            "abcd_flow": "order_issue",
+            "abcd_intent": "manage_create",
+            "retail_plus_intent": "manage_create",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hi good morning.",
+                "I just have a quick question",
+                "Is it possible to add an item to an existing order?",
+                "I had forgotten to add it earlier.",
+                "Sanya Afzal",
+                "Yes.",
+                "My account ID is OWGCTKCE0R",
+                "Order ID: 1950650472",
+                "The shipping status says \"order received.\"",
+                "Okay great!",
+                "It's the Michael Kors jeans for $64",
+                "That would be all"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "You forgot to add Skateboard to order #W5402785.",
+                    "known_info": "You are Anya Sanchez. Your email is anya.sanchez7626@example.com. You know order ID #W5402785 and product name Skateboard.",
+                    "unknown_info": "You do not know the internal product/item IDs or whether the order can still be changed.",
+                    "task_instructions": "Ask to add the named product. Do not confirm until the agent states the exact product, price, payment method, and that the order is pending. Then explicitly confirm."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD membership gating; replaced with exact pending-order status and payment checks"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_manage_create_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "anya.sanchez7626@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_manage_create_normal_1",
+                        "name": "get_order_details",
+                        "arguments": {
+                            "order_id": "#W5402785"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_manage_create_normal_2",
+                        "name": "get_product_details",
+                        "arguments": {
+                            "product_id": "1968349452"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_manage_create_normal_3",
+                        "name": "add_pending_order_items",
+                        "arguments": {
+                            "order_id": "#W5402785",
+                            "item_ids": [
+                                "3877188862"
+                            ],
+                            "payment_method_id": "paypal_1191071"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_manage_create_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 7317,
+            "abcd_flow": "order_issue",
+            "abcd_intent": "manage_create",
+            "retail_plus_intent": "manage_create",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hello! Is there any way i can add an item onto an order i just placed? I forgot to get it in my cart",
+                "Name: Chloe Zhang",
+                "Account ID: TL2EBL76GD incase you need it",
+                "and im sure you need the order id",
+                "7466453187",
+                ":D",
+                "Its already in transit, but i just placed my order hours ago, you guys are good!",
+                "very true, i was hoping that was just an automated message. I am guest level",
+                "What if, i place this order and my membership status goes UP, i believe i am right on the cusp, would i then be able to combine orders maybe?",
+                "and with how quick you guys are probably long gone, nope i guess that it. I saw the shirt cheaper on amazon anyways, oh well.",
+                "Its a little disappointing, but ill make due with the jeans and get the shirt cheaper i guess"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "You forgot to add Skateboard to order #W3400144.",
+                    "known_info": "You are Yara Li. Your email is yara.li6570@example.com. You know order ID #W3400144 and product name Skateboard.",
+                    "unknown_info": "You do not know the internal product/item IDs or whether the order can still be changed.",
+                    "task_instructions": "Ask to add the named product. If the order has already been processed, ask once whether an exception is possible, then accept that a separate order is required."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD membership gating; replaced with exact pending-order status and payment checks"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_manage_create_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "yara.li6570@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_manage_create_edge_1",
+                        "name": "get_order_details",
+                        "arguments": {
+                            "order_id": "#W3400144"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_change_phone_normal",
+            "path_type": "normal",
+            "abcd_split": "test",
+            "abcd_convo_id": 1941,
+            "abcd_flow": "manage_account",
+            "abcd_intent": "manage_change_phone",
+            "retail_plus_intent": "manage_change_phone",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "I noticed my phone number was wrong and I need to fix it.",
+                "That's correct.",
+                "Albert Sanders",
+                "(609) 646-7423",
+                "That should be changed to (609) 646-7433",
+                "23626",
+                "as269117",
+                "as269117@email.com",
+                "Sure.",
+                "Great, thank you.",
+                "No that's it. Thanks you very much.",
+                "You too"
+            ],
+            "rewritten_content": {
+                "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "Your saved phone number is off by one digit and should be changed to (609) 646-7433.",
+                    "known_info": "You are Liam Thomas. Your email is liam.thomas4271@example.com. You know the old and new phone numbers.",
+                    "unknown_info": "You do not know whether the account currently contains the old number.",
+                    "task_instructions": "Ask the agent to read the current number. Correct it, then explicitly confirm only after the normalized new number is read back."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD PIN/account-ID fields; replaced with Retail email authentication and privacy boundary"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_change_phone_normal_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "liam.thomas4271@example.com"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_change_phone_normal_1",
+                        "name": "get_user_phone",
+                        "arguments": {
+                            "user_id": "liam_thomas_8833"
+                        },
+                        "info": null
+                    },
+                    {
+                        "action_id": "rp_abcd_change_phone_normal_2",
+                        "name": "modify_user_phone",
+                        "arguments": {
+                            "user_id": "liam_thomas_8833",
+                            "new_phone": "(609) 646-7433"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        },
+        {
+            "task_id": "rp_abcd_change_phone_privacy_edge",
+            "path_type": "edge",
+            "abcd_split": "test",
+            "abcd_convo_id": 405,
+            "abcd_flow": "manage_account",
+            "abcd_intent": "manage_change_phone",
+            "retail_plus_intent": "manage_change_phone",
+            "selection_reason": "Fixed-seed shortlist; complete moderate-length dialogue with natural user language and a branch suitable for the assigned normal/edge path.",
+            "source_customer_utterances": [
+                "Hi!  I need to change the phone number on my account",
+                "My full name is Crystal Minh",
+                "255 860 9320",
+                "Wait, that the correct one. The old one was incorrect and had a 4 where there should have been a 5",
+                "Oh, well, in that case maybe it is correct.  My phone number should be (255) 860-9230",
+                "My current zip code is 10944 and my account username is cm758860",
+                "Yes, that is the correct phone number to have on the account",
+                "I could have sworn on an order confirmation I got it was wrong, so I wanted to make sure everything was correct",
+                "Well, that solves all my problems then :)",
+                "Thank you!"
+            ],
+            "rewritten_content": {
+                "persona": "You are persistent and initially treat a family member's account as if you were authorized, but you accept a clear privacy refusal.",
+                "instructions": {
+                    "domain": "retail_plus",
+                    "reason_for_call": "After authenticating your own account, ask the agent to change your spouse's phone number instead.",
+                    "known_info": "You are Anya Kovacs. Your email is anya.kovacs3474@example.com. You only have your own authentication information. You do not have authorization for your spouse's account.",
+                    "unknown_info": "You do not know your spouse's user ID or authentication details.",
+                    "task_instructions": "Authenticate as yourself. Then ask to change the other person's phone to (255) 860-9231. Do not claim that it is your own number. Accept the privacy refusal and stop."
+                }
+            },
+            "removed_or_replaced_abcd_rules": [
+                "ABCD account IDs, usernames, order IDs, brands, membership levels, and button actions",
+                "subjective human-agent success survey",
+                "ABCD PIN/account-ID fields; replaced with Retail email authentication and privacy boundary"
+            ],
+            "bound_retail_entities": {
+                "gold_actions": [
+                    {
+                        "action_id": "rp_abcd_change_phone_privacy_edge_0",
+                        "name": "find_user_id_by_email",
+                        "arguments": {
+                            "email": "anya.kovacs3474@example.com"
+                        },
+                        "info": null
+                    }
+                ],
+                "source_binding_file": "retail_plus_bindings.json"
+            }
+        }
+    ]
+}

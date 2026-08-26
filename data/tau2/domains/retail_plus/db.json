@@ -6298,6 +6298,34 @@
                     "price": 326.74
                 }
             }
+        },
+        "9900000001": {
+            "name": "Gourmet Snack Box",
+            "product_id": "9900000001",
+            "variants": {
+                "9900001001": {
+                    "item_id": "9900001001",
+                    "options": {
+                        "category": "food"
+                    },
+                    "available": true,
+                    "price": 39.0
+                }
+            }
+        },
+        "9900000002": {
+            "name": "Custom Engraved Mug",
+            "product_id": "9900000002",
+            "variants": {
+                "9900001002": {
+                    "item_id": "9900001002",
+                    "options": {
+                        "category": "customized"
+                    },
+                    "available": true,
+                    "price": 49.0
+                }
+            }
         }
     },
     "users": {
@@ -20380,7 +20408,9 @@
             },
             "orders": [
                 "#W8413387",
-                "#W7677118"
+                "#W7677118",
+                "#RP000001",
+                "#RP000002"
             ]
         },
         "mason_johansson_2485": {
@@ -47440,7 +47470,7 @@
                     }
                 }
             ],
-            "status": "delivered",
+            "status": "return requested",
             "fulfillments": [
                 {
                     "tracking_id": [
@@ -47457,7 +47487,11 @@
                     "amount": 94.01,
                     "payment_method_id": "credit_card_6044650"
                 }
-            ]
+            ],
+            "return_items": [
+                "9747045638"
+            ],
+            "return_payment_method_id": "credit_card_6044650"
         },
         "#W2417020": {
             "order_id": "#W2417020",
@@ -58512,7 +58546,7 @@
                     }
                 }
             ],
-            "status": "delivered",
+            "status": "return requested",
             "fulfillments": [
                 {
                     "tracking_id": [
@@ -58532,7 +58566,14 @@
                     "amount": 1529.33,
                     "payment_method_id": "paypal_1009053"
                 }
-            ]
+            ],
+            "return_items": [
+                "1327854740",
+                "5537798301",
+                "7154215719",
+                "9179378709"
+            ],
+            "return_payment_method_id": "paypal_1009053"
         },
         "#W3964602": {
             "order_id": "#W3964602",
@@ -60893,7 +60934,7 @@
                     }
                 }
             ],
-            "status": "delivered",
+            "status": "return requested",
             "fulfillments": [
                 {
                     "tracking_id": [
@@ -60910,7 +60951,11 @@
                     "amount": 260.68,
                     "payment_method_id": "gift_card_6662365"
                 }
-            ]
+            ],
+            "return_items": [
+                "3377900078"
+            ],
+            "return_payment_method_id": "gift_card_6662365"
         },
         "#W3263208": {
             "order_id": "#W3263208",
@@ -83104,7 +83149,7 @@
                     }
                 }
             ],
-            "status": "delivered",
+            "status": "return requested",
             "fulfillments": [
                 {
                     "tracking_id": [
@@ -83121,7 +83166,11 @@
                     "amount": 105.68,
                     "payment_method_id": "credit_card_8033789"
                 }
-            ]
+            ],
+            "return_items": [
+                "7510236436"
+            ],
+            "return_payment_method_id": "credit_card_8033789"
         },
         "#W7895761": {
             "order_id": "#W7895761",
@@ -83746,6 +83795,271 @@
                     "amount": 298.39,
                     "payment_method_id": "paypal_6840891"
                 }
+            ]
+        },
+        "#RP000001": {
+            "order_id": "#RP000001",
+            "user_id": "harper_nguyen_9170",
+            "address": {
+                "address1": "386 Broadway",
+                "address2": "Suite 145",
+                "city": "Austin",
+                "country": "USA",
+                "state": "TX",
+                "zip": "78715"
+            },
+            "items": [
+                {
+                    "name": "Gourmet Snack Box",
+                    "product_id": "9900000001",
+                    "item_id": "9900001001",
+                    "price": 39.0,
+                    "options": {
+                        "category": "food"
+                    }
+                }
+            ],
+            "status": "delivered",
+            "fulfillments": [
+                {
+                    "tracking_id": [
+                        "RP9900001001"
+                    ],
+                    "item_ids": [
+                        "9900001001"
+                    ]
+                }
+            ],
+            "payment_history": [
+                {
+                    "transaction_type": "payment",
+                    "amount": 39.0,
+                    "payment_method_id": "gift_card_8578732"
+                }
+            ],
+            "cancel_reason": null,
+            "exchange_items": null,
+            "exchange_new_items": null,
+            "exchange_payment_method_id": null,
+            "exchange_price_difference": null,
+            "return_items": null,
+            "return_payment_method_id": null
+        },
+        "#RP000002": {
+            "order_id": "#RP000002",
+            "user_id": "harper_nguyen_9170",
+            "address": {
+                "address1": "386 Broadway",
+                "address2": "Suite 145",
+                "city": "Austin",
+                "country": "USA",
+                "state": "TX",
+                "zip": "78715"
+            },
+            "items": [
+                {
+                    "name": "Custom Engraved Mug",
+                    "product_id": "9900000002",
+                    "item_id": "9900001002",
+                    "price": 49.0,
+                    "options": {
+                        "category": "customized"
+                    }
+                }
+            ],
+            "status": "delivered",
+            "fulfillments": [
+                {
+                    "tracking_id": [
+                        "RP9900001002"
+                    ],
+                    "item_ids": [
+                        "9900001002"
+                    ]
+                }
+            ],
+            "payment_history": [
+                {
+                    "transaction_type": "payment",
+                    "amount": 49.0,
+                    "payment_method_id": "gift_card_8578732"
+                }
+            ],
+            "cancel_reason": null,
+            "exchange_items": null,
+            "exchange_new_items": null,
+            "exchange_payment_method_id": null,
+            "exchange_price_difference": null,
+            "return_items": null,
+            "return_payment_method_id": null
+        }
+    },
+    "customer_phones": {
+        "liam_thomas_8833": "(609) 646-7423",
+        "anya_kovacs_9542": "(255) 860-9230"
+    },
+    "refund_cases": {
+        "REF-PLUS-1001": {
+            "refund_id": "REF-PLUS-1001",
+            "order_id": "#W6378322",
+            "user_id": "raj_anderson_3167",
+            "item_ids": [
+                "3377900078"
+            ],
+            "amount": 260.68,
+            "payment_method_id": "gift_card_6662365",
+            "status": "processing",
+            "requested_at": "2026-08-18",
+            "expected_by": "2026-08-29",
+            "completed_at": null,
+            "failure_reason": null,
+            "source": "item_return"
+        },
+        "REF-PLUS-1002": {
+            "refund_id": "REF-PLUS-1002",
+            "order_id": "#W5931168",
+            "user_id": "evelyn_anderson_9102",
+            "item_ids": [
+                "7510236436"
+            ],
+            "amount": 105.68,
+            "payment_method_id": "credit_card_8033789",
+            "status": "failed",
+            "requested_at": "2026-08-15",
+            "expected_by": "2026-08-22",
+            "completed_at": null,
+            "failure_reason": "payment processor rejected the refund",
+            "source": "item_return"
+        },
+        "REF-PLUS-1003": {
+            "refund_id": "REF-PLUS-1003",
+            "order_id": "#W8587412",
+            "user_id": "ava_sanchez_8588",
+            "item_ids": [
+                "9747045638"
+            ],
+            "amount": 94.01,
+            "payment_method_id": "credit_card_6044650",
+            "status": "processing",
+            "requested_at": "2026-08-22",
+            "expected_by": "2026-08-29",
+            "completed_at": null,
+            "failure_reason": null,
+            "source": "item_return"
+        },
+        "REF-PLUS-1004": {
+            "refund_id": "REF-PLUS-1004",
+            "order_id": "#W8068454",
+            "user_id": "daiki_patel_5953",
+            "item_ids": [
+                "1327854740",
+                "5537798301",
+                "7154215719",
+                "9179378709"
+            ],
+            "amount": 1529.33,
+            "payment_method_id": "paypal_1009053",
+            "status": "processing",
+            "requested_at": "2026-08-01",
+            "expected_by": "2026-08-10",
+            "completed_at": null,
+            "failure_reason": null,
+            "source": "item_return"
+        }
+    },
+    "vouchers": {
+        "PLUS-MINIMUM-20": {
+            "code": "PLUS-MINIMUM-20",
+            "status": "active",
+            "discount_type": "percentage",
+            "discount_value": 20.0,
+            "issued_at": "2026-08-20",
+            "expires_at": "2026-09-20",
+            "assigned_user_id": "chen_brown_8075",
+            "minimum_order_amount": 147.76,
+            "cash_redeemable": false,
+            "redeemed_order_id": null
+        },
+        "PLUS-PRIVATE-30": {
+            "code": "PLUS-PRIVATE-30",
+            "status": "active",
+            "discount_type": "fixed",
+            "discount_value": 30.0,
+            "issued_at": "2026-08-18",
+            "expires_at": "2026-09-18",
+            "assigned_user_id": "olivia_lopez_9494",
+            "minimum_order_amount": 0.0,
+            "cash_redeemable": false,
+            "redeemed_order_id": null
+        },
+        "PLUS-EXPIRED-10": {
+            "code": "PLUS-EXPIRED-10",
+            "status": "expired",
+            "discount_type": "fixed",
+            "discount_value": 10.0,
+            "issued_at": "2026-07-01",
+            "expires_at": "2026-08-10",
+            "assigned_user_id": "raj_smith_7423",
+            "minimum_order_amount": 0.0,
+            "cash_redeemable": false,
+            "redeemed_order_id": null
+        },
+        "PLUS-EXPIRED-25": {
+            "code": "PLUS-EXPIRED-25",
+            "status": "expired",
+            "discount_type": "fixed",
+            "discount_value": 25.0,
+            "issued_at": "2026-07-01",
+            "expires_at": "2026-08-01",
+            "assigned_user_id": "sophia_davis_9653",
+            "minimum_order_amount": 0.0,
+            "cash_redeemable": false,
+            "redeemed_order_id": null
+        }
+    },
+    "order_fees": {
+        "FEE-PLUS-25": {
+            "fee_id": "FEE-PLUS-25",
+            "order_id": "#W2047423",
+            "fee_type": "incorrect handling fee",
+            "amount": 25.0,
+            "explanation": "A handling fee was incorrectly applied by the warehouse.",
+            "status": "charged",
+            "waivable": true,
+            "refund_id": null
+        },
+        "FEE-PLUS-650": {
+            "fee_id": "FEE-PLUS-650",
+            "order_id": "#W2087737",
+            "fee_type": "high-value customs adjustment",
+            "amount": 650.0,
+            "explanation": "The fee requires manual documentation review.",
+            "status": "charged",
+            "waivable": false,
+            "refund_id": null
+        }
+    },
+    "shipping_claims": {},
+    "support_cases": {},
+    "item_return_policies": {
+        "9900001001": {
+            "item_id": "9900001001",
+            "category": "food",
+            "returnable_without_reason": false,
+            "allowed_reasons": [
+                "defective",
+                "damaged",
+                "wrong item"
+            ]
+        },
+        "9900001002": {
+            "item_id": "9900001002",
+            "category": "customized",
+            "returnable_without_reason": false,
+            "allowed_reasons": [
+                "defective",
+                "damaged",
+                "wrong item"
             ]
         }
     }

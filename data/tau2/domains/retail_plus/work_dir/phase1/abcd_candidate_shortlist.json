@@ -1,0 +1,3231 @@
+{
+  "source": "ABCD v1.1 official test split",
+  "source_commit": "6b8700ce67c6b37b062dd7a60abc76d7ef832a97",
+  "seed": 20260824,
+  "selection_rule": "For each canonical intent, keep complete 8-40 turn test conversations, sort by convo_id, then sample six with a fixed seed for human review.",
+  "intents": {
+    "refund_status": [
+      {
+        "split": "test",
+        "convo_id": 8354,
+        "flow": "product_defect",
+        "scenario_subflow": "refund_status",
+        "canonical_intent": "refund_status",
+        "num_turns": 18,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "albertsanders679@email.com",
+            "member_level": "silver",
+            "phone": "(635) 631-9944",
+            "username": "albertsanders679"
+          },
+          "order": {
+            "street_address": "1156 2nd ave",
+            "full_address": "1156 2nd ave  raleigh, ny 92910",
+            "city": "raleigh",
+            "num_products": "1",
+            "order_id": "7853533684",
+            "packaging": "yes",
+            "payment_method": "debit card",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'jacket', 'amount': 64, 'image_url': 'images/calvin_klein-jacket.jpeg'}]",
+            "purchase_date": "2019-12-04",
+            "state": "ny",
+            "zip_code": "92910"
+          },
+          "product": {
+            "names": [
+              "calvin_klein jacket"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "product_defect",
+          "subflow": "refund_status"
+        },
+        "customer_utterances": [
+          "Hi there just checking on the status of my refund.",
+          " Albert Sanders",
+          "I just want to double check the status.",
+          "albertsanders679",
+          "albertsanders679@email.com",
+          "7853533684",
+          "Okay any idea how much longer? It's already been awhile...",
+          "Okay that's helpful",
+          "No thanks"
+        ],
+        "agent_utterances": [
+          "Glad to help. May I have your full name please?",
+          "thanks. Can you please let me have your username, email address and Order ID to validate this purchase?",
+          "Sure.",
+          "Your refund is in progress.",
+          "I think it will be credited to your account tomorrow.",
+          "You are welcome. Is there anything else that I can help you with?",
+          "Have a nice day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "Purchase validation in progress ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8102,
+        "flow": "product_defect",
+        "scenario_subflow": "refund_status",
+        "canonical_intent": "refund_status",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "customer_name": "david williams",
+            "email": "dwilliams468@email.com",
+            "member_level": "guest",
+            "phone": "(007) 704-3340",
+            "username": "dwilliams468"
+          },
+          "order": {
+            "street_address": "4277 lincoln ave",
+            "full_address": "4277 lincoln ave  san lima, mi 57516",
+            "city": "san lima",
+            "num_products": "1",
+            "order_id": "7771293491",
+            "packaging": "no",
+            "payment_method": "debit card",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'shirt', 'amount': 54, 'image_url': 'images/calvin_klein-shirt.jpeg'}]",
+            "purchase_date": "2019-11-05",
+            "state": "mi",
+            "zip_code": "57516"
+          },
+          "product": {
+            "names": [
+              "calvin_klein shirt"
+            ],
+            "amounts": [
+              54
+            ]
+          },
+          "flow": "product_defect",
+          "subflow": "refund_status"
+        },
+        "customer_utterances": [
+          "Hello, I have completed a return and would like to check on the status of my refund please",
+          "Great, the name is David Williams",
+          "sure, dwilliams468, dwilliams468@email.com, 7771293491",
+          "No problem",
+          "Perfect, can you tell me if it will just be refunded to the same debit card?",
+          "Great, thank you for your help today",
+          "No, have a good day."
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you today?",
+          "I can certainly help you with that. Can I please have your full name?",
+          "Thank you.",
+          "Can you please provide me with your username, email address, and order ID so that I can look up your order?",
+          "Thank you. Please give me a moment to review your order.",
+          "I can see that you initiated your refund process 3 days ago by phone.",
+          "Your refund is currently in progress and will be completed within 2 to 3 business days.",
+          "Yes",
+          "You will receive your refund on your original payment method.",
+          "You are welcome.",
+          "Is there anything else I can help you with today?",
+          "Thank you. Have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for David Williams.",
+          "Purchase validation in progress ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 9310,
+        "flow": "product_defect",
+        "scenario_subflow": "refund_status",
+        "canonical_intent": "refund_status",
+        "num_turns": 16,
+        "scenario": {
+          "personal": {
+            "customer_name": "joseph banter",
+            "email": "jbanter3@email.com",
+            "member_level": "silver",
+            "phone": "(203) 512-0807",
+            "username": "jbanter3"
+          },
+          "order": {
+            "street_address": "6855 woodshore st",
+            "full_address": "6855 woodshore st  newark, ny 2099",
+            "city": "newark",
+            "num_products": "1",
+            "order_id": "0942034797",
+            "packaging": "no",
+            "payment_method": "credit card",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'jacket', 'amount': 79, 'image_url': 'images/tommy_hilfiger-jacket.jpeg'}]",
+            "purchase_date": "2019-10-02",
+            "state": "ny",
+            "zip_code": "2099"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger jacket"
+            ],
+            "amounts": [
+              79
+            ]
+          },
+          "flow": "product_defect",
+          "subflow": "refund_status"
+        },
+        "customer_utterances": [
+          "Hello",
+          "I am wondering about the status of my refund",
+          "and I want to double check the payment method on it",
+          "Joseph Banter",
+          "jbanter3",
+          "jbanter3@email.com",
+          "order # is 0942034797",
+          "oh i see",
+          "ok. that sounds fine",
+          "thank you"
+        ],
+        "agent_utterances": [
+          "Hello, how can i help you today",
+          "Okay sure, could i get your full name Username email adress and order ID please",
+          "Okay looks like you initated the refund by mail and it is being processed. Your payment method was to be refunded onto the card you purchased with",
+          "No problem, have a nice day"
+        ],
+        "actions": [
+          "Account has been pulled up for Joseph Banter.",
+          "Purchase validation in progress ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 3332,
+        "flow": "product_defect",
+        "scenario_subflow": "refund_status",
+        "canonical_intent": "refund_status",
+        "num_turns": 30,
+        "scenario": {
+          "personal": {
+            "customer_name": "alessandro phoenix",
+            "email": "aphoenix268@email.com",
+            "member_level": "bronze",
+            "phone": "(963) 784-4351",
+            "username": "aphoenix268"
+          },
+          "order": {
+            "street_address": "9794 kennedy st",
+            "full_address": "9794 kennedy st  newark, tx 90915",
+            "city": "newark",
+            "num_products": "1",
+            "order_id": "8678139719",
+            "packaging": "yes",
+            "payment_method": "credit card",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'boots', 'amount': 89, 'image_url': 'images/michael_kors-boots.jpeg'}]",
+            "purchase_date": "2020-03-19",
+            "state": "tx",
+            "zip_code": "90915"
+          },
+          "product": {
+            "names": [
+              "michael_kors boots"
+            ],
+            "amounts": [
+              89
+            ]
+          },
+          "flow": "product_defect",
+          "subflow": "refund_status"
+        },
+        "customer_utterances": [
+          "Hello, I want to know the status of my refund.",
+          "Yes",
+          "I got a refund, right? I just want to double check the status of a refund",
+          "correct.",
+          "Alessandro Phoenix",
+          "My username is aphoenix268. Email aphoenix268@email.com. Order ID 8678139719",
+          "A few days",
+          "Bronze",
+          "Okay, that answers my question. thank you",
+          "no thats it."
+        ],
+        "agent_utterances": [
+          "how may i help you today?",
+          "you are asking about your refund status today correct?",
+          "could you be more specific, for example, are you asking about the status of a refund on an item you already returned?",
+          "so you did already return an item for refund, and are asking the status of the refund payment, correct?",
+          "i can definitely help with that",
+          "may i have your full name to pull the account up",
+          "now to pull up the refund i need 3 things",
+          "username, email adress, and order id #",
+          "thank you",
+          "and how long have you been waiting on the refund?",
+          "and what is your membership level?",
+          "generally, it can take up to 7 days for a refund to fully process.",
+          "As a bronze level member, unfortunately I must ask you to wait the full 7 days for refund",
+          "if you do not recieve a refund at that time, please contact us back so we can rectify the issue",
+          "as it stands your refund is still processing",
+          "is there anything else i can help with today?"
+        ],
+        "actions": [
+          "Account has been pulled up for Alessandron Phoenix.",
+          "Account has been pulled up for Alessandro Phoenix.",
+          "Purchase validation in progress ...",
+          "Membership level of bronze has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8271,
+        "flow": "product_defect",
+        "scenario_subflow": "refund_status",
+        "canonical_intent": "refund_status",
+        "num_turns": 19,
+        "scenario": {
+          "personal": {
+            "customer_name": "joyce wu",
+            "email": "jwu21247@email.com",
+            "member_level": "guest",
+            "phone": "(319) 267-0227",
+            "username": "jwu21247"
+          },
+          "order": {
+            "street_address": "7378 kennedy st",
+            "full_address": "7378 kennedy st  raleigh, wa 64088",
+            "city": "raleigh",
+            "num_products": "1",
+            "order_id": "4628917502",
+            "packaging": "no",
+            "payment_method": "credit card",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'boots', 'amount': 89, 'image_url': 'images/tommy_hilfiger-boots.jpeg'}]",
+            "purchase_date": "2020-01-27",
+            "state": "wa",
+            "zip_code": "64088"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger boots"
+            ],
+            "amounts": [
+              89
+            ]
+          },
+          "flow": "product_defect",
+          "subflow": "refund_status"
+        },
+        "customer_utterances": [
+          "i want to double check my refund status",
+          "Name: Joyce Wu",
+          "Email Address: jwu21247@email.com",
+          "Order ID: 4628917502",
+          "ok do you know when",
+          "ok thanks",
+          "thats all i need"
+        ],
+        "agent_utterances": [
+          "How may i help you",
+          "i can assist in checking your refund status today",
+          "may i please have your full name to pull up the account?",
+          "I then will also need your username, email adress, and order id, to verify you. please and thanks!",
+          "thank you",
+          "It looks like your refund is in progress, from the initiated chat by you last week.",
+          "it should finish processing soon",
+          "within a few days",
+          "is there anything else i can help with?",
+          "have a nice day then!"
+        ],
+        "actions": [
+          "Account has been pulled up for Joyce Wu.",
+          "Purchase validation in progress ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 5410,
+        "flow": "product_defect",
+        "scenario_subflow": "refund_status",
+        "canonical_intent": "refund_status",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "customer_name": "joseph banter",
+            "email": "jb231857@email.com",
+            "member_level": "guest",
+            "phone": "(816) 691-2686",
+            "username": "jb231857"
+          },
+          "order": {
+            "street_address": "2139 1st ave",
+            "full_address": "2139 1st ave  brighton, ny 23101",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "4781630481",
+            "packaging": "yes",
+            "payment_method": "credit card",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'boots', 'amount': 89, 'image_url': 'images/michael_kors-boots.jpeg'}]",
+            "purchase_date": "2020-03-02",
+            "state": "ny",
+            "zip_code": "23101"
+          },
+          "product": {
+            "names": [
+              "michael_kors boots"
+            ],
+            "amounts": [
+              89
+            ]
+          },
+          "flow": "product_defect",
+          "subflow": "refund_status"
+        },
+        "customer_utterances": [
+          "Hi! I am expecting a refund and wanted to double check the status of the refund please",
+          "Joseph Banter",
+          "Order ID: 4781630481",
+          "jb231857",
+          "jb231857@email.com",
+          "Would you know how long ?",
+          "hmmm okay",
+          "Would you know if it will be returned to my credit card?",
+          "Oh okay.",
+          "That is all. Thank you"
+        ],
+        "agent_utterances": [
+          "Hello, how may I assist you today?",
+          "What's your full name?",
+          "Can I have your account and order IDs?",
+          "Sorry, I don't need the account ID.",
+          "Can I have your username and email?",
+          "Okay, I found the order.",
+          "The refund is in progress.",
+          "When it is complete it will be sent to you via phone call.",
+          "I cannot say for sure when it will be done, unfortunately.",
+          "Sorry about that.",
+          "Yes it will be added to the initial method of payment.",
+          "Can i help with anything else?",
+          "I hope that answered your question.",
+          "Have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Joseph Banter.",
+          "Purchase validation in progress ..."
+        ]
+      }
+    ],
+    "mistimed_billing_already_returned": [
+      {
+        "split": "test",
+        "convo_id": 7747,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "mistimed_billing_already_returned",
+        "canonical_intent": "mistimed_billing_already_returned",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "customer_name": "alessandro phoenix",
+            "email": "alessandrophoenix234@email.com",
+            "member_level": "gold",
+            "phone": "(609) 741-6790",
+            "username": "alessandrophoenix234"
+          },
+          "order": {
+            "street_address": "3922 lincoln ave",
+            "full_address": "3922 lincoln ave  la fayette, mi 43701",
+            "city": "la fayette",
+            "num_products": "1",
+            "order_id": "0669363291",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'boots', 'amount': 54, 'image_url': 'images/calvin_klein-boots.jpeg'}]",
+            "state": "mi",
+            "zip_code": "43701"
+          },
+          "product": {
+            "names": [
+              "calvin_klein boots"
+            ],
+            "amounts": [
+              54
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "mistimed_billing_already_returned"
+        },
+        "customer_utterances": [
+          "I completed my return a little over 10 days ago at this point and i am still not seeing it as being reversed on my statement",
+          "Alessandro Phoenix",
+          "xsjd29343",
+          "0669363291",
+          "alessandrophoenix234 alessandrophoenix234@email.com",
+          "yes",
+          "thank you",
+          "understood, that'll cover everything thanks for the help"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you?",
+          "Interesting, I can look into that.",
+          "What's your name?",
+          "Thank you",
+          "Can I have your account and order IDs as well?",
+          "Thanks",
+          "Can I have your username and email address as well?",
+          "I found your purchase",
+          "And you said it has been 10 days, right?",
+          "That certainly does seem long.",
+          "I will go ahead and issue a credit to your account",
+          "Give it at least a few minutes to be corrected on the website, but your account should reflect that soon.",
+          "Can I help with anything else?",
+          "Great. Have a wonderful day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Alessandro Phoenix.",
+          "Purchase validation in progress ...",
+          "A reason of 10 days has been recorded.",
+          "Order has been updated with give credit."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8352,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "mistimed_billing_already_returned",
+        "canonical_intent": "mistimed_billing_already_returned",
+        "num_turns": 31,
+        "scenario": {
+          "personal": {
+            "customer_name": "david williams",
+            "email": "dw727827@email.com",
+            "member_level": "gold",
+            "phone": "(989) 224-9549",
+            "username": "dw727827"
+          },
+          "order": {
+            "street_address": "6203 lexington ave",
+            "full_address": "6203 lexington ave  brighton, ny 80021",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "8768317351",
+            "products": "[{'brand': 'guess', 'product_type': 'jacket', 'amount': 64, 'image_url': 'images/guess-jacket.jpeg'}]",
+            "state": "ny",
+            "zip_code": "80021"
+          },
+          "product": {
+            "names": [
+              "guess jacket"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "mistimed_billing_already_returned"
+        },
+        "customer_utterances": [
+          "Hi.  I have a billing issue.",
+          "I returned something last month, and the charge still hasn't been reversed.",
+          "David Williams",
+          " dw727827",
+          "I don't have an account ID but my order ID is 8768317351",
+          "a jacket",
+          "64 plus tax",
+          "dw727827@email.com",
+          "a couple of weeks",
+          "the refund?",
+          "ok.  Thanks"
+        ],
+        "agent_utterances": [
+          "Hello",
+          "What's the issue?",
+          "Sorry",
+          "Give me your full name",
+          "Give me your accout id, username, order id and email",
+          "What did you return?",
+          "Give me a moment to check",
+          "How much is the missing credit?",
+          "what is your email address",
+          "How long have you been waiting for the refund to show up?",
+          "are you there?",
+          "Completed",
+          "yes",
+          "You will see the credit soon"
+        ],
+        "actions": [
+          "Account has been pulled up for David Williams.",
+          "A reason of previous purchase has been recorded.",
+          "Querying the system for an answer ...",
+          "Purchase validation in progress ...",
+          "A reason of 14 has been recorded.",
+          "Order has been updated with give credit."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 431,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "mistimed_billing_already_returned",
+        "canonical_intent": "mistimed_billing_already_returned",
+        "num_turns": 25,
+        "scenario": {
+          "personal": {
+            "customer_name": "rodriguez domingo",
+            "email": "rodriguezdomingo096@email.com",
+            "member_level": "silver",
+            "phone": "(416) 133-4653",
+            "username": "rodriguezdomingo096"
+          },
+          "order": {
+            "street_address": "8343 circle drive",
+            "full_address": "8343 circle drive  jacksonville, ny 71696",
+            "city": "jacksonville",
+            "num_products": "1",
+            "order_id": "2189904431",
+            "products": "[{'brand': 'guess', 'product_type': 'boots', 'amount': 94, 'image_url': 'images/guess-boots.jpeg'}]",
+            "state": "ny",
+            "zip_code": "71696"
+          },
+          "product": {
+            "names": [
+              "guess boots"
+            ],
+            "amounts": [
+              94
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "mistimed_billing_already_returned"
+        },
+        "customer_utterances": [
+          "Hi, I returned an item and the charge on my statement hasn't been reversed even though the return shows as completed",
+          "Rodriguez Domingo",
+          "Yes, I still need my refund",
+          "I have my order ID but I don't know my account ID",
+          "Username: rodriguezdomingo096",
+          "rodriguezdomingo096@email.com",
+          "2189904431",
+          "No problem",
+          "then why aren't I seeing a refund on my card?",
+          "Do you know how many days?",
+          "Oh ok. Thanks",
+          "No that's it",
+          "thanks"
+        ],
+        "agent_utterances": [
+          "Hello, how can i help you today?",
+          "ok, i'll need your full name and account id to pull up your account and resolve your issue",
+          "just to clarify, you are inquiring about the status of your refund, correct?",
+          "I will just need your Username, Email address, and order id",
+          "thank you, one moment please",
+          "IT seems your refund is complete, through your payment method used online",
+          "it may take time for your bank to process it into your account",
+          "i am unsure, you would need to check your banks policies",
+          "no problem, is there anything else i can help you with today",
+          "have a wonderful day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Rodriguez Domingo.",
+          "Purchase validation in progress ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 5492,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "mistimed_billing_already_returned",
+        "canonical_intent": "mistimed_billing_already_returned",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "customer_name": "chloe zhang",
+            "email": "czhang28@email.com",
+            "member_level": "guest",
+            "phone": "(350) 816-3420",
+            "username": "czhang28"
+          },
+          "order": {
+            "street_address": "2354 kennedy st",
+            "full_address": "2354 kennedy st  san mateo, mi 11890",
+            "city": "san mateo",
+            "num_products": "1",
+            "order_id": "2269137343",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'jeans', 'amount': 69, 'image_url': 'images/calvin_klein-jeans.jpeg'}]",
+            "state": "mi",
+            "zip_code": "11890"
+          },
+          "product": {
+            "names": [
+              "calvin_klein jeans"
+            ],
+            "amounts": [
+              69
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "mistimed_billing_already_returned"
+        },
+        "customer_utterances": [
+          "Hi",
+          "I want to know why you guys still haven't refunded me",
+          "even though I already returned my order last week",
+          "yes",
+          "Chloe Zhang",
+          "username czhang28",
+          "czhang28@email.com",
+          "and order id 2269137343",
+          "oh thank you",
+          "no, that was all"
+        ],
+        "agent_utterances": [
+          "Hi! How can I help you?",
+          "I'm sorry you haven't received your refund yet. I would be happy to look into this for you. You're saying it was over 7 days ago that you returned the item, correct?",
+          "Okay, what is your full name?",
+          "Thank you, Chloe. I also need your username, email address, and Order ID, please.",
+          "I have issued your refund to you. It should show up in 2-5 business days. I'm sorry that you've had to wait, but I'm glad you contacted us so that I could resolve this for you.",
+          "Is there anything else I can help you with today?",
+          "Okay, you're welcome! Have a great day."
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Purchase validation in progress ...",
+          "A reason of more than 7 days has been recorded.",
+          "Order has been updated with give credit."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 3234,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "mistimed_billing_already_returned",
+        "canonical_intent": "mistimed_billing_already_returned",
+        "num_turns": 30,
+        "scenario": {
+          "personal": {
+            "customer_name": "norman bouchard",
+            "email": "nb195308@email.com",
+            "member_level": "bronze",
+            "phone": "(501) 349-3187",
+            "username": "nb195308"
+          },
+          "order": {
+            "street_address": "0446 circle drive",
+            "full_address": "0446 circle drive  san mateo, ny 28650",
+            "city": "san mateo",
+            "num_products": "1",
+            "order_id": "3600298749",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jeans', 'amount': 69, 'image_url': 'images/michael_kors-jeans.jpeg'}]",
+            "state": "ny",
+            "zip_code": "28650"
+          },
+          "product": {
+            "names": [
+              "michael_kors jeans"
+            ],
+            "amounts": [
+              69
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "mistimed_billing_already_returned"
+        },
+        "customer_utterances": [
+          "Hello. I completed a return with you guys and have not seen my charge reverse yet",
+          "Yes",
+          "If I completed the return, about how long will it take for me to get a refund?",
+          "Yes, my name is Normal Bouchard",
+          "Sorry, Norman Bouchard",
+          "Username is nb195308, email is nb195308@email.com",
+          "And order: 3600298749",
+          "It's been about 4 days already",
+          "I was told I'd receive a refund 3 business days after I submitted my return",
+          "Yes, it's bronze",
+          "Okay, and so if I still haven't received my refund then who will I need to contact?",
+          "Ok thank you!",
+          "You too. Thanks"
+        ],
+        "agent_utterances": [
+          "Hello, thank you for contacting AcmeCorp how may I help you?",
+          "I would happy to look into this for you.",
+          "Are you wanting to know your refund status?",
+          "Lets look into your account since you have not since the credit yet.",
+          "May I have your full name or account ID?",
+          "Thank you Norman. To check on this purchase I will need some more info. May I please have your username, email address, and order ID?",
+          "Thank you, how long have you been waiting for the refund?",
+          "May I have your membership level?",
+          "Unfortunately, you were given wrong information and I do sincerely apologize. Refunds are issued within 7 days so you will get your refund within the next 3 days.",
+          "Is there anything else I can help you with today?",
+          "You will need to contact us again,",
+          " Thank you for contacting AcmeCorp, you have a great day."
+        ],
+        "actions": [
+          "Account has been pulled up for Normal Bouchard.",
+          "Account has been pulled up for Norman Bouchard.",
+          "Purchase validation in progress ...",
+          "A reason of 4 days has been recorded.",
+          "Membership level of Bronze has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 4761,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "mistimed_billing_already_returned",
+        "canonical_intent": "mistimed_billing_already_returned",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "customer_name": "norman bouchard",
+            "email": "nb077260@email.com",
+            "member_level": "gold",
+            "phone": "(306) 415-4521",
+            "username": "nb077260"
+          },
+          "order": {
+            "street_address": "6940 circle drive",
+            "full_address": "6940 circle drive  brighton, mi 20508",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "9354424637",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'shirt', 'amount': 89, 'image_url': 'images/tommy_hilfiger-shirt.jpeg'}]",
+            "state": "mi",
+            "zip_code": "20508"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger shirt"
+            ],
+            "amounts": [
+              89
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "mistimed_billing_already_returned"
+        },
+        "customer_utterances": [
+          "I have been waiting for ten days now and my charge has not been reversed on my billing statement",
+          "yes for a tommy hilfiger shirt",
+          "Norman Bouchard",
+          "the id for the order was 9354424637 as well",
+          "nb077260 nb077260@email.com",
+          "yes that is right",
+          "alright",
+          "thank you i appreciate it",
+          "no that was everything, thanks again",
+          "you too"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you today?",
+          "I see, well let's see what we can do about this.",
+          "Was this for a refund?",
+          "Alright.  Let's get started, what is your full name or Account ID?",
+          "Sure, lets get all the rest of that info, your username and email address.",
+          "Ok so from I see here, your refund status is in progress.",
+          "It seems you initiated this by phone, is that correct?",
+          "So it has been 10 days, what I can do is notify the internal team to expedite this return although generally there are a couple days remaining.",
+          "Excellent let me do that, one moment.",
+          "I have updated this and escalated, it should be taken care very soon.",
+          "*care of... my apologies for your wait.",
+          "Is there anything else I can help you with today?",
+          "Thank you for your patronage, and you have a wonderful rest of your day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Norman Bouchard.",
+          "Purchase validation in progress ...",
+          "The manager has been notified."
+        ]
+      }
+    ],
+    "promo_code_invalid": [
+      {
+        "split": "test",
+        "convo_id": 6233,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_invalid",
+        "canonical_intent": "promo_code_invalid",
+        "num_turns": 17,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "asanders770@email.com",
+            "member_level": "bronze",
+            "phone": "(397) 125-2782",
+            "username": "asanders770"
+          },
+          "order": {
+            "street_address": "7121 circle drive",
+            "full_address": "7121 circle drive  monterey, wa 52735",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "2880043249",
+            "products": "[{'brand': 'guess', 'product_type': 'shirt', 'amount': 64, 'image_url': 'images/guess-shirt.jpeg'}]",
+            "state": "wa",
+            "zip_code": "52735"
+          },
+          "product": {
+            "names": [
+              "guess shirt"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_invalid"
+        },
+        "customer_utterances": [
+          "Hi there, the promo code I'm trying to use is wrong, it isn't working.  Can you help me?",
+          "Thank you so much.",
+          "Of course.  My name is Albert Sanders, and my account ID is QRTD12874UI4.  I received the code 2 days ago so it should still be good.",
+          "Thanks a lot. :)",
+          "Thanks so much!  That's all I needed, you were a great help. :)",
+          "You too1"
+        ],
+        "agent_utterances": [
+          "Thanks you for contacting us today. How may I help you?",
+          "Sure thing let me try to look into that for you.",
+          "Could you please provide me with your Full Name or Account ID please?",
+          "Thanks so much that information will be useful momentarily. I was just about to let you know that most codes are only valid for 7 days so lets look into that one for you.",
+          "It looks like something went wrong with the code so I'll gladly provide you with a new one.",
+          "The new code is: NLK83",
+          "Was there anything else I could help you with today?",
+          "I'm glad we were able to resolve the issue, thank you for shopping with us. Have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 2879,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_invalid",
+        "canonical_intent": "promo_code_invalid",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "customer_name": "chloe zhang",
+            "email": "czhang83@email.com",
+            "member_level": "bronze",
+            "phone": "(211) 759-9008",
+            "username": "czhang83"
+          },
+          "order": {
+            "street_address": "5918 primrose ave",
+            "full_address": "5918 primrose ave  baltimore, tx 75185",
+            "city": "baltimore",
+            "num_products": "1",
+            "order_id": "9319167887",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'shirt', 'amount': 54, 'image_url': 'images/tommy_hilfiger-shirt.jpeg'}]",
+            "state": "tx",
+            "zip_code": "75185"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger shirt"
+            ],
+            "amounts": [
+              54
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_invalid"
+        },
+        "customer_utterances": [
+          "I want to a return. How is your return policy",
+          "I bought 45 days ago. Can I make return",
+          "My member level Bronze",
+          "Oh thank you",
+          "How can I do my return?",
+          "Ok. I want to via mail",
+          "Could you explain by mail",
+          "My adress is 5918 Primrose Ave  Baltimore, TX 75185",
+          "No thank you",
+          "Have a nice day"
+        ],
+        "agent_utterances": [
+          "Hello, how can i help you today?",
+          "Depends on the membership level and reason, to start could i get your full name or account id?",
+          "Yes bronze members can return products up to 90 days",
+          "How would you like to process your return in store by mail or at a drop off center",
+          "Okay sure so i need your adress and city state zip code",
+          "We will give you a shipping label to print out",
+          "Okay i've sent you a link with the shipping label to your email on the account. Just send it back and we can refund your purchase. Is there anything else i can help you with today?",
+          "Okay great, have a nice day"
+        ],
+        "actions": [
+          "Order has been updated with return by Mail.",
+          "Details of 5918 Primrose Ave Baltimore, TX 75185 have been entered.",
+          "A link will be sent."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 1170,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_invalid",
+        "canonical_intent": "promo_code_invalid",
+        "num_turns": 18,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "as669424@email.com",
+            "member_level": "bronze",
+            "phone": "(479) 936-3606",
+            "username": "as669424"
+          },
+          "order": {
+            "street_address": "8938 2nd ave",
+            "full_address": "8938 2nd ave  monterey, ca 23976",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "9663591935",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jeans', 'amount': 64, 'image_url': 'images/michael_kors-jeans.jpeg'}]",
+            "state": "ca",
+            "zip_code": "23976"
+          },
+          "product": {
+            "names": [
+              "michael_kors jeans"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_invalid"
+        },
+        "customer_utterances": [
+          "Hello, I bought a pair of Michael Kors Jeans and when I went to use the promo code I have. I was told it was invalid.",
+          "Yes, it's Order ID: 9663591935.",
+          "Albert",
+          "I received it 8 days ago, I didn't know that. Is there anyway I can get a discount?",
+          "I'm a Bronze Member Level.",
+          "good, thank you so much. what is the code number I should use?",
+          "No, you totally took care of my problem with the invalid code. thank you so much."
+        ],
+        "agent_utterances": [
+          "Thank you for contacting Acmebrands how may I help you?",
+          "I am happy to assist. Just to confirm you have already placed this order?",
+          "May I have your first name please?",
+          "Thanks Albert, typically promotions codes only last 7 days.",
+          "Let me check into this. What is your membership level?",
+          "Great, I am able to give you a promo code for 20% off",
+          "You would just type in 20% off. Is there anything else I can help you with today?",
+          "Thank you for contacting us, have a great day."
+        ],
+        "actions": [
+          "Account has been pulled up for 9663591935.",
+          "Membership level of Bronze has been noted.",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 3631,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_invalid",
+        "canonical_intent": "promo_code_invalid",
+        "num_turns": 19,
+        "scenario": {
+          "personal": {
+            "customer_name": "rodriguez domingo",
+            "email": "rodriguezd286@email.com",
+            "member_level": "silver",
+            "phone": "(727) 952-3881",
+            "username": "rodriguezd286"
+          },
+          "order": {
+            "street_address": "8804 brushwick dr",
+            "full_address": "8804 brushwick dr  jacksonville, mi 13228",
+            "city": "jacksonville",
+            "num_products": "1",
+            "order_id": "5580669543",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jeans', 'amount': 49, 'image_url': 'images/michael_kors-jeans.jpeg'}]",
+            "state": "mi",
+            "zip_code": "13228"
+          },
+          "product": {
+            "names": [
+              "michael_kors jeans"
+            ],
+            "amounts": [
+              49
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_invalid"
+        },
+        "customer_utterances": [
+          "Hello",
+          "I'm trying to use a promo code but the site says its invalid",
+          "Rodriguez Domingo",
+          "No, I got it 5 days ago",
+          "Okay great",
+          "Awesome, thanks. I can buy my jeans now",
+          "Nope, that is it. Thank you"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you today?",
+          "Oh I am sorry to hear that.  Let's see what we can do about this.",
+          "May I have your full name or account ID please?",
+          "Typically promo codes last for 7 days, have you had yours longer than that?",
+          "Alright, let me check with our system and see what can be done, one moment please.",
+          "Ah good news, I have been authorized to get you another promo code which should fix the problem.",
+          "Ok I have a new promo code for 20% off which should fix your problem.  It is:  F66DF",
+          "My pleasure, thanks for being our customer, is there anything else I can help you with today?",
+          "You have a wonderful rest of your day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Rodriguez Domingo.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 9904,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_invalid",
+        "canonical_intent": "promo_code_invalid",
+        "num_turns": 23,
+        "scenario": {
+          "personal": {
+            "customer_name": "sanya afzal",
+            "email": "sa695106@email.com",
+            "member_level": "bronze",
+            "phone": "(931) 118-9666",
+            "username": "sa695106"
+          },
+          "order": {
+            "street_address": "3422 lincoln ave",
+            "full_address": "3422 lincoln ave  baltimore, tx 58925",
+            "city": "baltimore",
+            "num_products": "1",
+            "order_id": "8839948057",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'boots', 'amount': 84, 'image_url': 'images/calvin_klein-boots.jpeg'}]",
+            "state": "tx",
+            "zip_code": "58925"
+          },
+          "product": {
+            "names": [
+              "calvin_klein boots"
+            ],
+            "amounts": [
+              84
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_invalid"
+        },
+        "customer_utterances": [
+          "Hi",
+          "I am trying to use a promo code and its not working",
+          "I just received it 5 days ago and it's valid through the end of month",
+          "Sanya afzal",
+          "Thank you",
+          "ok thank you",
+          "Oh goodie, thank you so much",
+          "It made me sad when it wouldnt work",
+          "I love to shop :)",
+          "You are awesome, thanks again!",
+          "Thats all",
+          "Have a good day"
+        ],
+        "agent_utterances": [
+          "Hello, how can I help you?",
+          "I will be happy to help you out with this.",
+          "Can I get a name.",
+          "I found your account. I will now check with the system to see if it is a valid error.",
+          "It is an error with our own system. So I will make a new code for you to use.",
+          "Here is your new code: 4ZRDB",
+          "Im glad I was able to help you out. Do you need anymore help?",
+          "Have a great day."
+        ],
+        "actions": [
+          "Account has been pulled up for Sanya afzal.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 5033,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_invalid",
+        "canonical_intent": "promo_code_invalid",
+        "num_turns": 22,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "alberts8@email.com",
+            "member_level": "gold",
+            "phone": "(240) 868-7392",
+            "username": "alberts8"
+          },
+          "order": {
+            "street_address": "5243 lexington ave",
+            "full_address": "5243 lexington ave  jacksonville, wa 85711",
+            "city": "jacksonville",
+            "num_products": "1",
+            "order_id": "4722687533",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'boots', 'amount': 59, 'image_url': 'images/michael_kors-boots.jpeg'}]",
+            "state": "wa",
+            "zip_code": "85711"
+          },
+          "product": {
+            "names": [
+              "michael_kors boots"
+            ],
+            "amounts": [
+              59
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_invalid"
+        },
+        "customer_utterances": [
+          "hi",
+          "My promo code isn't working",
+          "ok",
+          "My name is Albert Sanders - I got this code about five days ago.",
+          "Please",
+          "I'm a gold member.",
+          "That's great",
+          "Cool.",
+          "No, I think I got everything I wanted. You have a great day."
+        ],
+        "agent_utterances": [
+          "Thank you for contacting Acme.  How may I help you today?",
+          "Oh, I'm sorry to hear that, let's see if we can get this sorted out",
+          "May I ask your full name before we begin, and how long ago the promo code was issued to you?",
+          "Okay, Mr. Sanders.  I'll check with the system to see what the problem is.",
+          "May I also ask your membership level",
+          "Ah, I'm glad to hear it, and I can also say that there was indeed an error in our system",
+          "Your promo code should have been valid all along, so I am going to issue a new code to you for 20% off",
+          "The new code LFAQX should now work for you",
+          "Indeed.  Is there anything else I can help you with today?",
+          "You too."
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      }
+    ],
+    "promo_code_out_of_date": [
+      {
+        "split": "test",
+        "convo_id": 10290,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_out_of_date",
+        "canonical_intent": "promo_code_out_of_date",
+        "num_turns": 16,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "asanders022@email.com",
+            "member_level": "bronze",
+            "phone": "(372) 368-4178",
+            "username": "asanders022"
+          },
+          "order": {
+            "street_address": "5776 2nd ave",
+            "full_address": "5776 2nd ave  monterey, mi 46547",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "9872786869",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'jacket', 'amount': 79, 'image_url': 'images/calvin_klein-jacket.jpeg'}]",
+            "state": "mi",
+            "zip_code": "46547"
+          },
+          "product": {
+            "names": [
+              "calvin_klein jacket"
+            ],
+            "amounts": [
+              79
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_out_of_date"
+        },
+        "customer_utterances": [
+          "Hello, I am trying to use a promo code and it keeps telling me it is invalid",
+          "9 days ago",
+          "Albert Sanders",
+          "Great, thanks",
+          "Thanks so much!",
+          "That is all I needed"
+        ],
+        "agent_utterances": [
+          "Hi, how are you doing today?",
+          "I'm sorry, let me see if I can help you with that! When was the promo code issued?",
+          "Our codes typically expire after 7 days. Let me check the system to see what we can do. What is your name?",
+          "It looks like that was our fault, I'm sorry about that! Let me get a new code for you.",
+          "Here is a new code: L4X1M",
+          "You're welcome! Can I help you with anything else?",
+          "Have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 6965,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_out_of_date",
+        "canonical_intent": "promo_code_out_of_date",
+        "num_turns": 18,
+        "scenario": {
+          "personal": {
+            "customer_name": "joyce wu",
+            "email": "jwu32058@email.com",
+            "member_level": "guest",
+            "phone": "(298) 832-4326",
+            "username": "jwu32058"
+          },
+          "order": {
+            "street_address": "3990 circle drive",
+            "full_address": "3990 circle drive  brighton, wa 24213",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "1818909312",
+            "products": "[{'brand': 'guess', 'product_type': 'shirt', 'amount': 59, 'image_url': 'images/guess-shirt.jpeg'}]",
+            "state": "wa",
+            "zip_code": "24213"
+          },
+          "product": {
+            "names": [
+              "guess shirt"
+            ],
+            "amounts": [
+              59
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_out_of_date"
+        },
+        "customer_utterances": [
+          "Hello I recieved a promo code 8 days ago and I am trying to use it on this order but it is saying the code is invalid, can you please help me with this?",
+          "The name is Joyce Wu",
+          "I see, I do not see an expiration date on the promo ad",
+          "I am a guest",
+          "Would it be possible to receive the discount as I am a first time buyer here?",
+          "Ok thank you for your help today",
+          "No thank you, have a good day"
+        ],
+        "agent_utterances": [
+          "Hello, thanks for contacting AcmeBrands. How can I help today?",
+          "Certainly, can I have your full name or account ID please?",
+          "Thank you Joyce. It looks like the code is reading invalid because it is over 7 days old.",
+          "But let me double check the system about the problem.",
+          "It does look like it is expired because it is over 7 days old.  Can I have your membership level please?",
+          "Thank you Joyce.  Unfortunately at this time, there is nothing I can do to help with the expired promo code.",
+          "Is there anything else I can help with today?",
+          "Thank you, you too!"
+        ],
+        "actions": [
+          "Account has been pulled up for Joyce Wu.",
+          "Querying the system for an answer ...",
+          "Membership level of Guest has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 6395,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_out_of_date",
+        "canonical_intent": "promo_code_out_of_date",
+        "num_turns": 23,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "asanders365@email.com",
+            "member_level": "silver",
+            "phone": "(655) 366-0430",
+            "username": "asanders365"
+          },
+          "order": {
+            "street_address": "8819 primrose ave",
+            "full_address": "8819 primrose ave  san mateo, ny 21303",
+            "city": "san mateo",
+            "num_products": "1",
+            "order_id": "4625310928",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'boots', 'amount': 94, 'image_url': 'images/calvin_klein-boots.jpeg'}]",
+            "state": "ny",
+            "zip_code": "21303"
+          },
+          "product": {
+            "names": [
+              "calvin_klein boots"
+            ],
+            "amounts": [
+              94
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_out_of_date"
+        },
+        "customer_utterances": [
+          "Hey, I need some help with my promo code. It keeps saying invalid.",
+          "Sure, my name is Albert Sanders.",
+          "How old is the promo code?",
+          "Okay, so I got this code 9 days ago. Is that okay?",
+          "Oh okay, that's too bad",
+          "Silver",
+          "Great! Thank you!",
+          "I knew being a silver member would come in handy.",
+          "No, that's all",
+          "Thank you"
+        ],
+        "agent_utterances": [
+          "Hello, how can I help you?",
+          "Okay, can I have your name please?",
+          "The promo code begins the day you receive it.",
+          "Unfortunately the promo code has expired. They typically last for only 7 days.",
+          "What is your membership level?",
+          "You are in luck, as a Silver member I can just simply generate a new promo code for you.",
+          "Here you go: EVD61",
+          "You're welcome, do you need anything else?",
+          "Okay, have a nice day."
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "Querying the system for an answer ...",
+          "Membership level of Silver has been noted.",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 9923,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_out_of_date",
+        "canonical_intent": "promo_code_out_of_date",
+        "num_turns": 23,
+        "scenario": {
+          "personal": {
+            "customer_name": "norman bouchard",
+            "email": "nbouchard011@email.com",
+            "member_level": "gold",
+            "phone": "(891) 095-1806",
+            "username": "nbouchard011"
+          },
+          "order": {
+            "street_address": "1763 kennedy st",
+            "full_address": "1763 kennedy st  raleigh, tx 95042",
+            "city": "raleigh",
+            "num_products": "1",
+            "order_id": "0844429836",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'shirt', 'amount': 84, 'image_url': 'images/calvin_klein-shirt.jpeg'}]",
+            "state": "tx",
+            "zip_code": "95042"
+          },
+          "product": {
+            "names": [
+              "calvin_klein shirt"
+            ],
+            "amounts": [
+              84
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_out_of_date"
+        },
+        "customer_utterances": [
+          "Hi",
+          "I am trying to use a promo code I received 9 days ago and its saying its invalid",
+          "what is going on?",
+          "its supposed to be good until the month end",
+          "ok",
+          "norman bouchard",
+          "ok thank you",
+          "I appreciate it",
+          "Cool, thanks",
+          "Thats it",
+          "have a good one",
+          "ty"
+        ],
+        "agent_utterances": [
+          "Welcome to AcmeBrands. How may I help?",
+          "OK. Let me see if I can help. One moment.",
+          "May I have your full name or account ID?",
+          "OK. I have pulled up the account.",
+          "It says it was an error on our end. Let me fix that.",
+          "No problem. Please use promo code UUZLX",
+          "Anything else I can help with?",
+          "You too."
+        ],
+        "actions": [
+          "Account has been pulled up for norman bouchard.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 6559,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_out_of_date",
+        "canonical_intent": "promo_code_out_of_date",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "customer_name": "rodriguez domingo",
+            "email": "rodriguezd918@email.com",
+            "member_level": "gold",
+            "phone": "(801) 293-9403",
+            "username": "rodriguezd918"
+          },
+          "order": {
+            "street_address": "1654 kennedy st",
+            "full_address": "1654 kennedy st  baltimore, ny 35677",
+            "city": "baltimore",
+            "num_products": "1",
+            "order_id": "4158487196",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jacket', 'amount': 69, 'image_url': 'images/michael_kors-jacket.jpeg'}]",
+            "state": "ny",
+            "zip_code": "35677"
+          },
+          "product": {
+            "names": [
+              "michael_kors jacket"
+            ],
+            "amounts": [
+              69
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_out_of_date"
+        },
+        "customer_utterances": [
+          "Good morning. I used a promo code I received but it s not working properly",
+          " Rodriguez Domingo",
+          "Order ID: 4158487196",
+          "NO I just received it 9 days ago",
+          "I am a Gold member",
+          "I was not told their was an expiration date",
+          "Can you please provide me with another code",
+          "thank you",
+          "Have a good day and rest of the week",
+          "no thank you"
+        ],
+        "agent_utterances": [
+          "Thank you for contacting AcmeBrands! How can I help you today?",
+          "I'm sorry to hear that the promo code isn't working for you correctly.",
+          "I've pulled up your account, Rodriguez.",
+          "Typically, our promo code are good for 7 days and it may be out of date",
+          "I've check your code in your order and it appears that it is an error in our system, so I'd be glad to give you a new code.",
+          "You can use the promo code DMIJX with your order for 20% off your puchase.",
+          "You're welcome. Is there anything else I can help you with?",
+          "Enjoy the rest of your day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Rodriguez Domingo.",
+          "Querying the system for an answer ...",
+          "A promo code has been created."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 9943,
+        "flow": "purchase_dispute",
+        "scenario_subflow": "promo_code_out_of_date",
+        "canonical_intent": "promo_code_out_of_date",
+        "num_turns": 23,
+        "scenario": {
+          "personal": {
+            "customer_name": "alessandro phoenix",
+            "email": "alessandrophoenix800@email.com",
+            "member_level": "silver",
+            "phone": "(627) 621-2691",
+            "username": "alessandrophoenix800"
+          },
+          "order": {
+            "street_address": "8454 lincoln ave",
+            "full_address": "8454 lincoln ave  la fayette, mi 50759",
+            "city": "la fayette",
+            "num_products": "1",
+            "order_id": "9235059618",
+            "products": "[{'brand': 'guess', 'product_type': 'boots', 'amount': 74, 'image_url': 'images/guess-boots.jpeg'}]",
+            "state": "mi",
+            "zip_code": "50759"
+          },
+          "product": {
+            "names": [
+              "guess boots"
+            ],
+            "amounts": [
+              74
+            ]
+          },
+          "flow": "purchase_dispute",
+          "subflow": "promo_code_out_of_date"
+        },
+        "customer_utterances": [
+          "Hi! The promo code I'm trying to use isnt working",
+          "ok",
+          "Alessandro Phoenix",
+          "9 days old",
+          "Silver",
+          "awesome, thanks",
+          "No, that was all"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you today?",
+          "I am so sorry to hear that you are having issues with your promo code.",
+          "I will do my best to resolve your issue.",
+          "Can you please tell me your full name or account ID?",
+          "Can you please tell me how old the promo code is?",
+          "Our records indicate that there is no issue with your promo code.",
+          "Can you please tell me your membership level?",
+          "Because your satisfaction is extremely important to us, we will provide you with a new promo code.",
+          "Your new promo code is 5U84I.",
+          "Please try to use the code within 7 days.",
+          "Is there anything else I can help you with today?",
+          "Thank you. Have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Alessandro Phoenix.",
+          "Querying the system for an answer ...",
+          "Membership level of Silver has been noted.",
+          "A promo code has been created."
+        ]
+      }
+    ],
+    "status_mystery_fee": [
+      {
+        "split": "test",
+        "convo_id": 6178,
+        "flow": "order_issue",
+        "scenario_subflow": "status_mystery_fee",
+        "canonical_intent": "status_mystery_fee",
+        "num_turns": 25,
+        "scenario": {
+          "personal": {
+            "account_id": "ao2yg2lase",
+            "customer_name": "chloe zhang",
+            "member_level": "gold",
+            "phone": "(045) 900-0333"
+          },
+          "order": {
+            "street_address": "9685 woodshore st",
+            "full_address": "9685 woodshore st  brighton, wa 98486",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "9173614116",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'jeans', 'amount': 74, 'image_url': 'images/calvin_klein-jeans.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "wa",
+            "zip_code": "98486"
+          },
+          "product": {
+            "names": [
+              "calvin_klein jeans"
+            ],
+            "amounts": [
+              74
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "status_mystery_fee"
+        },
+        "customer_utterances": [
+          "I got mystery fee on my order.",
+          "Chloe Zhang,9173614116",
+          "Account id is AO2YG2LASE",
+          "That's my order id",
+          "yes.",
+          "ok",
+          "Gold",
+          "ok",
+          "69 dollars",
+          "no"
+        ],
+        "agent_utterances": [
+          "Good afternoon, how can I help you today?",
+          "I'd be happy to look in to this for you.",
+          "Can I get your full name or Account ID?",
+          "Thanks Chloe. Was that also your Order Id you gave me?",
+          "Just give me a minute to see what this mystery fee could be.",
+          "My system says there was not an error. What is your membership level?",
+          "Well Chloe, I just going to go ahead and remove this fee for you.",
+          "What was the amount you were charged?",
+          "Alright, I have removed that fee. Is there anything else I can help you with today?",
+          "You have a great weekend Chloe!"
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Identity verification in progress ...",
+          "Querying the system for an answer ...",
+          "Membership level of Gold has been noted.",
+          "Order has been updated with $69."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8314,
+        "flow": "order_issue",
+        "scenario_subflow": "status_mystery_fee",
+        "canonical_intent": "status_mystery_fee",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "account_id": "nfmaywvqp4",
+            "customer_name": "albert sanders",
+            "member_level": "bronze",
+            "phone": "(913) 741-0145"
+          },
+          "order": {
+            "street_address": "7491 woodshore st",
+            "full_address": "7491 woodshore st  la fayette, wa 30",
+            "city": "la fayette",
+            "num_products": "1",
+            "order_id": "4848833631",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'jacket', 'amount': 54, 'image_url': 'images/calvin_klein-jacket.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "wa",
+            "zip_code": "30"
+          },
+          "product": {
+            "names": [
+              "calvin_klein jacket"
+            ],
+            "amounts": [
+              54
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "status_mystery_fee"
+        },
+        "customer_utterances": [
+          "There seems to be an extra fee added on my order and I can't figure out what it is for",
+          "Thanks",
+          "Bert Sanders",
+          "Albert Sanders on the account",
+          "The order number is 4848833631 and my account is NFMAYWVQP4",
+          "Okay.",
+          "Bronze",
+          "That makes sense. I did need it earlier.",
+          "Okay. No, thanks, that's all. Thanks for your help",
+          "Goodbye!"
+        ],
+        "agent_utterances": [
+          "Hello, how can I help you today?",
+          "Okay, let me see what I can do for you about that",
+          "Can I have your full name?",
+          "And your account and order ID's?",
+          "Okay, let me check the system",
+          "May i ask your membership level?",
+          "Well I hate to say this, but the error doesn't seem to be on our end.",
+          "It seems you might have chosen a more expensive shipping option or shipping insurance and not known.",
+          "Given that, there's nothing I can do for you.",
+          "Is there anything else I can help you with?",
+          "Then have a nice day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Bert Sanders.",
+          "Account has been pulled up for Albert Sanders.",
+          "Identity verification in progress ...",
+          "Querying the system for an answer ...",
+          "Membership level of Bronze has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 4006,
+        "flow": "order_issue",
+        "scenario_subflow": "status_mystery_fee",
+        "canonical_intent": "status_mystery_fee",
+        "num_turns": 23,
+        "scenario": {
+          "personal": {
+            "account_id": "535oy5yxi1",
+            "customer_name": "alessandro phoenix",
+            "member_level": "bronze",
+            "phone": "(467) 021-1169"
+          },
+          "order": {
+            "street_address": "7617 2nd ave",
+            "full_address": "7617 2nd ave  raleigh, ny 96531",
+            "city": "raleigh",
+            "num_products": "1",
+            "order_id": "3172257307",
+            "products": "[{'brand': 'guess', 'product_type': 'jacket', 'amount': 74, 'image_url': 'images/guess-jacket.jpeg'}]",
+            "shipping_status": "order received",
+            "state": "ny",
+            "zip_code": "96531"
+          },
+          "product": {
+            "names": [
+              "guess jacket"
+            ],
+            "amounts": [
+              74
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "status_mystery_fee"
+        },
+        "customer_utterances": [
+          "I just looked at my order status and it looks like  I was a charged an extra fee for my jacket? why? can you take it off?",
+          "Alessandro Phoenix",
+          "Account ID: 535OY5YXI1",
+          "Order ID: 3172257307",
+          "ok",
+          "bronze",
+          "oh, i wish they would have told me.  I don't want the item for that price",
+          "ok",
+          "no thanks",
+          "you too"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you today?",
+          "I see, let's see what we can find out and do about this, one moment.",
+          "May I have you full name or Account ID?",
+          "I will need to verify your identity with a couple more items, your account ID and Order ID if you don't mind.",
+          "Thank you for that.  Give me a moment to look in the system and get an answer for you.",
+          "Do you know your membership level off-hand?",
+          "I see. Well apparently there was a price surge as your ordered due to supply and demand.  Unfortunately there is nothing I can do on my end.",
+          "Sadly this is up to the algorithms and not me.  My apologies.",
+          "Is there anything else I can help you with today?",
+          "You have a wonderful rest of your day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Alessandro Phoenix.",
+          "Identity verification in progress ...",
+          "Querying the system for an answer ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 7688,
+        "flow": "order_issue",
+        "scenario_subflow": "status_mystery_fee",
+        "canonical_intent": "status_mystery_fee",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "account_id": "tse0kevncg",
+            "customer_name": "chloe zhang",
+            "member_level": "gold",
+            "phone": "(514) 828-1271"
+          },
+          "order": {
+            "street_address": "0920 circle drive",
+            "full_address": "0920 circle drive  newark, wa 46034",
+            "city": "newark",
+            "num_products": "1",
+            "order_id": "3713160181",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'jacket', 'amount': 89, 'image_url': 'images/tommy_hilfiger-jacket.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "wa",
+            "zip_code": "46034"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger jacket"
+            ],
+            "amounts": [
+              89
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "status_mystery_fee"
+        },
+        "customer_utterances": [
+          "Hello",
+          "I wanted to check on my order.  There seems to be some sort of extra fee.",
+          "Account ID: TSE0KEVNCG",
+          "Chloe Zhang 3713160181",
+          "Ok",
+          "Gold",
+          "89 was the grand total",
+          "Thank you so much for your help",
+          "yes, that takes care of what I needed"
+        ],
+        "agent_utterances": [
+          "hello",
+          "How can I help you?",
+          "Give me your full name or account id",
+          "I need to verify your identity.",
+          "Give me your full name and order id",
+          "Give me a moment to check my system",
+          "What is your membership level?",
+          "What is the amount of the extra charge?",
+          "Done...Extra fee removed",
+          "You are welcome",
+          "Will this be all for today",
+          "Goodbye"
+        ],
+        "actions": [
+          "Account has been pulled up for TSE0KEVNCG.",
+          "Identity verification in progress ...",
+          "Querying the system for an answer ...",
+          "Membership level of Gold has been noted.",
+          "Order has been updated with 89."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8814,
+        "flow": "order_issue",
+        "scenario_subflow": "status_mystery_fee",
+        "canonical_intent": "status_mystery_fee",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "account_id": "lqggszbgdh",
+            "customer_name": "rodriguez domingo",
+            "member_level": "guest",
+            "phone": "(432) 877-8839"
+          },
+          "order": {
+            "street_address": "4526 2nd ave",
+            "full_address": "4526 2nd ave  newark, mi 89664",
+            "city": "newark",
+            "num_products": "1",
+            "order_id": "9955347632",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'boots', 'amount': 79, 'image_url': 'images/tommy_hilfiger-boots.jpeg'}]",
+            "shipping_status": "delivered",
+            "state": "mi",
+            "zip_code": "89664"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger boots"
+            ],
+            "amounts": [
+              79
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "status_mystery_fee"
+        },
+        "customer_utterances": [
+          "an you check my order I think there's an extra fee that shouldn't be there",
+          "Rodriguez Domingo",
+          "Order ID: 9955347632",
+          "Account ID: LQGGSZBGDH",
+          "thanks",
+          "guest",
+          "no, very disappointed i will be returning these"
+        ],
+        "agent_utterances": [
+          "Hello! Thank you for contacting us today. How can I help you?",
+          "Sure I can look into that. Can I have your name please?",
+          "I will also need your Account ID and Order ID please.",
+          "Thank you, Rodriguez. Let me look into that fee.",
+          "Can you let me know your membership level please.",
+          "Okay. It does look like this was a company error but unfortunately I am unable to remove the fee at this time due to your membership level.",
+          "I apologize for that inconvenience.",
+          "It does look like maybe there was a price surge and that's where the fee came from.",
+          "Can I help you with anything else today?",
+          "I apologize. Have a good day."
+        ],
+        "actions": [
+          "Account has been pulled up for Rodriguez Domingo.",
+          "Identity verification in progress ...",
+          "Querying the system for an answer ...",
+          "Membership level of Guest has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 9816,
+        "flow": "order_issue",
+        "scenario_subflow": "status_mystery_fee",
+        "canonical_intent": "status_mystery_fee",
+        "num_turns": 27,
+        "scenario": {
+          "personal": {
+            "account_id": "cbkb3v0bqi",
+            "customer_name": "chloe zhang",
+            "member_level": "gold",
+            "phone": "(022) 864-4568"
+          },
+          "order": {
+            "street_address": "4612 primrose ave",
+            "full_address": "4612 primrose ave  jacksonville, mi 34083",
+            "city": "jacksonville",
+            "num_products": "1",
+            "order_id": "2679044462",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'jeans', 'amount': 64, 'image_url': 'images/tommy_hilfiger-jeans.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "mi",
+            "zip_code": "34083"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger jeans"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "status_mystery_fee"
+        },
+        "customer_utterances": [
+          "I would like to check the status of my order. There seems to be an extra fee that shouldn't be on there.",
+          "Chloe Zhang",
+          "CBKB3V0BQI  2679044462",
+          "gold",
+          "Great. Thanks.",
+          "I'm not sure. I would have to look at my account again.",
+          "ok",
+          "No, thank you"
+        ],
+        "agent_utterances": [
+          "Hi, how may I help you?",
+          "ok, I can help with that",
+          "Can I have your full name or Account ID please?",
+          "Can I have your Account ID and Order ID?",
+          "thank you",
+          "Do you know your membership level?",
+          "that's great, I will be able to remove the fee for you",
+          "You're welcome",
+          "How much were you overcharged?",
+          "hold on, i can find it",
+          "I see a $25 fee",
+          "Ok, you have been refunded $25",
+          "Can I help with anything else?",
+          "you're welcome, have a great day"
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Identity verification in progress ...",
+          "Querying the system for an answer ...",
+          "Membership level of gold has been noted.",
+          "A refund has been made for the amount of $25."
+        ]
+      }
+    ],
+    "missing": [
+      {
+        "split": "test",
+        "convo_id": 6382,
+        "flow": "shipping_issue",
+        "scenario_subflow": "missing",
+        "canonical_intent": "missing",
+        "num_turns": 16,
+        "scenario": {
+          "personal": {
+            "account_id": "xyzpgrrqby",
+            "customer_name": "david williams",
+            "email": "davidwilliams708@email.com",
+            "member_level": "silver",
+            "phone": "(225) 265-3871",
+            "username": "davidwilliams708"
+          },
+          "order": {
+            "street_address": "6909 woodshore st",
+            "full_address": "6909 woodshore st  monterey, tx 20595",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "6085953401",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jeans', 'amount': 74, 'image_url': 'images/michael_kors-jeans.jpeg'}]",
+            "purchase_date": "2019-12-07",
+            "state": "tx",
+            "zip_code": "20595"
+          },
+          "product": {
+            "names": [
+              "michael_kors jeans"
+            ],
+            "amounts": [
+              74
+            ]
+          },
+          "flow": "shipping_issue",
+          "subflow": "missing"
+        },
+        "customer_utterances": [
+          "yes i would like to check the status of my my shipping. Because i still haven't received it",
+          "David Williams",
+          "my account id is XYZPGRRQBY and my order id is 6085953401",
+          "username is davidwilliams708 an email is  davidwilliams708@email.com",
+          "5 days",
+          "okay, that will be all"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you?",
+          "Sure, could I get your full name, please?",
+          "Thanks, I'll also need your username, email, and order ID.",
+          "Thanks, David. How many days have you been waiting for the order?",
+          "It's still in transit. It may take up to a week to arrive. We ask that you contact us again in 2 days if it's not there.",
+          "Is there anything else I could help with?",
+          "Have a good day!"
+        ],
+        "actions": [
+          "Account has been pulled up for David Williams.",
+          "Purchase validation in progress ...",
+          "A reason of 5 has been recorded."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 1403,
+        "flow": "shipping_issue",
+        "scenario_subflow": "missing",
+        "canonical_intent": "missing",
+        "num_turns": 25,
+        "scenario": {
+          "personal": {
+            "account_id": "r9cz5751la",
+            "customer_name": "chloe zhang",
+            "email": "cz180252@email.com",
+            "member_level": "bronze",
+            "phone": "(997) 716-2436",
+            "username": "cz180252"
+          },
+          "order": {
+            "street_address": "0928 kennedy st",
+            "full_address": "0928 kennedy st  raleigh, mi 77947",
+            "city": "raleigh",
+            "num_products": "3",
+            "order_id": "4219970225",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'boots', 'amount': 69, 'image_url': 'images/calvin_klein-boots.jpeg'}, {'brand': 'guess', 'product_type': 'jeans', 'amount': 59, 'image_url': 'images/guess-jeans.jpeg'}, {'brand': 'michael_kors', 'product_type': 'boots', 'amount': 59, 'image_url': 'images/michael_kors-boots.jpeg'}]",
+            "purchase_date": "2019-12-07",
+            "state": "mi",
+            "zip_code": "77947"
+          },
+          "product": {
+            "names": [
+              "calvin_klein boots",
+              "guess jeans",
+              "michael_kors boots"
+            ],
+            "amounts": [
+              69,
+              59,
+              59
+            ]
+          },
+          "flow": "shipping_issue",
+          "subflow": "missing"
+        },
+        "customer_utterances": [
+          "I need to check on the status of my order? It's been 9 days",
+          "What happened to the rush shipping",
+          "Chloe",
+          "sorry Chloe Zhang",
+          "hello",
+          "What is your name",
+          "Account R9CZ5751LA",
+          "Can't you see the order?  It's a pair of boots",
+          "4219970225",
+          "Why do you need so much info I am running out of patience with this",
+          "my email is cz180252@email.com",
+          "can you assist",
+          "cz18022",
+          "cz180252",
+          "That is unacceptable"
+        ],
+        "agent_utterances": [
+          "Sure let mecheck",
+          "What is your name?",
+          "amanda. WHAT is the order id and account id",
+          "What is your user name, email ?",
+          "unfortunately, this is the process. What is your user name?",
+          "Your order has been shipped and is on the way"
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Identity verification in progess ...",
+          "Purchase validation in progress ...",
+          "Querying the system for an answer ..."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 2343,
+        "flow": "shipping_issue",
+        "scenario_subflow": "missing",
+        "canonical_intent": "missing",
+        "num_turns": 20,
+        "scenario": {
+          "personal": {
+            "account_id": "z9jem141jb",
+            "customer_name": "chloe zhang",
+            "email": "chloezhang973@email.com",
+            "member_level": "gold",
+            "phone": "(481) 691-9592",
+            "username": "chloezhang973"
+          },
+          "order": {
+            "street_address": "1370 brushwick dr",
+            "full_address": "1370 brushwick dr  raleigh, tx 42014",
+            "city": "raleigh",
+            "num_products": "3",
+            "order_id": "4058685383",
+            "products": "[{'brand': 'guess', 'product_type': 'shirt', 'amount': 49, 'image_url': 'images/guess-shirt.jpeg'}, {'brand': 'tommy_hilfiger', 'product_type': 'shirt', 'amount': 94, 'image_url': 'images/tommy_hilfiger-shirt.jpeg'}, {'brand': 'michael_kors', 'product_type': 'shirt', 'amount': 49, 'image_url': 'images/michael_kors-shirt.jpeg'}]",
+            "purchase_date": "2020-03-10",
+            "state": "tx",
+            "zip_code": "42014"
+          },
+          "product": {
+            "names": [
+              "guess shirt",
+              "tommy_hilfiger shirt",
+              "michael_kors shirt"
+            ],
+            "amounts": [
+              49,
+              94,
+              49
+            ]
+          },
+          "flow": "shipping_issue",
+          "subflow": "missing"
+        },
+        "customer_utterances": [
+          "I didn't receive the shirt I ordered.",
+          "My name is Chloe Zhang, account ID is Z9JEM141JB. The order ID is 4058685383",
+          "I have been waiting for more than 5 days",
+          "My username is chloezhang973 and my email is chloezhang973@email.com",
+          "5 days",
+          "I hope it comes soon.  Thank you!",
+          "No, Have a good day!"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you today?",
+          "I can look into that for you. Can I please have your name, account ID, and order ID?",
+          "I am so sorry to hear that.",
+          "One moment please.",
+          "Can you please tell me your username and email address?",
+          "And how long have you been waiting?",
+          "I apologize for the delay. Sometimes packages can take up to 7 days to arrive.",
+          "You should receive your package within 2 days.",
+          "Is there anything else I can help you with today?",
+          "Thank you. Have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Purchase validation in progress ...",
+          "A reason of 5 has been recorded."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8614,
+        "flow": "shipping_issue",
+        "scenario_subflow": "missing",
+        "canonical_intent": "missing",
+        "num_turns": 25,
+        "scenario": {
+          "personal": {
+            "account_id": "evzlf0w421",
+            "customer_name": "chloe zhang",
+            "email": "cz060556@email.com",
+            "member_level": "bronze",
+            "phone": "(728) 474-3007",
+            "username": "cz060556"
+          },
+          "order": {
+            "street_address": "4522 woodshore st",
+            "full_address": "4522 woodshore st  monterey, wa 46379",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "5966885901",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'boots', 'amount': 49, 'image_url': 'images/tommy_hilfiger-boots.jpeg'}]",
+            "purchase_date": "2020-01-10",
+            "state": "wa",
+            "zip_code": "46379"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger boots"
+            ],
+            "amounts": [
+              49
+            ]
+          },
+          "flow": "shipping_issue",
+          "subflow": "missing"
+        },
+        "customer_utterances": [
+          "Can you please check the status on my order.",
+          "I have been waiting for 9 days for the shipment.",
+          "Chloe Zhang",
+          "Username: cz060556",
+          " cz060556@email.com",
+          "Order ID: 5966885901",
+          "Correct",
+          "4522 Woodshore St  Monterey, WA 46379",
+          "Product: Boots  Brand: Tommy_Hilfiger  Amount: $49",
+          "Thank you very much.  I am good now."
+        ],
+        "agent_utterances": [
+          "Good morning, how can I help you today?",
+          "I can look in to this for you.",
+          "Oh no! That doesn't sound right. It sounds like it is missing?",
+          "Can I get your full name or Account ID?",
+          "Thanks Chloe. I have to validate the purchase. To do this I will need your username, email address and Order ID.",
+          "Great. And you said you have been waiting 9 days?",
+          "I'm really sorry about that Chloe. It should never take longer than 7 days. I'm going to ship a new order out to you. Can I please get your address?",
+          "And what had you ordered Chloe?",
+          "I have ordered them and put a rush on it so you will receive them quickly! Is there anything else you needed today Chloe?",
+          "Thanks Chloe, have a good day and enjoy the boots!"
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Purchase validation in progress ...",
+          "A reason of 9 days has been recorded.",
+          "Order has been updated with 4522 Woodshore St Monterey, WA 46379.",
+          "A purchase of Tommy Hilfiger Boots was made."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 3801,
+        "flow": "shipping_issue",
+        "scenario_subflow": "missing",
+        "canonical_intent": "missing",
+        "num_turns": 17,
+        "scenario": {
+          "personal": {
+            "account_id": "61so0qwwxi",
+            "customer_name": "joseph banter",
+            "email": "josephbanter754@email.com",
+            "member_level": "silver",
+            "phone": "(767) 404-5949",
+            "username": "josephbanter754"
+          },
+          "order": {
+            "street_address": "7894 1st ave",
+            "full_address": "7894 1st ave  newark, ca 5154",
+            "city": "newark",
+            "num_products": "3",
+            "order_id": "6594020735",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'boots', 'amount': 94, 'image_url': 'images/tommy_hilfiger-boots.jpeg'}, {'brand': 'guess', 'product_type': 'boots', 'amount': 59, 'image_url': 'images/guess-boots.jpeg'}, {'brand': 'guess', 'product_type': 'boots', 'amount': 69, 'image_url': 'images/guess-boots.jpeg'}]",
+            "purchase_date": "2020-01-28",
+            "state": "ca",
+            "zip_code": "5154"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger boots",
+              "guess boots",
+              "guess boots"
+            ],
+            "amounts": [
+              94,
+              59,
+              69
+            ]
+          },
+          "flow": "shipping_issue",
+          "subflow": "missing"
+        },
+        "customer_utterances": [
+          "I seem to be missing a package, I thought it was supposed to arrive today  6594020735",
+          "order number shown above",
+          "sure, Joe Banter",
+          " 61SO0QWWXI",
+          " josephbanter754",
+          "josephbanter754@email.com",
+          "okay, not a problem, thanks",
+          "no, take care"
+        ],
+        "agent_utterances": [
+          "Hello, how can i help you today?",
+          "Sorry about that, could i get your full name or account id please and we can find that",
+          "Okay and so i can confirm the order could i get your username and email address",
+          "Okay, looks like your order is running a couple of days late. As long as it does not take more than a week to get there everything is okay sometimes theres is just a mistake with scheduling",
+          "it should be there today or tommorow",
+          "Glad i could help, is there anything else i can do for you"
+        ],
+        "actions": [
+          "Account has been pulled up for Joe Banter.",
+          "Purchase validation in progress ...",
+          "A reason of Not arrived on delivery date has been recorded."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 7269,
+        "flow": "shipping_issue",
+        "scenario_subflow": "missing",
+        "canonical_intent": "missing",
+        "num_turns": 27,
+        "scenario": {
+          "personal": {
+            "account_id": "rcmb43c5wu",
+            "customer_name": "sanya afzal",
+            "email": "sa732542@email.com",
+            "member_level": "bronze",
+            "phone": "(935) 899-6655",
+            "username": "sa732542"
+          },
+          "order": {
+            "street_address": "2012 kennedy st",
+            "full_address": "2012 kennedy st  baltimore, wa 62498",
+            "city": "baltimore",
+            "num_products": "2",
+            "order_id": "0133452608",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'boots', 'amount': 49, 'image_url': 'images/calvin_klein-boots.jpeg'}, {'brand': 'tommy_hilfiger', 'product_type': 'jeans', 'amount': 74, 'image_url': 'images/tommy_hilfiger-jeans.jpeg'}]",
+            "purchase_date": "2019-12-20",
+            "state": "wa",
+            "zip_code": "62498"
+          },
+          "product": {
+            "names": [
+              "calvin_klein boots",
+              "tommy_hilfiger jeans"
+            ],
+            "amounts": [
+              49,
+              74
+            ]
+          },
+          "flow": "shipping_issue",
+          "subflow": "missing"
+        },
+        "customer_utterances": [
+          "Hi I never got my stuff I ordered. Can you check it for me?",
+          "Sanya Afzal",
+          "Calvin Klein boots. I've been waiting for 9 days!",
+          "okay",
+          "Username: sa732542",
+          "Email Address: sa732542@email.com",
+          "Order ID: 0133452608",
+          "2012 Kennedy St  Baltimore, WA 62498",
+          "thank you. can you overnight them since I'm a bronze member?",
+          "okay thank you",
+          "no, bye now"
+        ],
+        "agent_utterances": [
+          "Hello. Thanks for contacting the customer satisfaction team, how may I help you today?",
+          "It’d be my pleasure to look into that for you. May I start by getting your full name?",
+          "Okay Sanya, what item were you expecting and when were you expecting it to be delivered?",
+          "That's not good. Just give me one moment.",
+          "Can I get your username, email address and Order ID so that I can bring up your order?",
+          "I see.",
+          "Because your item is delayed, I'm just going to order you a new item.",
+          "I'll just need your shipping address.",
+          "I can't overnight them, but I have made sure that they'll ship today and you should have them before the weekend.",
+          "Is there anything else that I can help you with today?",
+          "We appreciate you shopping with us, have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Sanya Afzal.",
+          "Purchase validation in progress ...",
+          "A reason of 9 has been recorded.",
+          "Order has been updated with 2012 Kennedy St Baltimore, WA 62498.",
+          "A purchase of Calvin Klein boots was made."
+        ]
+      }
+    ],
+    "manage_create": [
+      {
+        "split": "test",
+        "convo_id": 7317,
+        "flow": "order_issue",
+        "scenario_subflow": "manage_create",
+        "canonical_intent": "manage_create",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "account_id": "tl2ebl76gd",
+            "customer_name": "chloe zhang",
+            "member_level": "guest",
+            "phone": "(946) 982-2449"
+          },
+          "order": {
+            "street_address": "6594 brushwick dr",
+            "full_address": "6594 brushwick dr  baltimore, ca 62355",
+            "city": "baltimore",
+            "num_products": "1",
+            "order_id": "7466453187",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'shirt', 'amount': 89, 'image_url': 'images/tommy_hilfiger-shirt.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "ca",
+            "zip_code": "62355"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger shirt"
+            ],
+            "amounts": [
+              89
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "manage_create"
+        },
+        "customer_utterances": [
+          "Hello! Is there any way i can add an item onto an order i just placed? I forgot to get it in my cart",
+          "Name: Chloe Zhang",
+          "Account ID: TL2EBL76GD incase you need it",
+          "and im sure you need the order id",
+          "7466453187",
+          ":D",
+          "Its already in transit, but i just placed my order hours ago, you guys are good!",
+          "very true, i was hoping that was just an automated message. I am guest level",
+          "What if, i place this order and my membership status goes UP, i believe i am right on the cusp, would i then be able to combine orders maybe?",
+          "and with how quick you guys are probably long gone, nope i guess that it. I saw the shirt cheaper on amazon anyways, oh well.",
+          "Its a little disappointing, but ill make due with the jeans and get the shirt cheaper i guess"
+        ],
+        "agent_utterances": [
+          "Thank you for shopping with AcmeBrands! How may I assist you?",
+          "I can find out! May I have your full name?",
+          "Thanks, that helps!",
+          "Do you know the shipping status of your order?",
+          "We aim to please! Although maybe a little slower would have helped more in this situation.",
+          "What is your membership level?",
+          "Unfortunately, as a guest, I cannot do anything to ship it out automatically for you. You will need to place a new order. I apologize for the inconvenience.",
+          "I'm sorry, it wouldn't be in effect until the order after that.",
+          "Is there anything else I can help you with?",
+          "I'm sorry, I know it's not what you wanted to hear.",
+          "Okay. Thanks again!"
+        ],
+        "actions": [
+          "Account has been pulled up for Chloe Zhang.",
+          "Identity verification in progress ...",
+          "Shipping status of In Transit has been noted.",
+          "Membership level of guest has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 8819,
+        "flow": "order_issue",
+        "scenario_subflow": "manage_create",
+        "canonical_intent": "manage_create",
+        "num_turns": 24,
+        "scenario": {
+          "personal": {
+            "account_id": "owgctkce0r",
+            "customer_name": "sanya afzal",
+            "member_level": "bronze",
+            "phone": "(268) 640-8944"
+          },
+          "order": {
+            "street_address": "7892 2nd ave",
+            "full_address": "7892 2nd ave  baltimore, ny 46861",
+            "city": "baltimore",
+            "num_products": "1",
+            "order_id": "1950650472",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jeans', 'amount': 64, 'image_url': 'images/michael_kors-jeans.jpeg'}]",
+            "shipping_status": "order received",
+            "state": "ny",
+            "zip_code": "46861"
+          },
+          "product": {
+            "names": [
+              "michael_kors jeans"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "manage_create"
+        },
+        "customer_utterances": [
+          "Hi good morning.",
+          "I just have a quick question",
+          "Is it possible to add an item to an existing order?",
+          "I had forgotten to add it earlier.",
+          "Sanya Afzal",
+          "Yes.",
+          "My account ID is OWGCTKCE0R",
+          "Order ID: 1950650472",
+          "The shipping status says \"order received.\"",
+          "Okay great!",
+          "It's the Michael Kors jeans for $64",
+          "That would be all"
+        ],
+        "agent_utterances": [
+          "Hello how can I help you today?",
+          "sure thing",
+          "I can help with that",
+          "Can I start with your full name or account id?",
+          "The account is now pulled up, now can I have the account id and order id to verify identity.",
+          "Can you tell me the current shipping status of the order now that the identity verification is complete?",
+          "With that status I can definitely add the item to order, what is the item you would like to add?",
+          "Great I have added that item to the current order, is there anything else I can help with?",
+          "Enjoy your day."
+        ],
+        "actions": [
+          "Account has been pulled up for Sanya Afzal.",
+          "Identity verification in progress ...",
+          "A purchase of Michael Kors jeans was made."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 7452,
+        "flow": "order_issue",
+        "scenario_subflow": "manage_create",
+        "canonical_intent": "manage_create",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "account_id": "vucuirsg8c",
+            "customer_name": "albert sanders",
+            "member_level": "gold",
+            "phone": "(957) 248-3155"
+          },
+          "order": {
+            "street_address": "9023 primrose ave",
+            "full_address": "9023 primrose ave  monterey, mi 61875",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "9296769819",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'jacket', 'amount': 64, 'image_url': 'images/calvin_klein-jacket.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "mi",
+            "zip_code": "61875"
+          },
+          "product": {
+            "names": [
+              "calvin_klein jacket"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "manage_create"
+        },
+        "customer_utterances": [
+          "I need to add an item I forgot to add",
+          "Name: Albert Sanders  Phone Number: (957) 248-3155  Member Level: Gold  Account ID: VUCUIRSG8C",
+          "Order ID: 9296769819",
+          "adding",
+          "calvin klein jacket",
+          "in transit",
+          "thanks",
+          "no"
+        ],
+        "agent_utterances": [
+          "Hi! How can I help you today?",
+          "Sure I can help with that.  One moment please",
+          "Are you adding an item to your order or your refund?",
+          "What item do you want to add",
+          "what is your shipping status",
+          "Since your order had already shipped, I created a new order with the jacket for you",
+          "Is there anything else I can help with",
+          "You're Welcome! Have a great day"
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "Identity verification in progress ...",
+          "Shipping status of in transit has been noted.",
+          "Membership level of gold has been noted.",
+          "A purchase of calvin klein jacket was made."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 9986,
+        "flow": "order_issue",
+        "scenario_subflow": "manage_create",
+        "canonical_intent": "manage_create",
+        "num_turns": 27,
+        "scenario": {
+          "personal": {
+            "account_id": "vafpnfthzr",
+            "customer_name": "alessandro phoenix",
+            "member_level": "bronze",
+            "phone": "(884) 912-2282"
+          },
+          "order": {
+            "street_address": "8323 kennedy st",
+            "full_address": "8323 kennedy st  san lima, tx 48601",
+            "city": "san lima",
+            "num_products": "1",
+            "order_id": "0304901831",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jacket', 'amount': 54, 'image_url': 'images/michael_kors-jacket.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "tx",
+            "zip_code": "48601"
+          },
+          "product": {
+            "names": [
+              "michael_kors jacket"
+            ],
+            "amounts": [
+              54
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "manage_create"
+        },
+        "customer_utterances": [
+          "I wanna add an item to my bill",
+          "Michael Kors jacket",
+          "I forgot to add it earlier",
+          "yes",
+          "Name: Alessandro Phoenix",
+          "Account ID: VAFPNFTHZR",
+          "Order ID: 0304901831",
+          "in transit",
+          "Bronze",
+          "Okay then",
+          "no"
+        ],
+        "agent_utterances": [
+          "really",
+          "we don't often hear that?",
+          "what's up?",
+          "I see. You have an existing order?",
+          "gotcha",
+          "what's your name?",
+          "I also need your account & order ID",
+          "and the shipping status?",
+          "I am afraid it is too late then. what level of membership do you hold?",
+          "yes, I am afraid that I would have to turn back time to add anything to that order. So sorry.",
+          "Is there anything else I can do for you?",
+          " Don't forget, as a bronze member you do get cheaper shipping",
+          "OK> Have a good day, sorry I couldn't do more!"
+        ],
+        "actions": [
+          "Account has been pulled up for  Alessandro Phoenix.",
+          "Identity verification in progress ...",
+          "Shipping status of in transit has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 7568,
+        "flow": "order_issue",
+        "scenario_subflow": "manage_create",
+        "canonical_intent": "manage_create",
+        "num_turns": 29,
+        "scenario": {
+          "personal": {
+            "account_id": "e8pmfz5l3x",
+            "customer_name": "rodriguez domingo",
+            "member_level": "bronze",
+            "phone": "(431) 427-1435"
+          },
+          "order": {
+            "street_address": "1721 2nd ave",
+            "full_address": "1721 2nd ave  monterey, ca 3619",
+            "city": "monterey",
+            "num_products": "1",
+            "order_id": "1487491334",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jacket', 'amount': 79, 'image_url': 'images/michael_kors-jacket.jpeg'}]",
+            "shipping_status": "in transit",
+            "state": "ca",
+            "zip_code": "3619"
+          },
+          "product": {
+            "names": [
+              "michael_kors jacket"
+            ],
+            "amounts": [
+              79
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "manage_create"
+        },
+        "customer_utterances": [
+          "I need you to help me add an item to my order please",
+          "Rodriguez Domingo",
+          "When I placed the order I forgot to add something can you do it",
+          "thanks",
+          "487491334",
+          "I am a bronze member now",
+          " E8PMFZ5L3X",
+          "oh I'm sorry it's 1487491334",
+          "my bad",
+          "it look like in transit",
+          "just noticing that",
+          "I just noticed the status I understand",
+          "ok",
+          "no thank you"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you?",
+          "Sure, could I get your full name, please?",
+          "Yes I can add an item to your order.",
+          "But I'll also need your Account and Order ID to pull up the order.",
+          "Thanks. Do you have an Account ID?",
+          "Can you double check the Order ID for me?",
+          "No problem, and do you know the shipping status of the order?",
+          "I'm sorry but it's too late to add an item to your order, you'll have to create a new one on the website.",
+          "Is there anything else I could help you with?",
+          "Have a good day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Rodriguez Domingo.",
+          "Identity verification in progress ...",
+          "Identity verification in progress ...",
+          "Shipping status of In Transit has been noted.",
+          "Membership level of Bronze has been noted."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 7148,
+        "flow": "order_issue",
+        "scenario_subflow": "manage_create",
+        "canonical_intent": "manage_create",
+        "num_turns": 34,
+        "scenario": {
+          "personal": {
+            "account_id": "kifzlhbeel",
+            "customer_name": "joseph banter",
+            "member_level": "silver",
+            "phone": "(728) 247-0437"
+          },
+          "order": {
+            "street_address": "1031 lincoln ave",
+            "full_address": "1031 lincoln ave  newark, ny 55897",
+            "city": "newark",
+            "num_products": "1",
+            "order_id": "6362029185",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jacket', 'amount': 79, 'image_url': 'images/michael_kors-jacket.jpeg'}]",
+            "shipping_status": "delivered",
+            "state": "ny",
+            "zip_code": "55897"
+          },
+          "product": {
+            "names": [
+              "michael_kors jacket"
+            ],
+            "amounts": [
+              79
+            ]
+          },
+          "flow": "order_issue",
+          "subflow": "manage_create"
+        },
+        "customer_utterances": [
+          "Hello",
+          "I just made an order and forgot to add something",
+          "can I add it on or is it too late",
+          "Joseph Banter",
+          "KIFZLHBEEL",
+          "it's order 6362029185",
+          "I'd like to add the michael kors jacket if it's not too late",
+          "ohh yeah I don't know that sorry",
+          "can you see what it is the order's 6362029185",
+          "well actually it says delivered",
+          "which doesn't make sense to me either",
+          "would that mean it's too late to add this item on and I should just order it individually then",
+          "ok",
+          "Silver",
+          "great thanks",
+          "was my main reason for trying to add it onto there",
+          "thanks take care"
+        ],
+        "agent_utterances": [
+          "good morning, how can I help you?",
+          "sure, one moment please",
+          "ok, would you give me your full name or account ID",
+          "ok thanks!",
+          "first, it would indicate what status your shipment is in",
+          "that's something that is in your customer profile Mr Joseph, the possible options would be Order received",
+          "out of delivery",
+          "delivered",
+          "ok, let's see what options we have to help you Mr. Joseph",
+          "would you tell me your membership level",
+          "In normal case I could not do anything in this scenario, but since you're a silver member I can create a separate shipment without shipping fee",
+          "all set !",
+          " a pleasure to help you Mr. Joseph"
+        ],
+        "actions": [
+          "Account has been pulled up for Joseph Banter.",
+          "Identity verification in progress ...",
+          "Membership level of Silver has been noted.",
+          "A purchase of michael kors jacket was made."
+        ]
+      }
+    ],
+    "manage_change_phone": [
+      {
+        "split": "test",
+        "convo_id": 2660,
+        "flow": "manage_account",
+        "scenario_subflow": "manage_change_phone",
+        "canonical_intent": "manage_change_phone",
+        "num_turns": 21,
+        "scenario": {
+          "personal": {
+            "customer_name": "sanya afzal",
+            "email": "sa037394@email.com",
+            "member_level": "guest",
+            "phone": "(866) 833-6043",
+            "username": "sa037394"
+          },
+          "order": {
+            "street_address": "4492 brushwick dr",
+            "full_address": "4492 brushwick dr  san lima, mi 56649",
+            "city": "san lima",
+            "num_products": "1",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'shirt', 'amount': 59, 'image_url': 'images/tommy_hilfiger-shirt.jpeg'}]",
+            "state": "mi",
+            "zip_code": "56649"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger shirt"
+            ],
+            "amounts": [
+              59
+            ]
+          },
+          "flow": "manage_account",
+          "subflow": "manage_change_phone"
+        },
+        "customer_utterances": [
+          "I wanna change the phone number on my account now.",
+          "The number is off by one",
+          "Sanya Afzal",
+          "(866) 833-6043",
+          "56649",
+          "sa037394",
+          "I have no Pin",
+          "sa037394@email.com",
+          "no"
+        ],
+        "agent_utterances": [
+          "Hello, how can i help you",
+          "Okay i will be happy to help out",
+          "Can I get your name",
+          "Can I get your actual phone number now.",
+          "Okay, now i need to verify your identity Can I get your zip code, pin number and username",
+          "then email address instead",
+          "Thank you!  Everything looks good I will update your info now.",
+          "there, do you need anything else?",
+          "Okay have a great day"
+        ],
+        "actions": [
+          "Account has been pulled up for Sanya Afzal.",
+          "Identity verification in progess ...",
+          "Account has been updated with (866) 833-6043."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 1941,
+        "flow": "manage_account",
+        "scenario_subflow": "manage_change_phone",
+        "canonical_intent": "manage_change_phone",
+        "num_turns": 26,
+        "scenario": {
+          "personal": {
+            "customer_name": "albert sanders",
+            "email": "as269117@email.com",
+            "member_level": "silver",
+            "phone": "(609) 646-7423",
+            "pin_number": "983018",
+            "username": "as269117"
+          },
+          "order": {
+            "street_address": "9273 brushwick dr",
+            "full_address": "9273 brushwick dr  brighton, wa 23626",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "5791242832",
+            "products": "[{'brand': 'guess', 'product_type': 'shirt', 'amount': 49, 'image_url': 'images/guess-shirt.jpeg'}]",
+            "state": "wa",
+            "zip_code": "23626"
+          },
+          "product": {
+            "names": [
+              "guess shirt"
+            ],
+            "amounts": [
+              49
+            ]
+          },
+          "flow": "manage_account",
+          "subflow": "manage_change_phone"
+        },
+        "customer_utterances": [
+          "I noticed my phone number was wrong and I need to fix it.",
+          "That's correct.",
+          "Albert Sanders",
+          "(609) 646-7423",
+          "That should be changed to (609) 646-7433",
+          "23626",
+          "as269117",
+          "as269117@email.com",
+          "Sure.",
+          "Great, thank you.",
+          "No that's it. Thanks you very much.",
+          "You too"
+        ],
+        "agent_utterances": [
+          "Hello, how may I help you?",
+          "Let me help you with that.",
+          "So you just want to change the phone number on your account is that correct?",
+          "Could I have your full name or account id?",
+          "Could I have the current phone number on your account?",
+          "I need to verify your identity, could I have 3 of the following, zip code, username, password, email address,  or previous order id?",
+          "Thank you",
+          "Your account has been updated with the new phone number.",
+          "Can I help you with anything else?",
+          "Have a good day."
+        ],
+        "actions": [
+          "Account has been pulled up for Albert Sanders.",
+          "A reason of (609) 646-7423 has been recorded.",
+          "Identity verification in progess ...",
+          "Account has been updated with (609) 646-7433."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 2044,
+        "flow": "manage_account",
+        "scenario_subflow": "manage_change_phone",
+        "canonical_intent": "manage_change_phone",
+        "num_turns": 12,
+        "scenario": {
+          "personal": {
+            "customer_name": "joyce wu",
+            "email": "jw845458@email.com",
+            "member_level": "gold",
+            "password": "lbgah9q3",
+            "phone": "(672) 285-6975",
+            "pin_number": "750234",
+            "username": "jw845458"
+          },
+          "order": {
+            "street_address": "1899 lincoln ave",
+            "full_address": "1899 lincoln ave  raleigh, mi 81008",
+            "city": "raleigh",
+            "num_products": "1",
+            "products": "[{'brand': 'calvin_klein', 'product_type': 'boots', 'amount': 59, 'image_url': 'images/calvin_klein-boots.jpeg'}]",
+            "state": "mi",
+            "zip_code": "81008"
+          },
+          "product": {
+            "names": [
+              "calvin_klein boots"
+            ],
+            "amounts": [
+              59
+            ]
+          },
+          "flow": "manage_account",
+          "subflow": "manage_change_phone"
+        },
+        "customer_utterances": [
+          "Hello, can you help me change the phone number on my account? I accidentally put in the wrong one.",
+          "username: jw845458, email: jw845458@email.com",
+          "zip code: 81008",
+          "(672) 285-6976",
+          "No that was all, thanks so much."
+        ],
+        "agent_utterances": [
+          "Hello! How may I help you?",
+          "Of course! May I have your Zip Code, Username, and Email to verify?",
+          "May I have the phone number you want to change it to?",
+          "Done! Anything else today?",
+          "Have a great day!"
+        ],
+        "actions": [
+          "Identity verification in progess ...",
+          "Account has been updated with (672) 285-6976."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 405,
+        "flow": "manage_account",
+        "scenario_subflow": "manage_change_phone",
+        "canonical_intent": "manage_change_phone",
+        "num_turns": 25,
+        "scenario": {
+          "personal": {
+            "customer_name": "crystal minh",
+            "email": "cm758860@email.com",
+            "member_level": "guest",
+            "password": "upvxz6fi",
+            "phone": "(255) 860-9320",
+            "username": "cm758860"
+          },
+          "order": {
+            "street_address": "2474 2nd ave",
+            "full_address": "2474 2nd ave  brighton, wa 10994",
+            "city": "brighton",
+            "num_products": "1",
+            "order_id": "2331806222",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'boots', 'amount': 64, 'image_url': 'images/tommy_hilfiger-boots.jpeg'}]",
+            "state": "wa",
+            "zip_code": "10994"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger boots"
+            ],
+            "amounts": [
+              64
+            ]
+          },
+          "flow": "manage_account",
+          "subflow": "manage_change_phone"
+        },
+        "customer_utterances": [
+          "Hi!  I need to change the phone number on my account",
+          "My full name is Crystal Minh",
+          "255 860 9320",
+          "Wait, that the correct one. The old one was incorrect and had a 4 where there should have been a 5",
+          "Oh, well, in that case maybe it is correct.  My phone number should be (255) 860-9230",
+          "My current zip code is 10944 and my account username is cm758860",
+          "Yes, that is the correct phone number to have on the account",
+          "I could have sworn on an order confirmation I got it was wrong, so I wanted to make sure everything was correct",
+          "Well, that solves all my problems then :)",
+          "Thank you!"
+        ],
+        "agent_utterances": [
+          "Hello, how can I help you today?",
+          "Sure, I can help you with that. First, let me get your full name or account number",
+          "Great. For verification purposes, what phone number do we currently have for you?",
+          "so what was the old one? There are two number \"5\" in that number.",
+          "Also could i get your current zip code, and account username for you?",
+          "alright I am updating your phone number on file to 255 860 9230 is this correct?",
+          "Alright, is there anything else I can help you with?",
+          "No problem at all. I am happy to help",
+          "Good to hear. Have a great day."
+        ],
+        "actions": [
+          "Account has been pulled up for .",
+          "Account has been pulled up for Crystal Minh.",
+          "A reason of  has been recorded.",
+          "Identity verification in progess ...",
+          "Account has been pulled up for .",
+          "Account has been updated with 2558609230."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 1246,
+        "flow": "manage_account",
+        "scenario_subflow": "manage_change_phone",
+        "canonical_intent": "manage_change_phone",
+        "num_turns": 22,
+        "scenario": {
+          "personal": {
+            "customer_name": "rodriguez domingo",
+            "email": "rd419688@email.com",
+            "member_level": "silver",
+            "phone": "(874) 913-3204",
+            "username": "rd419688"
+          },
+          "order": {
+            "street_address": "3475 kennedy st",
+            "full_address": "3475 kennedy st  monterey, ca 28925",
+            "city": "monterey",
+            "num_products": "1",
+            "products": "[{'brand': 'tommy_hilfiger', 'product_type': 'jeans', 'amount': 94, 'image_url': 'images/tommy_hilfiger-jeans.jpeg'}]",
+            "state": "ca",
+            "zip_code": "28925"
+          },
+          "product": {
+            "names": [
+              "tommy_hilfiger jeans"
+            ],
+            "amounts": [
+              94
+            ]
+          },
+          "flow": "manage_account",
+          "subflow": "manage_change_phone"
+        },
+        "customer_utterances": [
+          "Hello, I'd like to change the phone number on my account",
+          "the number is just off by one",
+          "It's Rodriguez Domingo",
+          "I think the current number is (874) 913-3205, but it should be (874) 913-3204",
+          "28925",
+          "my email address is  rd419688@email.com",
+          "my username is rd419688",
+          "I don't have my password on me right now",
+          "yes",
+          "That is it. Thank you"
+        ],
+        "agent_utterances": [
+          "Hello! Thank you for contacting us today. How can I help you?",
+          "Sure I can help you with that. Can I get your name please?",
+          "Thank you, Rodriguez. Can you provide me with the current number on the account?",
+          "Perfect. I'll just need to verify your identity. Can I get your Zip Code, password, and email address?",
+          "Can I get your pin number, username, or password also?",
+          "Alright, great. I have verified your identity. So the correct number should be, (874) 913-3204, correct?",
+          "Alright I have updated that. Is there anything else I can help you with today?",
+          "Thank you and have a great day!"
+        ],
+        "actions": [
+          "Account has been pulled up for Rodriguez Domingo.",
+          "A reason of (874) 913-3205 has been recorded.",
+          "Identity verification in progess ...",
+          "Account has been updated with (874) 913-3204."
+        ]
+      },
+      {
+        "split": "test",
+        "convo_id": 2300,
+        "flow": "manage_account",
+        "scenario_subflow": "manage_change_phone",
+        "canonical_intent": "manage_change_phone",
+        "num_turns": 20,
+        "scenario": {
+          "personal": {
+            "customer_name": "david williams",
+            "email": "davidw93@email.com",
+            "member_level": "guest",
+            "phone": "(742) 405-3539",
+            "pin_number": "514585",
+            "username": "davidw93"
+          },
+          "order": {
+            "street_address": "5765 lexington ave",
+            "full_address": "5765 lexington ave  san lima, ny 80055",
+            "city": "san lima",
+            "num_products": "1",
+            "products": "[{'brand': 'michael_kors', 'product_type': 'jacket', 'amount': 84, 'image_url': 'images/michael_kors-jacket.jpeg'}]",
+            "state": "ny",
+            "zip_code": "80055"
+          },
+          "product": {
+            "names": [
+              "michael_kors jacket"
+            ],
+            "amounts": [
+              84
+            ]
+          },
+          "flow": "manage_account",
+          "subflow": "manage_change_phone"
+        },
+        "customer_utterances": [
+          "Hello, the phone number is incorrect on my account. I made a typo when inputing it. Can you help me get it updated?",
+          "I need to change the 4 to a 5",
+          "Yes, my name is David Williams",
+          "Can you change my number to (752) 405-3539",
+          "my pin is 514585",
+          "my username is davidw93",
+          "and muy zip code is 80055",
+          "No, that is it.  Thank you for your help"
+        ],
+        "agent_utterances": [
+          "Hello there how can i help you today",
+          "Okay i can do that for you, could i get your Full name or your Account ID please",
+          "Okay, could i get the number that you would like to change it to",
+          "I sure can i just need to verify your identity now, could i get three of your zip code,pin number, username, password, email adress",
+          "Okay great, i'll go ahead and change your phone number on the account",
+          "Okay, everything has been updated. Is there anything else i can help you with today?",
+          "No problem, have a nice day."
+        ],
+        "actions": [
+          "Identity verification in progess ...",
+          "Account has been pulled up for David Williams.",
+          "A reason of (752) 405-3539 has been recorded.",
+          "Identity verification in progess ...",
+          "Account has been updated with (752) 405-3539."
+        ]
+      }
+    ]
+  }
+}

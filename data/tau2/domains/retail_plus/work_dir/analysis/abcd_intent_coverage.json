@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "comparison_definition": {
+    "covered": "Retail Plus can execute and evaluate the central ABCD user outcome with current data, tools, and policy.",
+    "partial": "Retail Plus has an adjacent capability, but at least one central ABCD state, rule, action, or outcome is absent.",
+    "missing": "Retail Plus cannot execute and objectively evaluate the central ABCD user outcome.",
+    "important_note": "Conversation wording alone does not count as coverage; the outcome must be backed by executable tools and evaluable state or communication requirements."
+  },
+  "summary": {
+    "abcd_intents": 55,
+    "covered": 2,
+    "partial": 18,
+    "missing": 35,
+    "phase_1_candidate_intents": 28,
+    "note": "The accompanying report narrows these 28 technically relevant candidates to a smaller first implementation batch."
+  },
+  "intents": [
+    {"flow":"product_defect","intent":"refund_initiate","abcd_count":176,"status":"partial","retail_evidence_task_ids":["2","11","16","46","53"],"gap":"Retail can request a delivered-item return, but has no refund case lifecycle or immediate refund operation.","phase":"2"},
+    {"flow":"product_defect","intent":"refund_update","abcd_count":177,"status":"missing","retail_evidence_task_ids":[],"gap":"A return can only be initiated once; an existing refund cannot be amended with another item.","phase":"2"},
+    {"flow":"product_defect","intent":"refund_status","abcd_count":179,"status":"missing","retail_evidence_task_ids":[],"gap":"No refund case, processing status, request date, ETA, or refund-status query tool.","phase":"1"},
+    {"flow":"product_defect","intent":"return_stain","abcd_count":167,"status":"partial","retail_evidence_task_ids":["18","48","53","107"],"gap":"Generic return/exchange exists, but return reason, eligibility window, and category-specific policy are not modeled.","phase":"1"},
+    {"flow":"product_defect","intent":"return_color","abcd_count":180,"status":"partial","retail_evidence_task_ids":["75","80","84","89"],"gap":"Color-based exchange is covered; reason-specific return eligibility and reason persistence are absent.","phase":"1"},
+    {"flow":"product_defect","intent":"return_size","abcd_count":191,"status":"partial","retail_evidence_task_ids":["70","77","93","94","106"],"gap":"Size-based exchange is covered; reason-specific return rules and return reason persistence are absent.","phase":"1"},
+
+    {"flow":"order_issue","intent":"status_mystery_fee","abcd_count":130,"status":"missing","retail_evidence_task_ids":[],"gap":"No fee-line model, disputed-fee state, fee waiver, or credit operation.","phase":"1"},
+    {"flow":"order_issue","intent":"status_delivery_time","abcd_count":142,"status":"partial","retail_evidence_task_ids":["25","30","43","56","57","59"],"gap":"Tracking/status can be read, but delivery date/window and rescheduling are not modeled.","phase":"1"},
+    {"flow":"order_issue","intent":"status_payment_method","abcd_count":134,"status":"covered","retail_evidence_task_ids":["40","67","68"],"gap":"Order payment history can be read and a pending order payment method can be changed.","phase":"existing"},
+    {"flow":"order_issue","intent":"status_quantity","abcd_count":135,"status":"partial","retail_evidence_task_ids":["24","25","55"],"gap":"Ordered items and quantities can be read, but a reported quantity mismatch cannot be corrected or compensated directly.","phase":"1"},
+    {"flow":"order_issue","intent":"manage_upgrade","abcd_count":117,"status":"missing","retail_evidence_task_ids":[],"gap":"No shipping tier, delivery window, shipping-price difference, or upgrade tool.","phase":"1"},
+    {"flow":"order_issue","intent":"manage_downgrade","abcd_count":123,"status":"missing","retail_evidence_task_ids":[],"gap":"No shipping tier downgrade or shipping-fee refund state/tool.","phase":"1"},
+    {"flow":"order_issue","intent":"manage_create","abcd_count":134,"status":"missing","retail_evidence_task_ids":[],"gap":"Retail can replace variants but cannot add a new item to an existing order.","phase":"1"},
+    {"flow":"order_issue","intent":"manage_cancel","abcd_count":125,"status":"partial","retail_evidence_task_ids":["16","38","66","76","81","113"],"gap":"Whole pending-order cancellation is supported; cancelling a duplicated line item without cancelling the order is not.","phase":"1"},
+
+    {"flow":"account_access","intent":"recover_username","abcd_count":361,"status":"missing","retail_evidence_task_ids":[],"gap":"Retail has no username credential or account-recovery workflow.","phase":"2"},
+    {"flow":"account_access","intent":"recover_password","abcd_count":336,"status":"missing","retail_evidence_task_ids":[],"gap":"No password, recovery challenge, reset token, or password-reset tool.","phase":"2"},
+    {"flow":"account_access","intent":"reset_2fa","abcd_count":351,"status":"missing","retail_evidence_task_ids":[],"gap":"No 2FA state, verification channel, reset code, or reset tool.","phase":"2"},
+
+    {"flow":"troubleshoot_site","intent":"credit_card","abcd_count":266,"status":"missing","retail_evidence_task_ids":[],"gap":"Payment methods exist, but website checkout failures and retry/session state do not.","phase":"2"},
+    {"flow":"troubleshoot_site","intent":"shopping_cart","abcd_count":251,"status":"missing","retail_evidence_task_ids":[],"gap":"No shopping-cart model or cart troubleshooting tools.","phase":"2"},
+    {"flow":"troubleshoot_site","intent":"search_results","abcd_count":259,"status":"missing","retail_evidence_task_ids":[],"gap":"No website search session, incident state, or troubleshooting workflow.","phase":"2"},
+    {"flow":"troubleshoot_site","intent":"slow_speed","abcd_count":250,"status":"missing","retail_evidence_task_ids":[],"gap":"No website performance incident or client troubleshooting state.","phase":"2"},
+
+    {"flow":"manage_account","intent":"status_service_added","abcd_count":129,"status":"missing","retail_evidence_task_ids":[],"gap":"No account service/add-on model, dispute, removal, or refund operation.","phase":"2"},
+    {"flow":"manage_account","intent":"status_service_removed","abcd_count":153,"status":"missing","retail_evidence_task_ids":[],"gap":"No account service/add-on state or restoration operation.","phase":"2"},
+    {"flow":"manage_account","intent":"status_shipping_question","abcd_count":131,"status":"missing","retail_evidence_task_ids":[],"gap":"No membership-linked domestic/international free-shipping entitlement.","phase":"2"},
+    {"flow":"manage_account","intent":"status_credit_missing","abcd_count":114,"status":"missing","retail_evidence_task_ids":[],"gap":"Gift cards exist, but promotional/account credit ledger and missing-credit dispute do not.","phase":"1"},
+    {"flow":"manage_account","intent":"manage_change_address","abcd_count":51,"status":"covered","retail_evidence_task_ids":["22","33","39","43","87","109"],"gap":"Default customer address can be queried and modified.","phase":"existing"},
+    {"flow":"manage_account","intent":"manage_change_name","abcd_count":51,"status":"missing","retail_evidence_task_ids":[],"gap":"Name exists but no name-change tool, verification rule, or audit state.","phase":"1"},
+    {"flow":"manage_account","intent":"manage_change_phone","abcd_count":48,"status":"missing","retail_evidence_task_ids":[],"gap":"Customer phone number is not present in RetailDB.","phase":"1"},
+    {"flow":"manage_account","intent":"manage_payment_method","abcd_count":36,"status":"partial","retail_evidence_task_ids":["40"],"gap":"A pending order payment method can change, but saved account payment methods cannot be added, removed, or made default.","phase":"1"},
+
+    {"flow":"purchase_dispute","intent":"bad_price_competitor","abcd_count":149,"status":"missing","retail_evidence_task_ids":[],"gap":"No competitor-price evidence, price-match policy, adjustment, or voucher tool.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"bad_price_yesterday","abcd_count":139,"status":"missing","retail_evidence_task_ids":[],"gap":"No historical product price or post-purchase price-adjustment workflow.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"out_of_stock_general","abcd_count":140,"status":"partial","retail_evidence_task_ids":["2","3","39","62","63"],"gap":"Variant availability can be queried, but restock subscription, purchasing-team notification, and compensation are absent.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"out_of_stock_one_item","abcd_count":127,"status":"partial","retail_evidence_task_ids":["20","29","52","58","89"],"gap":"A specific variant can be checked and alternatives selected; restock/notification and new-purchase actions are absent.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"promo_code_invalid","abcd_count":133,"status":"missing","retail_evidence_task_ids":[],"gap":"No voucher/promo-code model, validation rule, redemption state, or compensation action.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"promo_code_out_of_date","abcd_count":112,"status":"missing","retail_evidence_task_ids":[],"gap":"No voucher issue/expiry timestamps or expiry policy.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"mistimed_billing_already_returned","abcd_count":137,"status":"missing","retail_evidence_task_ids":[],"gap":"No completed return receipt, expected credit date, delayed-refund dispute, or duplicate-refund guard.","phase":"1"},
+    {"flow":"purchase_dispute","intent":"mistimed_billing_never_bought","abcd_count":139,"status":"missing","retail_evidence_task_ids":[],"gap":"No unauthorized-purchase dispute, fraud case, or charge reversal workflow.","phase":"2"},
+
+    {"flow":"shipping_issue","intent":"status","abcd_count":268,"status":"partial","retail_evidence_task_ids":["25","26","30","31","43","56","57","103"],"gap":"Tracking IDs and coarse order status exist, but carrier events, exception reason, and delivery ETA do not.","phase":"1"},
+    {"flow":"shipping_issue","intent":"manage","abcd_count":248,"status":"partial","retail_evidence_task_ids":["17","34","59","71","87","96"],"gap":"Pending order address/item changes exist; shipment rerouting after processing/shipping does not.","phase":"1"},
+    {"flow":"shipping_issue","intent":"missing","abcd_count":261,"status":"missing","retail_evidence_task_ids":[],"gap":"No package/item delivery event, missing-item claim, replacement shipment, or case state.","phase":"1"},
+    {"flow":"shipping_issue","intent":"cost","abcd_count":243,"status":"missing","retail_evidence_task_ids":[],"gap":"No shipping charge line, waiver rule, or shipping-fee refund operation.","phase":"1"},
+
+    {"flow":"subscription_inquiry","intent":"status_active","abcd_count":30,"status":"missing","retail_evidence_task_ids":[],"gap":"No subscription product or subscription state.","phase":"2"},
+    {"flow":"subscription_inquiry","intent":"status_due_amount","abcd_count":185,"status":"missing","retail_evidence_task_ids":[],"gap":"No subscription balance or billing schedule.","phase":"2"},
+    {"flow":"subscription_inquiry","intent":"status_due_date","abcd_count":178,"status":"missing","retail_evidence_task_ids":[],"gap":"No subscription renewal date.","phase":"2"},
+    {"flow":"subscription_inquiry","intent":"manage_pay_bill","abcd_count":162,"status":"missing","retail_evidence_task_ids":[],"gap":"No subscription invoice or payment tool.","phase":"2"},
+    {"flow":"subscription_inquiry","intent":"manage_extension","abcd_count":165,"status":"missing","retail_evidence_task_ids":[],"gap":"No subscription grace period or extension policy/tool.","phase":"2"},
+    {"flow":"subscription_inquiry","intent":"manage_dispute_bill","abcd_count":190,"status":"missing","retail_evidence_task_ids":[],"gap":"No subscription billing ledger, duplicate charge, or dispute workflow.","phase":"2"},
+
+    {"flow":"single_item_query","intent":"boots","abcd_count":281,"status":"partial","retail_evidence_task_ids":["15","29","54","107"],"gap":"Product options, availability, and price can be queried; care, sizing, warranty, and product FAQ knowledge are absent.","phase":"2"},
+    {"flow":"single_item_query","intent":"shirt","abcd_count":249,"status":"partial","retail_evidence_task_ids":["2","3","4","39","80","106"],"gap":"Product options, availability, and price can be queried; washing, shrinkage, tailoring, and warranty FAQ content are absent.","phase":"2"},
+    {"flow":"single_item_query","intent":"jeans","abcd_count":252,"status":"partial","retail_evidence_task_ids":["3","4"],"gap":"Generic catalog lookup exists; ABCD jeans care/fit/tailoring FAQ knowledge does not.","phase":"2"},
+    {"flow":"single_item_query","intent":"jacket","abcd_count":263,"status":"partial","retail_evidence_task_ids":["76","85","86"],"gap":"Generic catalog lookup exists; washing, hood, shrinkage, warranty, and other jacket FAQ content do not.","phase":"2"},
+
+    {"flow":"storewide_query","intent":"pricing","abcd_count":277,"status":"partial","retail_evidence_task_ids":["2","39","44","45","63","67"],"gap":"Product and order prices exist; service pricing such as gift wrap, personalization, and shipping is absent.","phase":"1"},
+    {"flow":"storewide_query","intent":"membership","abcd_count":281,"status":"missing","retail_evidence_task_ids":[],"gap":"No membership level, qualification, benefit, or duration model.","phase":"2"},
+    {"flow":"storewide_query","intent":"timing","abcd_count":264,"status":"missing","retail_evidence_task_ids":[],"gap":"No store hours, collection release, sale schedule, or voucher expiry knowledge.","phase":"2"},
+    {"flow":"storewide_query","intent":"policy","abcd_count":272,"status":"partial","retail_evidence_task_ids":["10","12","24","50","57","65"],"gap":"The agent receives cancellation/return policy text, but no searchable FAQ corpus and no subscription policy.","phase":"1"}
+  ]
+}

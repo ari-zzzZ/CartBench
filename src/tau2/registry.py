@@ -23,6 +23,15 @@ from tau2.domains.retail.environment import get_tasks as retail_domain_get_tasks
 from tau2.domains.retail.environment import (
     get_tasks_split as retail_domain_get_tasks_split,
 )
+from tau2.domains.retail_plus.environment import (
+    get_environment as retail_plus_domain_get_environment,
+)
+from tau2.domains.retail_plus.environment import (
+    get_tasks as retail_plus_domain_get_tasks,
+)
+from tau2.domains.retail_plus.environment import (
+    get_tasks_split as retail_plus_domain_get_tasks_split,
+)
 from tau2.domains.telecom.environment import (
     get_environment_manual_policy as telecom_domain_get_environment_manual_policy,
 )
@@ -225,6 +234,13 @@ try:
         retail_domain_get_tasks,
         "retail",
         get_task_splits=retail_domain_get_tasks_split,
+    )
+
+    registry.register_domain(retail_plus_domain_get_environment, "retail_plus")
+    registry.register_tasks(
+        retail_plus_domain_get_tasks,
+        "retail_plus",
+        get_task_splits=retail_plus_domain_get_tasks_split,
     )
 
     registry.register_domain(telecom_domain_get_environment_manual_policy, "telecom")

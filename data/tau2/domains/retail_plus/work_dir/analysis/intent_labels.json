@@ -1,0 +1,3719 @@
+{
+  "schema_version": 1,
+  "source": "data/tau2/domains/retail/tasks.json",
+  "labeling_method": {
+    "operation_intents": "deterministic mapping from golden tool actions",
+    "information_intents": "conservative regex matching over reason_for_call",
+    "interaction_traits": "conservative regex matching over reason_for_call",
+    "warning": "Information intents and interaction traits require human review; operation intents are grounded in golden actions."
+  },
+  "summary": {
+    "num_tasks": 114,
+    "operation_intent_task_counts": {
+      "customer_default_address_modification": 10,
+      "delivered_item_exchange": 29,
+      "delivered_item_return": 31,
+      "human_handoff": 4,
+      "pending_order_address_modification": 20,
+      "pending_order_cancellation": 18,
+      "pending_order_item_modification": 35,
+      "pending_order_payment_modification": 1
+    },
+    "information_intent_task_counts": {
+      "gift_card_balance_query": 2,
+      "order_item_or_quantity_query": 9,
+      "order_payment_method_query": 3,
+      "order_status_query": 6,
+      "price_refund_or_difference_calculation": 19,
+      "product_catalog_or_availability_query": 10,
+      "shipment_tracking_or_arrival_query": 11
+    },
+    "interaction_trait_task_counts": {
+      "adversarial_or_emotional_user": 15,
+      "changes_mind_or_conditional_confirmation": 20,
+      "fallback_preference": 32,
+      "off_topic_or_distracting_request": 2,
+      "withholds_or_confuses_information": 24
+    },
+    "unsupported_request_task_counts": {
+      "add_item_to_existing_order": 2,
+      "cross_product_replacement": 2,
+      "partial_line_item_cancellation": 4,
+      "split_payment": 3,
+      "undo_order_cancellation": 1
+    },
+    "num_multi_intent_tasks": 65
+  },
+  "tasks": [
+    {
+      "task_id": "0",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "1",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "2",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_product_details",
+          "get_product_details",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "how many .* options",
+            "any .* available"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "3",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_product_details",
+          "get_product_details",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "get_user_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "how many .* options",
+            "any .* available"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "4",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_product_details",
+          "get_product_details",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "get_user_details",
+          "modify_pending_order_items",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "how many .* options",
+            "any .* available"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "5",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "fallback_preference": [
+            "prefer .* >"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "6",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "fallback_preference": [
+            "prefer .* >"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "7",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "fallback_preference": [
+            "prefer .* >"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "8",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "fallback_preference": [
+            "prefer .* >"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "9",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "change your mind",
+            "when the agent asks for confirmation"
+          ],
+          "fallback_preference": [
+            "prefer .* >"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "10",
+      "primary_intent": "human_handoff",
+      "operation_intents": [
+        "human_handoff"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "transfer_to_human_agents"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "adversarial_or_emotional_user": [
+            "angry",
+            "swear"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "11",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "adversarial_or_emotional_user": [
+            "angry",
+            "swear"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "12",
+      "primary_intent": "human_handoff",
+      "operation_intents": [
+        "human_handoff"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "withholds_or_confuses_information",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "transfer_to_human_agents"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ],
+          "adversarial_or_emotional_user": [
+            "angry"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "13",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "otherwise"
+          ],
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "14",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "15",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "16",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "calculate",
+          "cancel_pending_order",
+          "cancel_pending_order",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "total amount"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "17",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_pending_order_address"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "18",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "change your mind"
+          ],
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "19",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "only if",
+            "if and only if"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "20",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "get_product_details",
+          "get_product_details",
+          "modify_pending_order_items",
+          "get_order_details"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "21",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "gift_card_balance_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_item_details",
+          "get_item_details",
+          "get_product_details",
+          "get_item_details",
+          "get_product_details",
+          "calculate",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "gift_card_balance_query": [
+            "gift card balance"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "might confuse"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "22",
+      "primary_intent": "customer_default_address_modification",
+      "operation_intents": [
+        "customer_default_address_modification",
+        "pending_order_address_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "modify_user_address",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_pending_order_address",
+          "modify_user_address"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "regret"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "23",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "exchange_delivered_order_items",
+          "get_product_details",
+          "exchange_delivered_order_items",
+          "get_product_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "24",
+      "primary_intent": "order_item_or_quantity_query",
+      "operation_intents": [],
+      "information_intents": [
+        "order_item_or_quantity_query"
+      ],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "regret"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "25",
+      "primary_intent": "shipment_tracking_or_arrival_query",
+      "operation_intents": [],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "don't remember"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "26",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return",
+        "human_handoff"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items",
+          "transfer_to_human_agents"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "don't remember"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "27",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "28",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items",
+          "return_delivered_order_items",
+          "return_delivered_order_items",
+          "get_order_details",
+          "calculate"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "29",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [
+        "order_status_query"
+      ],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "exchange_delivered_order_items",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "order_status_query": [
+            "if .* (?:shipped|delivered|pending)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "fallback_preference": [
+            "if several options"
+          ],
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "30",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return",
+        "pending_order_cancellation"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "return_delivered_order_items",
+          "get_order_details",
+          "cancel_pending_order",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "31",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [
+        "fallback_preference",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "cancel_pending_order",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ],
+          "adversarial_or_emotional_user": [
+            "bad mood"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "32",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "cancel_pending_order",
+          "get_order_details",
+          "cancel_pending_order",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "adversarial_or_emotional_user": [
+            "bad mood"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "33",
+      "primary_intent": "customer_default_address_modification",
+      "operation_intents": [
+        "customer_default_address_modification"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_user_address"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "total amount",
+            "amount .* refund"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ],
+          "withholds_or_confuses_information": [
+            "forgot",
+            "do not want to reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "34",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_pending_order_address"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "total amount",
+            "amount .* refund"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ],
+          "withholds_or_confuses_information": [
+            "forgot"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "35",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "return_delivered_order_items",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "all available .* options"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "prefer .* over"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "36",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [
+        "partial_line_item_cancellation",
+        "split_payment"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {
+          "partial_line_item_cancellation": [
+            "cancel that item"
+          ],
+          "split_payment": [
+            "split the payment"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "37",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [
+        "partial_line_item_cancellation",
+        "split_payment"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {
+          "partial_line_item_cancellation": [
+            "cancel that item"
+          ],
+          "split_payment": [
+            "split the payment"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "38",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [
+        "partial_line_item_cancellation",
+        "split_payment"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "find_user_id_by_name_zip",
+          "calculate",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {
+          "partial_line_item_cancellation": [
+            "cancel that item"
+          ],
+          "split_payment": [
+            "split the payment"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "39",
+      "primary_intent": "customer_default_address_modification",
+      "operation_intents": [
+        "customer_default_address_modification"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "modify_user_address"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "cheapest available"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not want to reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "40",
+      "primary_intent": "pending_order_payment_modification",
+      "operation_intents": [
+        "pending_order_payment_modification"
+      ],
+      "information_intents": [
+        "order_payment_method_query",
+        "price_refund_or_difference_calculation",
+        "gift_card_balance_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "modify_pending_order_payment"
+        ],
+        "information_pattern_matches": {
+          "order_payment_method_query": [
+            "whether you used your (?:visa|mastercard|amex)"
+          ],
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)"
+          ],
+          "gift_card_balance_query": [
+            "gift card balance",
+            "balance does your gift card"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "41",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "customer_default_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_pending_order_address",
+          "modify_pending_order_address",
+          "modify_user_address",
+          "get_product_details",
+          "get_order_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "42",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "customer_default_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "order_status_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_pending_order_address",
+          "modify_pending_order_address",
+          "modify_user_address",
+          "get_product_details",
+          "get_order_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "order_status_query": [
+            "if .* (?:shipped|delivered|pending)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "43",
+      "primary_intent": "customer_default_address_modification",
+      "operation_intents": [
+        "customer_default_address_modification"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query",
+        "order_item_or_quantity_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "modify_user_address"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)",
+            "still in transit"
+          ],
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "44",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "calculate",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)",
+            "price difference"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "45",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "calculate",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "price difference"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "only if",
+            "if and only if"
+          ],
+          "withholds_or_confuses_information": [
+            "forgot",
+            "doesn't work"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "46",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "order_item_or_quantity_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "calculate",
+          "return_delivered_order_items",
+          "calculate"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ],
+          "price_refund_or_difference_calculation": [
+            "total amount",
+            "refund .* amount",
+            "amount .* refund"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "forgot",
+            "doesn't work"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "47",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "order_item_or_quantity_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "calculate",
+          "return_delivered_order_items",
+          "calculate"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ],
+          "price_refund_or_difference_calculation": [
+            "total amount",
+            "refund .* amount",
+            "amount .* refund"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "forgot",
+            "doesn't work"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "48",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "doesn't work"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "49",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "calculate",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "50",
+      "primary_intent": "human_handoff",
+      "operation_intents": [
+        "human_handoff"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [
+        "undo_order_cancellation"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "transfer_to_human_agents"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "adversarial_or_emotional_user": [
+            "insist",
+            "in a rush"
+          ]
+        },
+        "unsupported_request_pattern_matches": {
+          "undo_order_cancellation": [
+            "undo cancelling",
+            "undo the cancellation"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "51",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "get_user_details",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "adversarial_or_emotional_user": [
+            "insist"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "52",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "53",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "adversarial_or_emotional_user": [
+            "frustrated"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "54",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "cancel_pending_order",
+          "cancel_pending_order",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "maximum .* available"
+          ],
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "only if"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "55",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "order_item_or_quantity_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_email",
+          "find_user_id_by_email",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "cancel_pending_order",
+          "cancel_pending_order",
+          "return_delivered_order_items",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)",
+            "list (?:them|the items|all items)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "don't remember"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "56",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query",
+        "order_status_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "when .* arriv"
+          ],
+          "order_status_query": [
+            "if .* (?:shipped|delivered|pending)",
+            "has not been shipped"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not remember"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "57",
+      "primary_intent": "shipment_tracking_or_arrival_query",
+      "operation_intents": [],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query",
+        "order_status_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "when .* arriv"
+          ],
+          "order_status_query": [
+            "if .* (?:shipped|delivered|pending)",
+            "has not been shipped"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "58",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "fallback_preference",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_product_details",
+          "get_product_details",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "price difference"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ],
+          "adversarial_or_emotional_user": [
+            "angry"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "59",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "pending_order_address_modification"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query",
+        "price_refund_or_difference_calculation",
+        "order_status_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_order_details",
+          "cancel_pending_order",
+          "modify_pending_order_address"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "status difference"
+          ],
+          "price_refund_or_difference_calculation": [
+            "total price"
+          ],
+          "order_status_query": [
+            "status .* order"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "60",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "only if",
+            "if and only if"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "61",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_order_details",
+          "get_product_details",
+          "calculate",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "62",
+      "primary_intent": "order_item_or_quantity_query",
+      "operation_intents": [],
+      "information_intents": [
+        "order_item_or_quantity_query",
+        "product_catalog_or_availability_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "fallback_preference",
+        "off_topic_or_distracting_request"
+      ],
+      "requested_but_unsupported_intents": [
+        "add_item_to_existing_order"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ],
+          "product_catalog_or_availability_query": [
+            "any .* available",
+            "available .* less than"
+          ],
+          "price_refund_or_difference_calculation": [
+            "total price"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "otherwise"
+          ],
+          "off_topic_or_distracting_request": [
+            "famous poem"
+          ]
+        },
+        "unsupported_request_pattern_matches": {
+          "add_item_to_existing_order": [
+            "add .* to (?:the|your) order"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "63",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "order_item_or_quantity_query",
+        "product_catalog_or_availability_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "off_topic_or_distracting_request"
+      ],
+      "requested_but_unsupported_intents": [
+        "add_item_to_existing_order"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "calculate",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ],
+          "product_catalog_or_availability_query": [
+            "any .* available",
+            "available .* less than"
+          ],
+          "price_refund_or_difference_calculation": [
+            "total price"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "off_topic_or_distracting_request": [
+            "famous poem"
+          ]
+        },
+        "unsupported_request_pattern_matches": {
+          "add_item_to_existing_order": [
+            "add .* to (?:the|your) order"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "64",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "get_order_details",
+          "get_product_details",
+          "exchange_delivered_order_items",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "65",
+      "primary_intent": "cross_product_replacement",
+      "operation_intents": [],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [
+        "cross_product_replacement"
+      ],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {
+          "cross_product_replacement": [
+            "exchange the bookshelf .* for a camera"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "66",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [
+        "cross_product_replacement"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "get_order_details",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {
+          "cross_product_replacement": [
+            "change .* for a coat"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "67",
+      "primary_intent": "order_payment_method_query",
+      "operation_intents": [],
+      "information_intents": [
+        "order_payment_method_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "find_user_id_by_name_zip",
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details"
+        ],
+        "information_pattern_matches": {
+          "order_payment_method_query": [
+            "how much you paid"
+          ],
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "68",
+      "primary_intent": "order_payment_method_query",
+      "operation_intents": [],
+      "information_intents": [
+        "order_payment_method_query",
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details"
+        ],
+        "information_pattern_matches": {
+          "order_payment_method_query": [
+            "how much you paid"
+          ],
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "69",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "find_user_id_by_name_zip",
+          "get_user_details",
+          "get_order_details",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "70",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)",
+            "price difference"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if multiple .* available"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "71",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "change your mind"
+          ],
+          "fallback_preference": [
+            "if multiple .* available"
+          ],
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "72",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "change your mind"
+          ],
+          "fallback_preference": [
+            "if multiple .* available"
+          ],
+          "withholds_or_confuses_information": [
+            "do not reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "73",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "74",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "order_status_query"
+      ],
+      "interaction_traits": [
+        "fallback_preference",
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "cancel_pending_order",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "order_status_query": [
+            "if .* (?:shipped|delivered|pending)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if multiple .* available"
+          ],
+          "withholds_or_confuses_information": [
+            "don't remember"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "75",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "76",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [
+        "partial_line_item_cancellation"
+      ],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "cancel_pending_order",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "total price"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {
+          "partial_line_item_cancellation": [
+            "remove .* from (?:the|your) pending order"
+          ]
+        }
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "77",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "maximum .* available"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "78",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification",
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "79",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "regret"
+          ],
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "80",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "81",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "cancel_pending_order",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "82",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ],
+          "adversarial_or_emotional_user": [
+            "angry"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "83",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ],
+          "adversarial_or_emotional_user": [
+            "angry"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "84",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "change your mind",
+            "when the agent asks for confirmation"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "85",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "86",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification",
+        "customer_default_address_modification"
+      ],
+      "information_intents": [
+        "order_item_or_quantity_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items",
+          "modify_user_address"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not want to reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "87",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "customer_default_address_modification"
+      ],
+      "information_intents": [
+        "order_item_or_quantity_query"
+      ],
+      "interaction_traits": [
+        "withholds_or_confuses_information"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_address",
+          "modify_pending_order_address",
+          "modify_user_address"
+        ],
+        "information_pattern_matches": {
+          "order_item_or_quantity_query": [
+            "which .* (?:ordered|order)"
+          ]
+        },
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not want to reveal"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "88",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "89",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [
+        "product_catalog_or_availability_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "product_catalog_or_availability_query": [
+            "cheapest available",
+            "available .* less than",
+            "what is the cheapest"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "90",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if .* not (?:possible|available)"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "91",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return",
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "adversarial_or_emotional_user": [
+            "angry"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "92",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ],
+          "adversarial_or_emotional_user": [
+            "angry"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "93",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "94",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "95",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [
+        "price_refund_or_difference_calculation"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "price_refund_or_difference_calculation": [
+            "how much .* (?:back|refund|pay|paid|cost)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "96",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "97",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "98",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange",
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "changes_mind_or_conditional_confirmation"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items",
+          "exchange_delivered_order_items",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "changes_mind_or_conditional_confirmation": [
+            "if the agent asks (?:you )?for confirmation"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "99",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "prefer .* over"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "100",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification",
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "101",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if multiple .* available"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "102",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "pending_order_item_modification",
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_pending_order_items",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if multiple .* available"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "103",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return",
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items",
+          "return_delivered_order_items",
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "104",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return",
+        "pending_order_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [
+        "shipment_tracking_or_arrival_query"
+      ],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items",
+          "return_delivered_order_items",
+          "modify_pending_order_address",
+          "modify_pending_order_items",
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {
+          "shipment_tracking_or_arrival_query": [
+            "tracking (?:number|id)"
+          ]
+        },
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "105",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "106",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "fallback_preference"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "fallback_preference": [
+            "if multiple .* available"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "107",
+      "primary_intent": "delivered_item_exchange",
+      "operation_intents": [
+        "delivered_item_exchange"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "exchange_delivered_order_items",
+          "exchange_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "108",
+      "primary_intent": "delivered_item_return",
+      "operation_intents": [
+        "delivered_item_return"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "return_delivered_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "109",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "customer_default_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "withholds_or_confuses_information",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_user_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not want to reveal"
+          ],
+          "adversarial_or_emotional_user": [
+            "insist"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "110",
+      "primary_intent": "pending_order_address_modification",
+      "operation_intents": [
+        "pending_order_address_modification",
+        "customer_default_address_modification",
+        "pending_order_item_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [
+        "withholds_or_confuses_information",
+        "adversarial_or_emotional_user"
+      ],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_address",
+          "modify_user_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {
+          "withholds_or_confuses_information": [
+            "do not want to reveal"
+          ],
+          "adversarial_or_emotional_user": [
+            "insist"
+          ]
+        },
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "111",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification",
+        "pending_order_address_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items",
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "112",
+      "primary_intent": "pending_order_item_modification",
+      "operation_intents": [
+        "pending_order_item_modification",
+        "pending_order_address_modification"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": true,
+      "evidence": {
+        "gold_action_names": [
+          "modify_pending_order_items",
+          "modify_pending_order_address",
+          "modify_pending_order_items"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    },
+    {
+      "task_id": "113",
+      "primary_intent": "pending_order_cancellation",
+      "operation_intents": [
+        "pending_order_cancellation"
+      ],
+      "information_intents": [],
+      "interaction_traits": [],
+      "requested_but_unsupported_intents": [],
+      "is_multi_intent": false,
+      "evidence": {
+        "gold_action_names": [
+          "cancel_pending_order",
+          "cancel_pending_order"
+        ],
+        "information_pattern_matches": {},
+        "interaction_pattern_matches": {},
+        "unsupported_request_pattern_matches": {}
+      },
+      "review_status": "machine_labeled_pending_human_review"
+    }
+  ]
+}

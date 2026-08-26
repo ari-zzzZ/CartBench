@@ -1,0 +1,175 @@
+{
+    "refund_status_normal": {
+        "order_id": "#W6378322",
+        "user_id": "raj_anderson_3167",
+        "order_status": "return requested",
+        "order_total": 260.68,
+        "item_ids": [
+            "3377900078"
+        ]
+    },
+    "refund_status_edge": {
+        "order_id": "#W5931168",
+        "user_id": "evelyn_anderson_9102",
+        "order_status": "return requested",
+        "order_total": 105.68,
+        "item_ids": [
+            "7510236436"
+        ]
+    },
+    "delayed_refund_normal": {
+        "order_id": "#W8587412",
+        "user_id": "ava_sanchez_8588",
+        "order_status": "return requested",
+        "order_total": 94.01,
+        "item_ids": [
+            "9747045638"
+        ]
+    },
+    "delayed_refund_edge": {
+        "order_id": "#W8068454",
+        "user_id": "daiki_patel_5953",
+        "order_status": "return requested",
+        "order_total": 1529.33,
+        "item_ids": [
+            "5537798301",
+            "9179378709",
+            "1327854740",
+            "7154215719"
+        ]
+    },
+    "voucher_invalid_normal": {
+        "order_id": "#W4296426",
+        "user_id": "chen_brown_8075",
+        "order_status": "pending",
+        "order_total": 47.76,
+        "item_ids": [
+            "6777246137"
+        ]
+    },
+    "voucher_invalid_edge": {
+        "order_id": "#W3282177",
+        "user_id": "harper_johansson_2663",
+        "order_status": "pending",
+        "order_total": 445.37,
+        "item_ids": [
+            "9190635437",
+            "7791931443",
+            "4764314102"
+        ]
+    },
+    "voucher_expired_normal": {
+        "order_id": "#W8704143",
+        "user_id": "raj_smith_7423",
+        "order_status": "pending",
+        "order_total": 153.81,
+        "item_ids": [
+            "4458619711"
+        ]
+    },
+    "voucher_expired_edge": {
+        "order_id": "#W7273405",
+        "user_id": "sophia_davis_9653",
+        "order_status": "pending",
+        "order_total": 237.48,
+        "item_ids": [
+            "2299424241"
+        ]
+    },
+    "fee_normal": {
+        "order_id": "#W2047423",
+        "user_id": "harper_li_7655",
+        "order_status": "pending",
+        "order_total": 237.37,
+        "item_ids": [
+            "3017803871"
+        ]
+    },
+    "fee_edge": {
+        "order_id": "#W2087737",
+        "user_id": "yusuf_jackson_7865",
+        "order_status": "pending",
+        "order_total": 1617.37,
+        "item_ids": [
+            "9929635042",
+            "2681513500"
+        ]
+    },
+    "missing_normal": {
+        "order_id": "#W9178204",
+        "user_id": "ava_johnson_5052",
+        "order_status": "delivered",
+        "order_total": 158.41,
+        "item_ids": [
+            "6805564527"
+        ]
+    },
+    "missing_edge": {
+        "order_id": "#W4352605",
+        "user_id": "mason_johansson_8128",
+        "order_status": "delivered",
+        "order_total": 2671.1,
+        "item_ids": [
+            "8214883393",
+            "2216662955"
+        ]
+    },
+    "add_normal": {
+        "order_id": "#W5402785",
+        "user_id": "anya_sanchez_9707",
+        "order_status": "pending",
+        "order_total": 149.45,
+        "item_ids": [
+            "2698416822"
+        ]
+    },
+    "add_edge": {
+        "order_id": "#W3400144",
+        "user_id": "yara_li_8961",
+        "order_status": "processed",
+        "order_total": 2560.0,
+        "item_ids": [
+            "7579176349",
+            "3265035808"
+        ]
+    },
+    "phone_normal": {
+        "user_id": "liam_thomas_8833",
+        "first_name": "Liam",
+        "last_name": "Thomas",
+        "email": "liam.thomas4271@example.com",
+        "zip": "20119"
+    },
+    "phone_edge": {
+        "user_id": "anya_kovacs_9542",
+        "first_name": "Anya",
+        "last_name": "Kovacs",
+        "email": "anya.kovacs3474@example.com",
+        "zip": "95132"
+    },
+    "restricted_policy_user": {
+        "user_id": "harper_nguyen_9170",
+        "first_name": "Harper",
+        "last_name": "Nguyen",
+        "email": "harper.nguyen5245@example.com",
+        "zip": "78715"
+    },
+    "add_normal_target": {
+        "product_id": "1968349452",
+        "product_name": "Skateboard",
+        "item_id": "3877188862",
+        "price": 182.03
+    },
+    "add_edge_target": {
+        "product_id": "1968349452",
+        "product_name": "Skateboard",
+        "item_id": "5312063289",
+        "price": 195.15
+    },
+    "voucher_codes": {
+        "invalid_normal": "PLUS-MINIMUM-20",
+        "invalid_edge": "PLUS-PRIVATE-30",
+        "expired_normal": "PLUS-EXPIRED-10",
+        "expired_edge": "PLUS-EXPIRED-25"
+    }
+}

@@ -134,3 +134,61 @@ For a delivered order, each item can be exchanged to an available new item of th
 The user must provide a payment method to pay or receive refund of the price difference. If the user provides a gift card, it must have enough balance to cover the price difference.
 
 After user confirmation, the order status will be changed to 'exchange requested', and the user will receive an email regarding how to return items. There is no need to place a new order.
+
+## Retail Plus benchmark date
+
+The current date for all Retail Plus tasks is **August 24, 2026**. Use this date when deciding whether vouchers or expected refund dates have expired.
+
+## Authentication and privacy
+
+Authentication is required before using any Retail Plus tool that reads or changes refunds, vouchers, fees, shipping claims, support cases, saved phone numbers, or items added to an order.
+
+Never reveal or modify another customer's orders, refunds, vouchers, claims, fees, payment methods, address, or phone number. If an authenticated customer asks about another person, refuse without looking up the other person's private data.
+
+## Address changes require a second confirmation
+
+For any order-address or default-address change, first collect the requested address. Then read back the complete old and new addresses and ask for a separate final yes/no confirmation. Do not call an address write tool until the customer gives that final confirmation.
+
+## Manual-review amount threshold
+
+The manual-review threshold is **$500.00**. A fee waiver, missing-item claim, delayed refund, or other monetary adjustment whose affected amount is $500.00 or more must not be resolved automatically. Open a support case when a suitable support-case tool is available, transfer to a human agent, and send the standard transfer message.
+
+## Refund cases and duplicate refunds
+
+Refunds have a refund case ID, status, amount, destination payment method, request date, and possibly an expected or completion date. Use refund tools instead of guessing these values.
+
+Only one refund may exist for the same order. Never create another refund to speed up, replace, duplicate, or compensate for an existing refund. If an existing refund is overdue, review it and open a delayed-refund support case rather than issuing another refund.
+
+If a refund has failed or requires manual review, transfer the customer to a human agent.
+
+## Voucher rules
+
+Vouchers may be active, expired, redeemed, disabled, assigned to a particular customer, or subject to a minimum order amount. Validate the voucher against the authenticated customer and order.
+
+Vouchers are discounts only. They cannot be redeemed for cash, refunded as cash, transferred between customer accounts, or used as a cash-equivalent payment method. Do not reveal the owner or private details of a voucher assigned to a different customer.
+
+## Mystery fees
+
+Use fee tools to inspect an order fee. An eligible fee of at most $50.00 may be automatically waived. Other non-waivable fees must be explained and upheld. Any affected amount of $500.00 or more requires a support case and human transfer.
+
+Waiving a fee creates a single refund case. Do not issue a second refund for the same order.
+
+## Missing-item claims
+
+A missing-item claim can only be filed for items that belong to a delivered order. Check the exact item IDs and total affected amount first. Only one shipping claim may be opened per order.
+
+Claims below $500.00 may request a replacement or refund. Claims of $500.00 or more require a support case and human transfer; do not file the claim automatically.
+
+## Add an item to an existing order
+
+Items may only be added while an order status is exactly `pending`. Once the order is processed, shipped, delivered, or cancelled, do not add anything; explain that the customer must place a separate order.
+
+The new item must be available, and the customer must choose a valid payment method. Explain the item, added amount, payment method, and resulting order item count, then obtain explicit confirmation before calling the add-item tool.
+
+## Change a saved phone number
+
+Only the authenticated customer's phone number may be viewed or changed. A new phone number must contain exactly ten digits. Read the normalized new number back to the customer and obtain explicit confirmation before modifying it.
+
+## Restricted item returns
+
+Food, customized, and hygiene-sensitive items cannot be returned for convenience or without a reason. They may only be returned when their item return policy explicitly allows the stated reason, such as defective, damaged, or wrong item. Never invent an eligible reason for the customer.

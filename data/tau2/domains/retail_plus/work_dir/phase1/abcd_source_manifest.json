@@ -1,0 +1,32 @@
+{
+    "source_repository": "https://github.com/asappresearch/abcd",
+    "source_commit": "6b8700ce67c6b37b062dd7a60abc76d7ef832a97",
+    "dataset_version": "v1.1",
+    "selection_seed": 20260824,
+    "files": {
+        "abcd_v1.1.json.gz": {
+            "bytes": 36985084,
+            "sha256": "2bdf53ac359543dcdc38d55bc6513e78df120363f8f44870716e909f4606de15"
+        },
+        "guidelines.json": {
+            "bytes": 95863,
+            "sha256": "d1cce8e430ab97ac6e87f6b94688ada70897b6451ceac80d324ddfbd6ce476e3"
+        },
+        "kb.json": {
+            "bytes": 5251,
+            "sha256": "30b7484a66717dc80d78deabc44e93b1b5c88d6885c752572254b181f0cd74d6"
+        },
+        "LICENSE": {
+            "bytes": 1092,
+            "sha256": "1a917ec609c902c077cee3aeaa8485144bed67a424ec047184e59cddd2900e60"
+        },
+        "ontology.json": {
+            "bytes": 5876,
+            "sha256": "c9ef551f700bb8c4abcb8f18eb9fbd5083031c52137ef67b216341ca0f54445f"
+        },
+        "README.md": {
+            "bytes": 7415,
+            "sha256": "2755f8d9ee4ab5a42f6893bb6cb8c559988cba052616fc18d8f4edcb32a009d2"
+        }
+    }
+}
