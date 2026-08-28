@@ -158,13 +158,23 @@
         "product_id": "1968349452",
         "product_name": "Skateboard",
         "item_id": "3877188862",
-        "price": 182.03
+        "price": 182.03,
+        "options": {
+            "deck material": "plastic",
+            "length": "31 inch",
+            "design": "plain"
+        }
     },
     "add_edge_target": {
         "product_id": "1968349452",
         "product_name": "Skateboard",
-        "item_id": "5312063289",
-        "price": 195.15
+        "item_id": "3877188862",
+        "price": 182.03,
+        "options": {
+            "deck material": "plastic",
+            "length": "31 inch",
+            "design": "plain"
+        }
     },
     "voucher_codes": {
         "invalid_normal": "PLUS-MINIMUM-20",

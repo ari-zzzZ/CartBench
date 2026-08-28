@@ -6,6 +6,7 @@ from tau2.evaluator.evaluator_action import ActionEvaluator
 from tau2.evaluator.evaluator_communicate import CommunicateEvaluator
 from tau2.evaluator.evaluator_env import EnvironmentEvaluator
 from tau2.evaluator.evaluator_nl_assertions import NLAssertionsEvaluator
+from tau2.evaluator.evaluator_policy import PolicyEvaluator
 from tau2.registry import registry
 
 
@@ -15,6 +16,7 @@ class EvaluationType(str, Enum):
     ACTION = "action"
     ALL = "all"
     NL_ASSERTIONS = "nl_assertions"  # WIP
+    POLICY = "policy"
     ALL_WITH_NL_ASSERTIONS = "all_with_nl_assertions"  # WIP
 
 
@@ -28,6 +30,21 @@ def evaluate_simulation(
     """
     Evaluate the simulation based on the evaluation type.
     """
+    evaluate_policy = evaluation_type in {
+        EvaluationType.ALL,
+        EvaluationType.ALL_WITH_NL_ASSERTIONS,
+        EvaluationType.POLICY,
+    }
+    policy_reward_info = (
+        PolicyEvaluator.calculate_reward(
+            environment_constructor=registry.get_env_constructor(domain),
+            task=task,
+            full_trajectory=simulation.messages,
+            solo_mode=solo_mode,
+        )
+        if evaluate_policy
+        else None
+    )
     if simulation.termination_reason not in {
         TerminationReason.AGENT_STOP,
         TerminationReason.USER_STOP,
@@ -35,6 +52,16 @@ def evaluate_simulation(
         return RewardInfo(
             reward=0.0,
             reward_basis=None,
+            policy_violations=(
+                policy_reward_info.policy_violations
+                if policy_reward_info is not None
+                else None
+            ),
+            policy_evaluated=(
+                policy_reward_info.policy_evaluated
+                if policy_reward_info is not None
+                else False
+            ),
             info={
                 "note": f"Simulation terminated prematurely. Termination reason: {simulation.termination_reason.value}"
             },
@@ -43,6 +70,16 @@ def evaluate_simulation(
         return RewardInfo(
             reward=1.0,
             reward_basis=None,
+            policy_violations=(
+                policy_reward_info.policy_violations
+                if policy_reward_info is not None
+                else None
+            ),
+            policy_evaluated=(
+                policy_reward_info.policy_evaluated
+                if policy_reward_info is not None
+                else False
+            ),
             info={"note": "No evaluation criteria"},
         )
     if evaluation_type == EvaluationType.ENV:
@@ -67,6 +104,8 @@ def evaluate_simulation(
             task=task,
             full_trajectory=simulation.messages,
         )
+    elif evaluation_type == EvaluationType.POLICY:
+        reward_info = policy_reward_info
     elif evaluation_type in {EvaluationType.ALL, EvaluationType.ALL_WITH_NL_ASSERTIONS}:
         env_reward_info = EnvironmentEvaluator.calculate_reward(
             environment_constructor=registry.get_env_constructor(domain),
@@ -95,6 +134,7 @@ def evaluate_simulation(
         action_bases = {RewardType.ACTION}
         nl_bases = {RewardType.NL_ASSERTION}
         comm_bases = {RewardType.COMMUNICATE}
+        policy_bases = {RewardType.POLICY}
         task_reward_basis = set(task.evaluation_criteria.reward_basis)
 
         reward_breakdown = {}
@@ -118,6 +158,10 @@ def evaluate_simulation(
             if communicate_reward_info.reward_breakdown is not None:
                 reward_breakdown.update(communicate_reward_info.reward_breakdown)
             reward *= communicate_reward_info.reward
+        if task_reward_basis & policy_bases:
+            if policy_reward_info.reward_breakdown is not None:
+                reward_breakdown.update(policy_reward_info.reward_breakdown)
+            reward *= policy_reward_info.reward
 
         reward_info = RewardInfo(
             reward=reward,
@@ -128,6 +172,8 @@ def evaluate_simulation(
             if nl_reward_info is not None
             else None,
             communicate_checks=communicate_reward_info.communicate_checks,
+            policy_violations=policy_reward_info.policy_violations,
+            policy_evaluated=policy_reward_info.policy_evaluated,
             reward_basis=task.evaluation_criteria.reward_basis,
             reward_breakdown=reward_breakdown,
             info={

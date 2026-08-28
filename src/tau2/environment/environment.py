@@ -396,6 +396,17 @@ class Environment:
             The response of the tool call.
         """
         error = False
+        toolkit = self.tools
+        if message.requestor == "user":
+            toolkit = self.user_tools
+        elif (
+            self.solo_mode
+            and self.user_tools is not None
+            and self.user_tools.has_tool(message.name)
+        ):
+            toolkit = self.user_tools
+        if toolkit is not None:
+            toolkit.set_current_tool_call(message)
         try:
             resp = self.make_tool_call(
                 message.name, requestor=message.requestor, **message.arguments
@@ -404,6 +415,9 @@ class Environment:
         except Exception as e:
             resp = f"Error: {e}"
             error = True
+        finally:
+            if toolkit is not None:
+                toolkit.set_current_tool_call(None)
         logger.debug(f"Response: {resp}")
         resp = self.to_json_str(resp)
         return ToolMessage(

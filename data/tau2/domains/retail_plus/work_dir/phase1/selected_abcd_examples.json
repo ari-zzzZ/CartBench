@@ -117,7 +117,11 @@
                             "reference_id": "REF-PLUS-1002",
                             "summary": "Failed refund REF-PLUS-1002 for order #W5931168"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "case_type",
+                            "reference_id"
+                        ]
                     },
                     {
                         "action_id": "rp_abcd_refund_status_edge_3",
@@ -125,7 +129,8 @@
                         "arguments": {
                             "summary": "Failed refund REF-PLUS-1002 for order #W5931168"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": []
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -254,7 +259,11 @@
                             "reference_id": "REF-PLUS-1004",
                             "summary": "Overdue high-value returned-item refund REF-PLUS-1004"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "case_type",
+                            "reference_id"
+                        ]
                     },
                     {
                         "action_id": "rp_abcd_mistimed_billing_edge_3",
@@ -262,7 +271,8 @@
                         "arguments": {
                             "summary": "Overdue high-value returned-item refund REF-PLUS-1004"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": []
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -318,7 +328,11 @@
                             "code": "PLUS-MINIMUM-20",
                             "order_id": "#W4296426"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "code",
+                            "order_id"
+                        ]
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -373,7 +387,11 @@
                             "code": "PLUS-PRIVATE-30",
                             "order_id": "#W3282177"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "code",
+                            "order_id"
+                        ]
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -429,7 +447,11 @@
                             "code": "PLUS-EXPIRED-10",
                             "order_id": "#W8704143"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "code",
+                            "order_id"
+                        ]
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -488,7 +510,11 @@
                             "code": "PLUS-EXPIRED-25",
                             "order_id": "#W7273405"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "code",
+                            "order_id"
+                        ]
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -620,7 +646,11 @@
                             "reference_id": "FEE-PLUS-650",
                             "summary": "High-value fee FEE-PLUS-650 on order #W2087737"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "case_type",
+                            "reference_id"
+                        ]
                     },
                     {
                         "action_id": "rp_abcd_mystery_fee_edge_3",
@@ -628,7 +658,8 @@
                         "arguments": {
                             "summary": "High-value fee FEE-PLUS-650 on order #W2087737"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": []
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -775,7 +806,11 @@
                             "reference_id": "#W4352605",
                             "summary": "High-value missing items for order #W4352605"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": [
+                            "case_type",
+                            "reference_id"
+                        ]
                     },
                     {
                         "action_id": "rp_abcd_shipping_missing_edge_3",
@@ -783,7 +818,8 @@
                         "arguments": {
                             "summary": "High-value missing items for order #W4352605"
                         },
-                        "info": null
+                        "info": null,
+                        "compare_args": []
                     }
                 ],
                 "source_binding_file": "retail_plus_bindings.json"
@@ -816,10 +852,10 @@
                 "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
                 "instructions": {
                     "domain": "retail_plus",
-                    "reason_for_call": "You forgot to add Skateboard to order #W5402785.",
-                    "known_info": "You are Anya Sanchez. Your email is anya.sanchez7626@example.com. You know order ID #W5402785 and product name Skateboard.",
+                    "reason_for_call": "You forgot to add the plastic, 31-inch, plain-design Skateboard priced at $182.03 to order #W5402785.",
+                    "known_info": "You are Anya Sanchez. Your email is anya.sanchez7626@example.com. You know order ID #W5402785 and want the plastic, 31-inch, plain-design Skateboard priced at $182.03.",
                     "unknown_info": "You do not know the internal product/item IDs or whether the order can still be changed.",
-                    "task_instructions": "Ask to add the named product. Do not confirm until the agent states the exact product, price, payment method, and that the order is pending. Then explicitly confirm."
+                    "task_instructions": "Ask to add the exact plastic, 31-inch, plain-design Skateboard priced at $182.03. Do not confirm until the agent states the exact product, options, price, payment method, and that the order is pending. Then explicitly confirm."
                 }
             },
             "removed_or_replaced_abcd_rules": [

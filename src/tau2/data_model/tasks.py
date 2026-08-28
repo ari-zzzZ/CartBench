@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 from typing_extensions import Annotated
 
 from tau2.data_model.message import Message, ToolCall, ToolRequestor
+from tau2.data_model.policy import PolicyAssertion
 
 
 class StructuredUserInstructions(BaseModel):
@@ -228,6 +229,7 @@ class RewardType(str, Enum):
     NL_ASSERTION = "NL_ASSERTION"
     ACTION = "ACTION"
     COMMUNICATE = "COMMUNICATE"
+    POLICY = "POLICY"
 
 
 class EvaluationCriteria(BaseModel):
@@ -263,6 +265,14 @@ class EvaluationCriteria(BaseModel):
         Optional[list[str]],
         Field(
             description="List of assertions for the task, in natural language.",
+            default=None,
+        ),
+    ]
+
+    policy_assertions: Annotated[
+        Optional[list[PolicyAssertion]],
+        Field(
+            description="Structured policy rules applicable to this task.",
             default=None,
         ),
     ]

@@ -5,7 +5,14 @@ from pydantic import BaseModel, Field
 
 from tau2.environment.db import DB
 from tau2.environment.tool import Tool, as_tool
-from tau2.utils import get_dict_hash, update_pydantic_model_with_dict
+from tau2.data_model.message import Message, ToolCall
+from tau2.data_model.policy import (
+    PolicySeverity,
+    PolicyViolationCheck,
+    PolicyViolationError,
+)
+from tau2.data_model.tasks import Task
+from tau2.utils import update_pydantic_model_with_dict
 
 TOOL_ATTR = "__tool__"
 TOOL_TYPE_ATTR = "__tool_type__"
@@ -67,6 +74,8 @@ class ToolKitBase(metaclass=ToolKitType):
 
     def __init__(self, db: Optional[T] = None):
         self.db: Optional[T] = db
+        self._policy_violations: list[PolicyViolationCheck] = []
+        self._current_tool_call: Optional[ToolCall] = None
 
     @property
     def tools(self) -> Dict[str, Callable]:
@@ -132,7 +141,81 @@ class ToolKitBase(metaclass=ToolKitType):
 
     def get_db_hash(self) -> str:
         """Get the hash of the database."""
-        return get_dict_hash(self.db.model_dump())
+        # Delegate to the DB model so domains can exclude non-business fields
+        # (for example, free-text handoff notes) from strict state evaluation.
+        return self.db.get_hash()
+
+    def set_current_tool_call(self, tool_call: Optional[ToolCall]) -> None:
+        """Attach execution context used by structured policy events."""
+        self._current_tool_call = tool_call
+
+    def get_policy_rule_ids(self) -> set[str]:
+        """Return domain policy rules supported by this toolkit."""
+        return set()
+
+    def record_policy_violation(
+        self,
+        rule_id: str,
+        description: str,
+        *,
+        severity: PolicySeverity = PolicySeverity.HIGH,
+        blocked: bool = True,
+        evidence: Optional[dict[str, Any]] = None,
+        tool_name: Optional[str] = None,
+        tool_call_id: Optional[str] = None,
+        turn_idx: Optional[int] = None,
+    ) -> PolicyViolationCheck:
+        """Record a structured policy violation without modifying the DB."""
+        tool_call = self._current_tool_call
+        violation = PolicyViolationCheck(
+            rule_id=rule_id,
+            description=description,
+            severity=severity,
+            blocked=blocked,
+            tool_name=(
+                tool_name
+                if tool_name is not None
+                else tool_call.name
+                if tool_call is not None
+                else None
+            ),
+            tool_call_id=(
+                tool_call_id
+                if tool_call_id is not None
+                else tool_call.id
+                if tool_call is not None
+                else None
+            ),
+            turn_idx=turn_idx,
+            evidence=evidence or {},
+        )
+        self._policy_violations.append(violation)
+        return violation
+
+    def raise_policy_violation(
+        self,
+        rule_id: str,
+        description: str,
+        *,
+        severity: PolicySeverity = PolicySeverity.HIGH,
+        evidence: Optional[dict[str, Any]] = None,
+    ) -> None:
+        """Record and block a policy-violating operation."""
+        self.record_policy_violation(
+            rule_id,
+            description,
+            severity=severity,
+            blocked=True,
+            evidence=evidence,
+        )
+        raise PolicyViolationError(description)
+
+    def finalize_policy_evaluation(self, trajectory: list[Message], task: Task) -> None:
+        """Allow a domain to add end-of-conversation obligation violations."""
+
+    def get_policy_violations(self) -> list[PolicyViolationCheck]:
+        """Return a copy of structured policy events recorded so far."""
+        return list(self._policy_violations)
 
 
 class ToolSignature(BaseModel):

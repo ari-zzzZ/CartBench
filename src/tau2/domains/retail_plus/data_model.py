@@ -5,6 +5,7 @@ from typing import Dict, List, Literal, Optional
 from pydantic import BaseModel, Field
 
 from tau2.domains.retail.data_model import RetailDB
+from tau2.utils import get_dict_hash
 
 
 RefundStatus = Literal["requested", "processing", "completed", "failed"]
@@ -95,3 +96,10 @@ class RetailPlusDB(RetailDB):
     shipping_claims: Dict[str, ShippingClaim] = Field(default_factory=dict)
     support_cases: Dict[str, SupportCase] = Field(default_factory=dict)
     item_return_policies: Dict[str, ItemReturnPolicy] = Field(default_factory=dict)
+
+    def get_hash(self) -> str:
+        """Hash business state while ignoring free-text human handoff prose."""
+        hash_data = self.model_dump()
+        for support_case in hash_data["support_cases"].values():
+            support_case.pop("summary", None)
+        return get_dict_hash(hash_data)

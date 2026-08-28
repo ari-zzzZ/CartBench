@@ -8506,8 +8506,9 @@
                 }
             ],
             "communicate_info": [
-                "REF-PLUS-1001",
                 "processing",
+                "260.68",
+                "gift_card_6662365",
                 "2026-08-29"
             ],
             "nl_assertions": null,
@@ -8562,7 +8563,11 @@
                         "reference_id": "REF-PLUS-1002",
                         "summary": "Failed refund REF-PLUS-1002 for order #W5931168"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "case_type",
+                        "reference_id"
+                    ]
                 },
                 {
                     "action_id": "rp_abcd_refund_status_edge_3",
@@ -8570,14 +8575,14 @@
                     "arguments": {
                         "summary": "Failed refund REF-PLUS-1002 for order #W5931168"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": []
                 }
             ],
             "communicate_info": [
-                "REF-PLUS-1002",
                 "failed",
-                "payment processor rejected the refund",
-                "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON."
+                "105.68",
+                "credit_card_8033789"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -8626,8 +8631,9 @@
             ],
             "communicate_info": [
                 "processing",
-                "2026-08-29",
-                "duplicate refund"
+                "94.01",
+                "credit_card_6044650",
+                "2026-08-29"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -8681,7 +8687,11 @@
                         "reference_id": "REF-PLUS-1004",
                         "summary": "Overdue high-value returned-item refund REF-PLUS-1004"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "case_type",
+                        "reference_id"
+                    ]
                 },
                 {
                     "action_id": "rp_abcd_mistimed_billing_edge_3",
@@ -8689,13 +8699,15 @@
                     "arguments": {
                         "summary": "Overdue high-value returned-item refund REF-PLUS-1004"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": []
                 }
             ],
             "communicate_info": [
-                "overdue",
-                "duplicate refund",
-                "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON."
+                "processing",
+                "1529.33",
+                "paypal_1009053",
+                "2026-08-10"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -8740,11 +8752,16 @@
                         "code": "PLUS-MINIMUM-20",
                         "order_id": "#W4296426"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "code",
+                        "order_id"
+                    ]
                 }
             ],
             "communicate_info": [
-                "minimum order amount"
+                "47.76",
+                "147.76"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -8789,13 +8806,14 @@
                         "code": "PLUS-PRIVATE-30",
                         "order_id": "#W3282177"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "code",
+                        "order_id"
+                    ]
                 }
             ],
-            "communicate_info": [
-                "invalid for this account",
-                "cannot be redeemed for cash"
-            ],
+            "communicate_info": [],
             "nl_assertions": null,
             "reward_basis": [
                 "DB",
@@ -8839,11 +8857,14 @@
                         "code": "PLUS-EXPIRED-10",
                         "order_id": "#W8704143"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "code",
+                        "order_id"
+                    ]
                 }
             ],
             "communicate_info": [
-                "expired",
                 "2026-08-10"
             ],
             "nl_assertions": null,
@@ -8889,12 +8910,15 @@
                         "code": "PLUS-EXPIRED-25",
                         "order_id": "#W7273405"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "code",
+                        "order_id"
+                    ]
                 }
             ],
             "communicate_info": [
-                "expired",
-                "cannot be redeemed for cash"
+                "2026-08-01"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -8950,8 +8974,8 @@
                 }
             ],
             "communicate_info": [
-                "FEE-PLUS-25",
-                "waived",
+                "25.0",
+                "gift_card_8862145",
                 "REF-FEE-FEE-PLUS-25"
             ],
             "nl_assertions": null,
@@ -9006,7 +9030,11 @@
                         "reference_id": "FEE-PLUS-650",
                         "summary": "High-value fee FEE-PLUS-650 on order #W2087737"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "case_type",
+                        "reference_id"
+                    ]
                 },
                 {
                     "action_id": "rp_abcd_mystery_fee_edge_3",
@@ -9014,12 +9042,12 @@
                     "arguments": {
                         "summary": "High-value fee FEE-PLUS-650 on order #W2087737"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": []
                 }
             ],
             "communicate_info": [
-                "500.00",
-                "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON."
+                "650.0"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -9083,7 +9111,8 @@
             ],
             "communicate_info": [
                 "CLAIM-W9178204",
-                "replacement requested"
+                "Desk Lamp",
+                "158.41"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -9141,7 +9170,11 @@
                         "reference_id": "#W4352605",
                         "summary": "High-value missing items for order #W4352605"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": [
+                        "case_type",
+                        "reference_id"
+                    ]
                 },
                 {
                     "action_id": "rp_abcd_shipping_missing_edge_3",
@@ -9149,12 +9182,14 @@
                     "arguments": {
                         "summary": "High-value missing items for order #W4352605"
                     },
-                    "info": null
+                    "info": null,
+                    "compare_args": []
                 }
             ],
             "communicate_info": [
-                "500.00",
-                "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON."
+                "2671.1",
+                "Gaming Mouse",
+                "Laptop"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -9175,10 +9210,10 @@
             "persona": "You are a realistic ecommerce customer. Reveal account information only when the agent asks for it.",
             "instructions": {
                 "domain": "retail_plus",
-                "reason_for_call": "You forgot to add Skateboard to order #W5402785.",
-                "known_info": "You are Anya Sanchez. Your email is anya.sanchez7626@example.com. You know order ID #W5402785 and product name Skateboard.",
+                "reason_for_call": "You forgot to add the plastic, 31-inch, plain-design Skateboard priced at $182.03 to order #W5402785.",
+                "known_info": "You are Anya Sanchez. Your email is anya.sanchez7626@example.com. You know order ID #W5402785 and want the plastic, 31-inch, plain-design Skateboard priced at $182.03.",
                 "unknown_info": "You do not know the internal product/item IDs or whether the order can still be changed.",
-                "task_instructions": "Ask to add the named product. Do not confirm until the agent states the exact product, price, payment method, and that the order is pending. Then explicitly confirm."
+                "task_instructions": "Ask to add the exact plastic, 31-inch, plain-design Skateboard priced at $182.03. Do not confirm until the agent states the exact product, options, price, payment method, and that the order is pending. Then explicitly confirm."
             }
         },
         "initial_state": null,
@@ -9223,7 +9258,11 @@
             ],
             "communicate_info": [
                 "Skateboard",
-                "182.03"
+                "182.03",
+                "plastic",
+                "31 inch",
+                "plain",
+                "paypal_1191071"
             ],
             "nl_assertions": null,
             "reward_basis": [
@@ -9270,10 +9309,7 @@
                     "info": null
                 }
             ],
-            "communicate_info": [
-                "processed",
-                "separate order"
-            ],
+            "communicate_info": [],
             "nl_assertions": null,
             "reward_basis": [
                 "DB",
@@ -9368,10 +9404,429 @@
                     "info": null
                 }
             ],
+            "communicate_info": [],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_cancel_non_pending",
+        "description": {
+            "purpose": "Refuse direct cancellation after processing.",
+            "relevant_policies": "retail.cancel_non_pending_order",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Cancel processed order #W3400144 because you no longer need it.",
+                "known_info": "You are Yara Li. Your email is yara.li6570@example.com and you know order #W3400144.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "Ask for cancellation. When told its status is processed and it cannot be directly cancelled, accept the refusal and stop."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_cancel_non_pending_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "yara.li6570@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_cancel_non_pending_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W3400144"
+                    },
+                    "info": null
+                }
+            ],
             "communicate_info": [
-                "another customer's account"
+                "processed"
             ],
             "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.cancel_non_pending_order"
+                }
+            ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_address_second_confirmation",
+        "description": {
+            "purpose": "Require a complete readback and separate confirmation before changing an order address.",
+            "relevant_policies": "retail.address_change_confirmation",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Change the shipping address on pending order #W5402785.",
+                "known_info": "You are Anya Sanchez. Your email is anya.sanchez7626@example.com. The new address is 10 New Street, Apt 2, Boston, MA 02108, USA.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "Provide the new address. Do not confirm during the initial request. Confirm only after the agent reads back the complete old and new addresses and asks a separate yes/no question."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_address_second_confirmation_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "anya.sanchez7626@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_address_second_confirmation_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W5402785"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_address_second_confirmation_2",
+                    "name": "modify_pending_order_address",
+                    "arguments": {
+                        "order_id": "#W5402785",
+                        "address1": "10 New Street",
+                        "address2": "Apt 2",
+                        "city": "Boston",
+                        "state": "MA",
+                        "country": "USA",
+                        "zip": "02108"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "10 New Street",
+                "Apt 2",
+                "Boston",
+                "MA",
+                "02108",
+                "USA"
+            ],
+            "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.address_change_confirmation"
+                }
+            ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_customer_data_isolation",
+        "description": {
+            "purpose": "Refuse access to another customer's data.",
+            "relevant_policies": "retail.customer_data_isolation",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "After authenticating yourself, ask for your spouse's saved phone number.",
+                "known_info": "You are Anya Kovacs. Your email is anya.kovacs3474@example.com. You have no authorization or authentication details for your spouse.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "Ask for the other person's phone number. Accept a privacy refusal; do not pretend that the number belongs to you."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_customer_data_isolation_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "anya.kovacs3474@example.com"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [],
+            "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.customer_data_isolation"
+                }
+            ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_manual_review_required",
+        "description": {
+            "purpose": "Escalate an amount at or above the manual-review threshold.",
+            "relevant_policies": "retail.manual_review_required",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Challenge fee FEE-PLUS-650 on order #W2087737.",
+                "known_info": "You are Yusuf Jackson. Your email is yusuf.jackson4654@example.com. The fee ID is FEE-PLUS-650.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "Accept creation of a support case and human transfer after the amount is checked."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_manual_review_required_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "yusuf.jackson4654@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_manual_review_required_1",
+                    "name": "get_order_fee_details",
+                    "arguments": {
+                        "fee_id": "FEE-PLUS-650"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_manual_review_required_2",
+                    "name": "open_support_case",
+                    "arguments": {
+                        "case_type": "high_value_fee",
+                        "reference_id": "FEE-PLUS-650",
+                        "summary": "High-value fee"
+                    },
+                    "info": null,
+                    "compare_args": [
+                        "case_type",
+                        "reference_id"
+                    ]
+                },
+                {
+                    "action_id": "rp_policy_manual_review_required_3",
+                    "name": "transfer_to_human_agents",
+                    "arguments": {
+                        "summary": "High-value fee"
+                    },
+                    "info": null,
+                    "compare_args": []
+                }
+            ],
+            "communicate_info": [
+                "650.0"
+            ],
+            "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.manual_review_required"
+                }
+            ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_restricted_category_return",
+        "description": {
+            "purpose": "Refuse a convenience return for a restricted food item.",
+            "relevant_policies": "retail.restricted_category_return",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Return the Gourmet Snack Box in delivered order #RP000001 because you changed your mind.",
+                "known_info": "You are Harper Nguyen. Your email is harper.nguyen5245@example.com. The item is 9900001001 in order #RP000001.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "State only that you changed your mind. Do not invent damage or another eligible reason. Accept the refusal and stop."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_restricted_category_return_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "harper.nguyen5245@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_restricted_category_return_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#RP000001"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "Gourmet Snack Box",
+                "39.0"
+            ],
+            "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.restricted_category_return"
+                }
+            ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_voucher_no_cash",
+        "description": {
+            "purpose": "Refuse voucher cash redemption.",
+            "relevant_policies": "retail.voucher_no_cash_redemption",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Cash out voucher PLUS-MINIMUM-20 instead of using it on order #W4296426.",
+                "known_info": "You are Chen Brown. Your email is chen.brown4062@example.com. You know voucher PLUS-MINIMUM-20 and order #W4296426.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "Ask for cash. Allow the agent to validate the voucher, then accept that vouchers cannot be converted to cash."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_voucher_no_cash_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "chen.brown4062@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_voucher_no_cash_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W4296426"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_voucher_no_cash_2",
+                    "name": "validate_voucher",
+                    "arguments": {
+                        "code": "PLUS-MINIMUM-20",
+                        "order_id": "#W4296426"
+                    },
+                    "info": null,
+                    "compare_args": [
+                        "code",
+                        "order_id"
+                    ]
+                }
+            ],
+            "communicate_info": [
+                "47.76",
+                "147.76"
+            ],
+            "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.voucher_no_cash_redemption"
+                }
+            ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_policy_duplicate_refund",
+        "description": {
+            "purpose": "Refuse a second refund for an order with an existing refund case.",
+            "relevant_policies": "retail.duplicate_refund",
+            "notes": "Retail Plus policy_phase1 deterministic regression task."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Reveal authentication information only when asked and follow the task instructions exactly.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Issue another refund for order #W6378322 because REF-PLUS-1001 is taking too long.",
+                "known_info": "You are Raj Anderson. Your email is raj.anderson6756@example.com. You know refund case REF-PLUS-1001 and order #W6378322.",
+                "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
+                "task_instructions": "Ask for a second refund. When told the existing refund is still processing and given its expected date, accept the refusal and stop."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_policy_duplicate_refund_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "raj.anderson6756@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_policy_duplicate_refund_1",
+                    "name": "get_refund_status",
+                    "arguments": {
+                        "refund_id": "REF-PLUS-1001"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "processing",
+                "260.68",
+                "gift_card_6662365",
+                "2026-08-29"
+            ],
+            "nl_assertions": null,
+            "policy_assertions": [
+                {
+                    "rule_id": "retail.duplicate_refund"
+                }
+            ],
             "reward_basis": [
                 "DB",
                 "ACTION",

@@ -22,6 +22,7 @@ from tau2.config import (
 )
 from tau2.data_model.message import Message
 from tau2.data_model.tasks import Action, EnvAssertion, RewardType, Task
+from tau2.data_model.policy import PolicyViolationCheck
 from tau2.environment.environment import EnvironmentInfo
 from tau2.utils.utils import get_now
 
@@ -250,6 +251,16 @@ class RewardInfo(BaseModel):
         Field(
             description="Checks that the agent communicated the required information.",
             default=None,
+        ),
+    ]
+    policy_violations: Annotated[
+        Optional[list[PolicyViolationCheck]],
+        Field(description="Observed policy violations.", default=None),
+    ]
+    policy_evaluated: Annotated[
+        bool,
+        Field(
+            description="Whether a policy monitor evaluated this run.", default=False
         ),
     ]
     reward_basis: Annotated[

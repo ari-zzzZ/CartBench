@@ -10,7 +10,8 @@ work_dir/
 ├─ scripts/                  # 确定性分析与生成脚本
 │  ├─ analyze_retail_intents.py
 │  ├─ select_abcd_examples.py
-│  └─ build_phase1.py
+│  ├─ build_phase1.py
+│  └─ build_policy_phase1.py
 ├─ sources/                  # 外部原始来源，不做业务改写
 │  └─ abcd_v1_1/
 │     ├─ abcd_v1.1.json.gz
@@ -37,6 +38,7 @@ work_dir/
 - `analyze_retail_intents.py`：对原始 114 个 Retail Task 进行确定性意图标注，输出 `analysis/intent_labels.json`。
 - `select_abcd_examples.py`：使用固定 seed `20260824`，从 ABCD 官方 test split 为 8 个意图各抽取候选对话。
 - `build_phase1.py`：以原始 Retail 数据和候选对话为输入，确定性重建 Retail Plus 的 DB、130 个 Task、splits、实体绑定和来源审计。
+- `build_policy_phase1.py`：在上述产物上确定性加入 7 个策略回归 Task，并生成 `policy_phase1` 和 `all_plus` split；总任务数变为 137。
 
 这些脚本是可复现性的核心，应该保留。
 
@@ -88,6 +90,7 @@ work_dir/
 .\.venv\Scripts\python.exe data\tau2\domains\retail_plus\work_dir\scripts\analyze_retail_intents.py
 .\.venv\Scripts\python.exe data\tau2\domains\retail_plus\work_dir\scripts\select_abcd_examples.py
 .\.venv\Scripts\python.exe data\tau2\domains\retail_plus\work_dir\scripts\build_phase1.py
+.\.venv\Scripts\python.exe data\tau2\domains\retail_plus\work_dir\scripts\build_policy_phase1.py
 ```
 
 前两个脚本分别更新意图标签和 ABCD 候选池；最后一个脚本会从原始 Retail 基线重新生成 Retail Plus 数据，因此执行前应确保需要保留的手工修改已经进入生成脚本。
@@ -114,7 +117,7 @@ work_dir/
   --save-to qwen3_7_flash_retail_plus_abcd_phase1
 ```
 
-运行全部 130 个任务时，将 split 改为 `base_plus`。
+`base_plus` 包含原始 114 个任务和 16 个 ABCD 扩展任务，共 130 个；只回归 7 条策略规则时使用 `policy_phase1`；运行全部 137 个任务时使用 `all_plus`。详细设计与命令见 `POLICY_EVALUATION.md`。
 
 ## 验证
 
@@ -122,5 +125,3 @@ work_dir/
 .\.venv\Scripts\python.exe -m pytest tests\test_domains\test_retail_plus -q
 .\.venv\Scripts\python.exe -m pytest tests\test_domains\test_retail -q
 ```
-
-唯一删除的文件是 `__pycache__/build_phase1.cpython-310.pyc`。它是 Python 自动生成的字节码缓存，不属于项目数据，运行脚本时会自动重新生成。

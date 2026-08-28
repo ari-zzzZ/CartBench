@@ -153,6 +153,17 @@ class ConsoleDisplay:
                 eval_parts.append(
                     f"[white]Information to Communicate:[/]\n{json.dumps(task.evaluation_criteria.communicate_info, indent=2)}"
                 )
+            if task.evaluation_criteria.policy_assertions:
+                eval_parts.append(
+                    "[white]Applicable Policy Rules:[/]\n"
+                    + json.dumps(
+                        [
+                            assertion.model_dump(mode="json")
+                            for assertion in task.evaluation_criteria.policy_assertions
+                        ],
+                        indent=2,
+                    )
+                )
             if eval_parts:
                 content_parts.append(
                     "[bold cyan]Evaluation Criteria:[/]\n" + "\n".join(eval_parts)
@@ -245,6 +256,20 @@ class ConsoleDisplay:
                 for i, check in enumerate(simulation.reward_info.communicate_checks):
                     sim_info.append(
                         f"- {i}: {check.info} {'✅' if check.met else '❌'}\n"
+                    )
+
+            if simulation.reward_info.policy_evaluated:
+                violations = simulation.reward_info.policy_violations or []
+                sim_info.append("\nPolicy Check:\n", style="bold magenta")
+                sim_info.append(
+                    f"- {'PASS' if not violations else 'FAIL'}; "
+                    f"violation events: {len(violations)}\n"
+                )
+                for violation in violations:
+                    disposition = "blocked" if violation.blocked else "observed"
+                    sim_info.append(
+                        f"- {violation.rule_id} [{violation.severity.value}, "
+                        f"{disposition}]: {violation.description}\n"
                     )
 
             # Add NL assertions if present
@@ -346,9 +371,69 @@ class ConsoleDisplay:
             content.append(f"\nk={k}: ", style="bold white")
             content.append(f"{pass_hat_k:.3f}")
 
+        if metrics.simulation_coverage is not None:
+            coverage = metrics.simulation_coverage
+            content.append("\n\nSimulation Coverage: ", style="bold cyan")
+            content.append(
+                f"{coverage.rate:.4f} ({coverage.passed}/{coverage.total})"
+            )
+
+        # Add aggregate evaluator dimensions and action recall. ACTION task pass
+        # rate is the binary reward component; recall is matched golden calls.
+        if metrics.evaluation_metrics:
+            content.append("\n\nEvaluation Breakdown:", style="bold cyan")
+            metric_labels = {
+                "db_pass_rate": "DB Pass Rate",
+                "action_task_pass_rate": "ACTION Task Pass Rate",
+                "golden_tool_call_recall": "Golden Tool Call Recall",
+                "communicate_pass_rate": "COMMUNICATE Pass Rate",
+            }
+            for metric_name in (
+                "db_pass_rate",
+                "action_task_pass_rate",
+                "golden_tool_call_recall",
+                "communicate_pass_rate",
+            ):
+                metric = metrics.evaluation_metrics.get(metric_name)
+                if metric is None:
+                    continue
+                content.append(f"\n{metric_labels[metric_name]}: ", style="bold white")
+                content.append(f"{metric.rate:.4f} ({metric.passed}/{metric.total})")
+
+        if metrics.policy_metrics is not None:
+            policy = metrics.policy_metrics
+            content.append("\n\nPolicy Evaluation:", style="bold cyan")
+            content.append("\nPolicy Violation Rate: ", style="bold white")
+            content.append(
+                f"{policy.violation_rate:.4f} "
+                f"({policy.violating_simulations}/{policy.evaluated_simulations})"
+            )
+            content.append("\nPolicy Compliance Rate: ", style="bold white")
+            content.append(
+                f"{policy.compliance_rate:.4f} "
+                f"({policy.compliant_simulations}/{policy.evaluated_simulations})"
+            )
+            content.append("\nPolicy Violation Events: ", style="bold white")
+            content.append(str(policy.total_violation_events))
+            for rule_id, count in policy.violations_by_rule.items():
+                content.append(f"\n  - {rule_id}: {count}")
+
         # Add average agent cost section
         content.append("\n\n💰 Average Cost per Conversation: ", style="bold cyan")
-        content.append(f"${metrics.avg_agent_cost:.4f}\n\n")
+        content.append(f"${metrics.avg_agent_cost:.4f}")
+        if metrics.cost_metrics is not None:
+            cost = metrics.cost_metrics
+            content.append("\nTotal Agent + User Cost: ", style="bold cyan")
+            content.append(f"${cost.total_cost:.4f}")
+            content.append("\nCost per Successful Resolution: ", style="bold cyan")
+            if cost.cost_per_successful_resolution is None:
+                content.append("N/A (0 successful resolutions)")
+            else:
+                content.append(
+                    f"${cost.cost_per_successful_resolution:.4f} "
+                    f"({cost.successful_resolutions} successful)"
+                )
+        content.append("\n\n")
 
         # Create and display panel
         metrics_panel = Panel(
@@ -430,6 +515,20 @@ class MarkdownDisplay:
                 for i, check in enumerate(sim.reward_info.communicate_checks):
                     output.append(
                         f"- {i}: {check.info} {'✅' if check.met else '❌'} {check.justification}"
+                    )
+
+            if sim.reward_info.policy_evaluated:
+                violations = sim.reward_info.policy_violations or []
+                output.append("\n**Policy Check**")
+                output.append(
+                    f"- {'PASS' if not violations else 'FAIL'}; "
+                    f"violation events: {len(violations)}"
+                )
+                for violation in violations:
+                    disposition = "blocked" if violation.blocked else "observed"
+                    output.append(
+                        f"- {violation.rule_id} [{violation.severity.value}, "
+                        f"{disposition}]: {violation.description}"
                     )
 
             # Add NL assertions if present
