@@ -243,7 +243,22 @@ class RetailPlusTools(RetailTools):
         order_id: str,
         payment_method_id: str,
     ) -> Order:
-        """Modify payment only on an authenticated customer's pending order."""
+        """
+        Modify the payment method of a pending order. The agent needs to explain the modification detail and ask for explicit user confirmation (yes/no) to proceed.
+        
+                Args:
+                    order_id: The order id, such as '#W0000000'. Be careful there is a '#' symbol at the beginning of the order id.
+                    payment_method_id: The payment method id to pay or receive refund for the item price difference, such as 'gift_card_0000000' or 'credit_card_0000000'. These can be looked up from the user or order details.
+        
+                Returns:
+                    Order: The order details after the modification.
+        
+                Raises:
+                    ValueError: If the order is not pending.
+                    ValueError: If the payment method does not exist.
+                    ValueError: If the payment history has more than one payment.
+                    ValueError: If the new payment method is the same as the current one.
+        """
         self._require_owned_order(order_id)
         return super().modify_pending_order_payment(
             order_id=order_id,
