@@ -84037,6 +84037,36 @@
             "status": "charged",
             "waivable": false,
             "refund_id": null
+        },
+        "FEE-MIX-TRANSIT-12": {
+            "fee_id": "FEE-MIX-TRANSIT-12",
+            "order_id": "#W1023987",
+            "fee_type": "incorrect damage inspection fee",
+            "amount": 12.0,
+            "explanation": "The warehouse incorrectly charged an inspection fee after the customer reported transit-damaged packaging.",
+            "status": "charged",
+            "waivable": true,
+            "refund_id": null
+        },
+        "FEE-MIX-QUALITY-18": {
+            "fee_id": "FEE-MIX-QUALITY-18",
+            "order_id": "#W1341845",
+            "fee_type": "incorrect quality review fee",
+            "amount": 18.0,
+            "explanation": "A quality-review fee was incorrectly billed for documenting a keyboard key defect.",
+            "status": "charged",
+            "waivable": true,
+            "refund_id": null
+        },
+        "FEE-MIX-DESCRIPTION-9": {
+            "fee_id": "FEE-MIX-DESCRIPTION-9",
+            "order_id": "#W1473345",
+            "fee_type": "incorrect listing clarification fee",
+            "amount": 9.0,
+            "explanation": "The merchant incorrectly charged the customer for clarification of an inaccurate product listing.",
+            "status": "charged",
+            "waivable": true,
+            "refund_id": null
         }
     },
     "shipping_claims": {},

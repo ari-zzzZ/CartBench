@@ -13,6 +13,20 @@ VoucherStatus = Literal["active", "expired", "redeemed", "disabled"]
 FeeStatus = Literal["charged", "waived", "upheld"]
 ClaimStatus = Literal["open", "replacement requested", "resolved", "rejected"]
 SupportCaseStatus = Literal["open", "closed"]
+SupportCaseType = Literal[
+    "delayed_refund", "high_value_fee", "high_value_missing_item", "other"
+]
+
+
+class CatalogItemDetails(BaseModel):
+    """Catalog context for a specific purchasable product variant."""
+
+    product_id: str
+    product_name: str
+    item_id: str
+    options: Dict[str, str]
+    available: bool
+    price: float
 
 
 class RefundCase(BaseModel):
@@ -67,9 +81,7 @@ class ShippingClaim(BaseModel):
 
 class SupportCase(BaseModel):
     case_id: str
-    case_type: Literal[
-        "delayed_refund", "high_value_fee", "high_value_missing_item", "other"
-    ]
+    case_type: SupportCaseType
     reference_id: str
     user_id: str
     summary: str

@@ -567,19 +567,20 @@ def build_tasks(db: dict, b: dict, out: dict) -> list[dict]:
         user = user_for(key)
         case = db["refund_cases"][refund_id]
         task_id = f"rp_abcd_mistimed_billing_{variant}"
-        actions = [
-            auth_action(user),
-            ("review_returned_item_billing", {"refund_id": refund_id}),
-        ]
+        actions = [auth_action(user)]
         if variant == "normal":
+            actions.append(("get_refund_status", {"refund_id": refund_id}))
             communicate = [
                 case["status"],
                 str(case["amount"]),
                 case["payment_method_id"],
                 case["expected_by"],
             ]
-            instructions = "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created. Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
+            instructions = "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created and ask: Which payment method is the refund going back to? Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
         else:
+            actions.append(
+                ("review_returned_item_billing", {"refund_id": refund_id})
+            )
             summary = f"Overdue high-value returned-item refund {refund_id}"
             actions += [
                 (
@@ -599,7 +600,7 @@ def build_tasks(db: dict, b: dict, out: dict) -> list[dict]:
                 case["payment_method_id"],
                 case["expected_by"],
             ]
-            instructions = "Explain that the return credit is overdue and insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
+            instructions = "Explain that the return credit is overdue, ask: Which payment method is the refund going back to? Then insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
         tasks.append(
             make_task(
                 task_id,
@@ -709,7 +710,7 @@ def build_tasks(db: dict, b: dict, out: dict) -> list[dict]:
         actions = [auth_action(user), ("get_order_fee_details", {"fee_id": fee_id})]
         if variant == "normal":
             actions += [("waive_order_fee", {"fee_id": fee_id})]
-            communicate = ["25.0", "gift_card_8862145", f"REF-FEE-{fee_id}"]
+            communicate = ["25.0", "8862145", f"REF-FEE-{fee_id}"]
             instructions = "Ask what the fee is and request removal. Confirm after the agent explains the $25 waiver and refund destination."
         else:
             summary = f"High-value fee {fee_id} on order {order['order_id']}"

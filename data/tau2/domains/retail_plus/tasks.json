@@ -8606,7 +8606,7 @@
                 "reason_for_call": "You returned all items from order #W8587412, but refund REF-PLUS-1003 is not visible.",
                 "known_info": "You are Ava Sanchez. Your email is ava.sanchez1133@example.com. You know order ID #W8587412 and refund ID REF-PLUS-1003.",
                 "unknown_info": "You do not know whether the case is overdue or requires manual review.",
-                "task_instructions": "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created. Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
+                "task_instructions": "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created and ask: Which payment method is the refund going back to? Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
             }
         },
         "initial_state": null,
@@ -8622,7 +8622,7 @@
                 },
                 {
                     "action_id": "rp_abcd_mistimed_billing_normal_1",
-                    "name": "review_returned_item_billing",
+                    "name": "get_refund_status",
                     "arguments": {
                         "refund_id": "REF-PLUS-1003"
                     },
@@ -8657,7 +8657,7 @@
                 "reason_for_call": "You returned all items from order #W8068454, but refund REF-PLUS-1004 is not visible.",
                 "known_info": "You are Daiki Patel. Your email is daiki.patel3402@example.com. You know order ID #W8068454 and refund ID REF-PLUS-1004.",
                 "unknown_info": "You do not know whether the case is overdue or requires manual review.",
-                "task_instructions": "Explain that the return credit is overdue and insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
+                "task_instructions": "Explain that the return credit is overdue, ask: Which payment method is the refund going back to? Then insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
             }
         },
         "initial_state": null,
@@ -8975,7 +8975,7 @@
             ],
             "communicate_info": [
                 "25.0",
-                "gift_card_8862145",
+                "8862145",
                 "REF-FEE-FEE-PLUS-25"
             ],
             "nl_assertions": null,
@@ -9792,7 +9792,7 @@
                 "reason_for_call": "Issue another refund for order #W6378322 because REF-PLUS-1001 is taking too long.",
                 "known_info": "You are Raj Anderson. Your email is raj.anderson6756@example.com. You know refund case REF-PLUS-1001 and order #W6378322.",
                 "unknown_info": "You do not know internal IDs or private account data unless explicitly stated.",
-                "task_instructions": "Ask for a second refund. When told the existing refund is still processing and given its expected date, accept the refusal and stop."
+                "task_instructions": "Ask for a second refund and ask: Which payment method is the refund going back to? When told the existing refund is still processing, its payment destination, and its expected date, accept the refusal and stop."
             }
         },
         "initial_state": null,
@@ -9827,6 +9827,1243 @@
                     "rule_id": "retail.duplicate_refund"
                 }
             ],
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_missing_component_replacement",
+        "description": {
+            "purpose": "Resolve a concrete delivered-order short-shipment claim.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000003_a; intent=shipping_issue.missing; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Your delivered order #W1166549 included the E-Reader and Electric Kettle, but the Desk Lamp was missing from the parcel. You want the missing lamp sent to you.",
+                "known_info": "You are Daiki Hernandez. Your email is daiki.hernandez2148@example.com. You know order #W1166549. The missing catalog item is 1569765161.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask for a replacement for only the missing item. If the agent verifies the item and proposes that resolution, agree and stop after the claim is filed. Do not report damage or invent any additional missing products."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_missing_component_replacement_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "daiki.hernandez2148@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_component_replacement_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1166549"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_component_replacement_2",
+                    "name": "assess_missing_item_claim",
+                    "arguments": {
+                        "order_id": "#W1166549",
+                        "item_ids": [
+                            "1569765161"
+                        ]
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_component_replacement_3",
+                    "name": "file_missing_item_claim",
+                    "arguments": {
+                        "order_id": "#W1166549",
+                        "item_ids": [
+                            "1569765161"
+                        ],
+                        "requested_resolution": "replacement"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "CLAIM-W1166549",
+                "Desk Lamp"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_missing_quantity_refund",
+        "description": {
+            "purpose": "Resolve a concrete delivered-order short-shipment claim.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000008_a; intent=shipping_issue.missing; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Order #W1126085 is marked delivered, but the parcel contained only packing paper and the Skateboard was missing. You no longer want a replacement and want a refund for the missing item.",
+                "known_info": "You are Olivia Nguyen. Your email is olivia.nguyen4794@example.com. You know order #W1126085. The missing catalog item is 6843647669.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask for a refund for only the missing item. If the agent verifies the item and proposes that resolution, agree and stop after the claim is filed. Do not report damage or invent any additional missing products."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_missing_quantity_refund_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "olivia.nguyen4794@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_quantity_refund_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1126085"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_quantity_refund_2",
+                    "name": "assess_missing_item_claim",
+                    "arguments": {
+                        "order_id": "#W1126085",
+                        "item_ids": [
+                            "6843647669"
+                        ]
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_quantity_refund_3",
+                    "name": "file_missing_item_claim",
+                    "arguments": {
+                        "order_id": "#W1126085",
+                        "item_ids": [
+                            "6843647669"
+                        ],
+                        "requested_resolution": "refund"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "CLAIM-W1126085",
+                "Skateboard",
+                "180.1"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_missing_item_replacement",
+        "description": {
+            "purpose": "Resolve a concrete delivered-order short-shipment claim.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000036_a; intent=shipping_issue.missing; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Order #W1355800 is marked delivered, but the Cycling Helmet was not inside the shipping box. You want the missing helmet replaced.",
+                "known_info": "You are Evelyn Lopez. Your email is evelyn.lopez6910@example.com. You know order #W1355800. The missing catalog item is 5537798301.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask for a replacement for only the missing item. If the agent verifies the item and proposes that resolution, agree and stop after the claim is filed. Do not report damage or invent any additional missing products."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_missing_item_replacement_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "evelyn.lopez6910@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_item_replacement_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1355800"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_item_replacement_2",
+                    "name": "assess_missing_item_claim",
+                    "arguments": {
+                        "order_id": "#W1355800",
+                        "item_ids": [
+                            "5537798301"
+                        ]
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_missing_item_replacement_3",
+                    "name": "file_missing_item_claim",
+                    "arguments": {
+                        "order_id": "#W1355800",
+                        "item_ids": [
+                            "5537798301"
+                        ],
+                        "requested_resolution": "replacement"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "CLAIM-W1355800",
+                "Cycling Helmet"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_add_forgotten_notebook",
+        "description": {
+            "purpose": "Add one uniquely identified forgotten item before fulfillment.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000029_a; intent=pending_order.add_forgotten_item; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Before shipment, you noticed that you forgot an item you intended to include in order #W1080318. You saved catalog item ID 9799386954 earlier, but no longer remember its product name, specifications, price, or availability. Ask the agent to identify and verify that exact item, then add it to the same pending order if it is available.",
+                "known_info": "You are Omar Kim. Your email is omar.kim8981@example.com. You know order #W1080318. The only catalog information you retained is item ID 9799386954.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the exact catalog item before adding it. Use the order's existing payment method credit_card_3577130. When the agent explains the added item and cost and asks for confirmation, say yes. Do not request any other item."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_add_forgotten_notebook_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "omar.kim8981@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_forgotten_notebook_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1080318"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_forgotten_notebook_2",
+                    "name": "get_item_details",
+                    "arguments": {
+                        "item_id": "9799386954"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_forgotten_notebook_3",
+                    "name": "add_pending_order_items",
+                    "arguments": {
+                        "order_id": "#W1080318",
+                        "item_ids": [
+                            "9799386954"
+                        ],
+                        "payment_method_id": "credit_card_3577130"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "Notebook",
+                "28.59",
+                "A5",
+                "soft cover",
+                "credit_card_3577130"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_add_matching_bottle",
+        "description": {
+            "purpose": "Add one uniquely identified forgotten item before fulfillment.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000019_a; intent=pending_order.add_forgotten_item; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Before shipment, you noticed that you forgot an item you intended to include in order #W1138897. You saved catalog item ID 3229676465 earlier, but no longer remember its product name, specifications, price, or availability. Ask the agent to identify and verify that exact item, then add it to the same pending order if it is available.",
+                "known_info": "You are Ethan Smith. Your email is ethan.smith4017@example.com. You know order #W1138897. The only catalog information you retained is item ID 3229676465.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the exact catalog item before adding it. Use the order's existing payment method credit_card_3185406. When the agent explains the added item and cost and asks for confirmation, say yes. Do not request any other item."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_add_matching_bottle_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "ethan.smith4017@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_matching_bottle_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1138897"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_matching_bottle_2",
+                    "name": "get_item_details",
+                    "arguments": {
+                        "item_id": "3229676465"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_matching_bottle_3",
+                    "name": "add_pending_order_items",
+                    "arguments": {
+                        "order_id": "#W1138897",
+                        "item_ids": [
+                            "3229676465"
+                        ],
+                        "payment_method_id": "credit_card_3185406"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "Water Bottle",
+                "51.94",
+                "500ml",
+                "plastic",
+                "black",
+                "credit_card_3185406"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_add_desk_lamp",
+        "description": {
+            "purpose": "Add one uniquely identified forgotten item before fulfillment.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000069_a; intent=pending_order.add_forgotten_item; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "Before shipment, you noticed that you forgot an item you intended to include in order #W1258841. You saved catalog item ID 6805564527 earlier, but no longer remember its product name, specifications, price, or availability. Ask the agent to identify and verify that exact item, then add it to the same pending order if it is available.",
+                "known_info": "You are Isabella Gonzalez. Your email is isabella.gonzalez1317@example.com. You know order #W1258841. The only catalog information you retained is item ID 6805564527.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the exact catalog item before adding it. Use the order's existing payment method credit_card_1619986. When the agent explains the added item and cost and asks for confirmation, say yes. Do not request any other item."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_add_desk_lamp_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "isabella.gonzalez1317@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_desk_lamp_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1258841"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_desk_lamp_2",
+                    "name": "get_item_details",
+                    "arguments": {
+                        "item_id": "6805564527"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_add_desk_lamp_3",
+                    "name": "add_pending_order_items",
+                    "arguments": {
+                        "order_id": "#W1258841",
+                        "item_ids": [
+                            "6805564527"
+                        ],
+                        "payment_method_id": "credit_card_1619986"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "Desk Lamp",
+                "158.41",
+                "black",
+                "medium",
+                "USB",
+                "credit_card_1619986"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_payment_wrong_gift_card",
+        "description": {
+            "purpose": "Correct a mistaken payment method before fulfillment.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000013_a; intent=pending_order.change_payment; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "You used gift_card_9105630 by mistake on pending order #W1068289. You want the full $3453.28 moved to paypal_5398626 before the order is processed.",
+                "known_info": "You are Yara Patel. Your email is yara.patel5445@example.com. You know order #W1068289. You recognize the target payment method paypal_5398626.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Do not confirm in the initial request. Let the agent explain that the new method will be charged and the old method refunded. Say yes only after the agent asks for an explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_payment_wrong_gift_card_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "yara.patel5445@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_payment_wrong_gift_card_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1068289"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_payment_wrong_gift_card_2",
+                    "name": "modify_pending_order_payment",
+                    "arguments": {
+                        "order_id": "#W1068289",
+                        "payment_method_id": "paypal_5398626"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "3453.28",
+                "gift_card_9105630",
+                "paypal_5398626"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_payment_switch_paypal",
+        "description": {
+            "purpose": "Correct a mistaken payment method before fulfillment.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000024_a; intent=pending_order.change_payment; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "You used gift_card_5427896 by mistake on pending order #W1130240. You want the full $512.88 moved to paypal_9619477 before the order is processed.",
+                "known_info": "You are Liam Li. Your email is liam.li8523@example.com. You know order #W1130240. You recognize the target payment method paypal_9619477.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Do not confirm in the initial request. Let the agent explain that the new method will be charged and the old method refunded. Say yes only after the agent asks for an explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_payment_switch_paypal_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "liam.li8523@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_payment_switch_paypal_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1130240"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_payment_switch_paypal_2",
+                    "name": "modify_pending_order_payment",
+                    "arguments": {
+                        "order_id": "#W1130240",
+                        "payment_method_id": "paypal_9619477"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "512.88",
+                "gift_card_5427896",
+                "paypal_9619477"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_payment_switch_credit_card",
+        "description": {
+            "purpose": "Correct a mistaken payment method before fulfillment.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000044_a; intent=pending_order.change_payment; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "You used gift_card_5683713 by mistake on pending order #W1416704. You want the full $1024.6 moved to credit_card_7898168 before the order is processed.",
+                "known_info": "You are Evelyn Ahmed. Your email is evelyn.ahmed2006@example.com. You know order #W1416704. You recognize the target payment method credit_card_7898168.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Do not confirm in the initial request. Let the agent explain that the new method will be charged and the old method refunded. Say yes only after the agent asks for an explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_payment_switch_credit_card_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "evelyn.ahmed2006@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_payment_switch_credit_card_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1416704"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_payment_switch_credit_card_2",
+                    "name": "modify_pending_order_payment",
+                    "arguments": {
+                        "order_id": "#W1416704",
+                        "payment_method_id": "credit_card_7898168"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "1024.6",
+                "gift_card_5683713",
+                "credit_card_7898168"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_fee_transit_damage",
+        "description": {
+            "purpose": "Investigate and waive an eligible erroneous small fee.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000048_a; intent=status_mystery_fee.transit_damage; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "The outer box of the Luggage Set arrived crushed, although you are keeping the usable product. A separate $12 damage-inspection fee appeared on the order and you want that incorrect fee removed.",
+                "known_info": "You are Sophia Garcia. Your email is sophia.garcia9791@example.com. You know order #W1023987. The fee ID is FEE-MIX-TRANSIT-12 and the affected catalog item is 8926329222.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the affected item and explain the fee. Once told it is eligible for automatic waiver, ask for the fee to be waived. Do not request a product return or a second refund."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_fee_transit_damage_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "sophia.garcia9791@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_transit_damage_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1023987"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_transit_damage_2",
+                    "name": "get_order_fee_details",
+                    "arguments": {
+                        "fee_id": "FEE-MIX-TRANSIT-12"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_transit_damage_3",
+                    "name": "waive_order_fee",
+                    "arguments": {
+                        "fee_id": "FEE-MIX-TRANSIT-12"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "12.0",
+                "REF-FEE-FEE-MIX-TRANSIT-12",
+                "gift_card_9450778"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_fee_quality_defect",
+        "description": {
+            "purpose": "Investigate and waive an eligible erroneous small fee.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000059_a; intent=status_mystery_fee.quality_defect; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "One key on the Mechanical Keyboard initially stuck, and support asked you to test it. The keyboard now works and you will keep it, but an $18 quality-review fee was incorrectly added to the order.",
+                "known_info": "You are Yara Lee. Your email is yara.lee9368@example.com. You know order #W1341845. The fee ID is FEE-MIX-QUALITY-18 and the affected catalog item is 4402162122.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the affected item and explain the fee. Once told it is eligible for automatic waiver, ask for the fee to be waived. Do not request a product return or a second refund."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_fee_quality_defect_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "yara.lee9368@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_quality_defect_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1341845"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_quality_defect_2",
+                    "name": "get_order_fee_details",
+                    "arguments": {
+                        "fee_id": "FEE-MIX-QUALITY-18"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_quality_defect_3",
+                    "name": "waive_order_fee",
+                    "arguments": {
+                        "fee_id": "FEE-MIX-QUALITY-18"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "18.0",
+                "REF-FEE-FEE-MIX-QUALITY-18",
+                "6450164"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_fee_not_as_described",
+        "description": {
+            "purpose": "Investigate and waive an eligible erroneous small fee.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000090_a; intent=status_mystery_fee.not_as_described; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "The Coffee Maker listing was unclear about capacity. You decided to keep the one-cup product, but a separate $9 listing-clarification fee appeared and you want the incorrect fee removed.",
+                "known_info": "You are Raj Kovacs. Your email is raj.kovacs2291@example.com. You know order #W1473345. The fee ID is FEE-MIX-DESCRIPTION-9 and the affected catalog item is 3020722515.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the affected item and explain the fee. Once told it is eligible for automatic waiver, ask for the fee to be waived. Do not request a product return or a second refund."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_fee_not_as_described_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "raj.kovacs2291@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_not_as_described_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1473345"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_not_as_described_2",
+                    "name": "get_order_fee_details",
+                    "arguments": {
+                        "fee_id": "FEE-MIX-DESCRIPTION-9"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_fee_not_as_described_3",
+                    "name": "waive_order_fee",
+                    "arguments": {
+                        "fee_id": "FEE-MIX-DESCRIPTION-9"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "9.0",
+                "REF-FEE-FEE-MIX-DESCRIPTION-9",
+                "paypal_7525649"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_wrong_color_exchange",
+        "description": {
+            "purpose": "Exchange a delivered item whose received color is wrong.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000076_a; intent=wrong_item; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "The 750ml Water Bottle in delivered order #W1326557 was supposed to be red, but you received the wrong color. You want the available black 500ml stainless-steel version, catalog item 3453331371, instead.",
+                "known_info": "You are Sophia Hernandez. Your email is sophia.hernandez3499@example.com. You know order #W1326557. The affected catalog item is 6777246137.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the available replacement and explain the price difference. Say yes when asked to confirm the exchange."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_wrong_color_exchange_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "sophia.hernandez3499@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_wrong_color_exchange_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1326557"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_wrong_color_exchange_2",
+                    "name": "get_product_details",
+                    "arguments": {
+                        "product_id": "8310926033"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_wrong_color_exchange_3",
+                    "name": "calculate",
+                    "arguments": {
+                        "expression": "52.79 - 47.76"
+                    },
+                    "info": null,
+                    "compare_args": []
+                },
+                {
+                    "action_id": "rp_mix_wrong_color_exchange_4",
+                    "name": "exchange_delivered_order_items",
+                    "arguments": {
+                        "order_id": "#W1326557",
+                        "item_ids": [
+                            "6777246137"
+                        ],
+                        "new_item_ids": [
+                            "3453331371"
+                        ],
+                        "payment_method_id": "gift_card_1139567"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "black",
+                "500ml",
+                "stainless steel",
+                "5.03"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_size_mismatch_exchange",
+        "description": {
+            "purpose": "Exchange delivered footwear for a smaller usable size.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000000_a; intent=size_style_mismatch; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "The size-12 Hiking Boots in delivered order #W1075114 are too large. You want the available size-10 synthetic waterproof version, catalog item 1615379700.",
+                "known_info": "You are Olivia Garcia. Your email is olivia.garcia2695@example.com. You know order #W1075114. The affected catalog item is 4582956489.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the replacement and explain the price difference. Say yes when asked to confirm the exchange."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_size_mismatch_exchange_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "olivia.garcia2695@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_size_mismatch_exchange_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1075114"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_size_mismatch_exchange_2",
+                    "name": "get_product_details",
+                    "arguments": {
+                        "product_id": "7363354090"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_size_mismatch_exchange_3",
+                    "name": "calculate",
+                    "arguments": {
+                        "expression": "253.89 - 241.96"
+                    },
+                    "info": null,
+                    "compare_args": []
+                },
+                {
+                    "action_id": "rp_mix_size_mismatch_exchange_4",
+                    "name": "exchange_delivered_order_items",
+                    "arguments": {
+                        "order_id": "#W1075114",
+                        "item_ids": [
+                            "4582956489"
+                        ],
+                        "new_item_ids": [
+                            "1615379700"
+                        ],
+                        "payment_method_id": "gift_card_5115976"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "size 10",
+                "synthetic",
+                "waterproof",
+                "11.93"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_transit_damage_return",
+        "description": {
+            "purpose": "Return one item that arrived broken in transit.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000035_a; intent=transit_damage; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "The glass Electric Kettle in delivered order #W1519594 arrived cracked in transit and cannot be used. Return only the kettle and refund it to the original gift card.",
+                "known_info": "You are Ivan Khan. Your email is ivan.khan6479@example.com. You know order #W1519594. The affected catalog item is 9472539378.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "State that the item was damaged in transit. Say yes after the agent explains the return and asks for explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_transit_damage_return_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "ivan.khan6479@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_transit_damage_return_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1519594"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_transit_damage_return_2",
+                    "name": "return_delivered_order_items",
+                    "arguments": {
+                        "order_id": "#W1519594",
+                        "item_ids": [
+                            "9472539378"
+                        ],
+                        "payment_method_id": "gift_card_1711656",
+                        "reason": "damaged"
+                    },
+                    "info": null,
+                    "compare_args": [
+                        "order_id",
+                        "item_ids",
+                        "payment_method_id"
+                    ]
+                }
+            ],
+            "communicate_info": [
+                "Electric Kettle",
+                "143.72",
+                "gift_card_1711656"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_quality_defect_return",
+        "description": {
+            "purpose": "Return an electronic item with a reproducible functional defect.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000075_a; intent=quality_defect; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "The Smart Thermostat in delivered order #W1523776 repeatedly loses power and cannot control heating. Return only that defective item and refund it to the original gift card.",
+                "known_info": "You are Lucas Muller. Your email is lucas.muller7899@example.com. You know order #W1523776. The affected catalog item is 8593894906.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Describe the functional defect consistently. Say yes after the agent explains the return and asks for explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_quality_defect_return_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "lucas.muller7899@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_quality_defect_return_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1523776"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_quality_defect_return_2",
+                    "name": "return_delivered_order_items",
+                    "arguments": {
+                        "order_id": "#W1523776",
+                        "item_ids": [
+                            "8593894906"
+                        ],
+                        "payment_method_id": "gift_card_2748512",
+                        "reason": "defective"
+                    },
+                    "info": null,
+                    "compare_args": [
+                        "order_id",
+                        "item_ids",
+                        "payment_method_id"
+                    ]
+                }
+            ],
+            "communicate_info": [
+                "Smart Thermostat",
+                "263.11",
+                "gift_card_2748512"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_description_mismatch_return",
+        "description": {
+            "purpose": "Return a delivered item whose catalog capability is unsuitable.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000009_a; intent=not_as_described; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "You expected the Bluetooth Speaker in delivered order #W1539823 to be water resistant, but catalog item 7597543861 says water resistance is no. Return only that speaker to the original credit card.",
+                "known_info": "You are Emma Santos. Your email is emma.santos7683@example.com. You know order #W1539823. The affected catalog item is 7597543861.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Ask the agent to verify the catalog specification. Say yes after the agent explains the return and asks for explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_description_mismatch_return_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "emma.santos7683@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_description_mismatch_return_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1539823"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_description_mismatch_return_2",
+                    "name": "return_delivered_order_items",
+                    "arguments": {
+                        "order_id": "#W1539823",
+                        "item_ids": [
+                            "7597543861"
+                        ],
+                        "payment_method_id": "credit_card_5869505",
+                        "reason": "not as described"
+                    },
+                    "info": null,
+                    "compare_args": [
+                        "order_id",
+                        "item_ids",
+                        "payment_method_id"
+                    ]
+                }
+            ],
+            "communicate_info": [
+                "310.47",
+                "credit_card_5869505"
+            ],
+            "nl_assertions": null,
+            "reward_basis": [
+                "DB",
+                "ACTION",
+                "COMMUNICATE"
+            ]
+        }
+    },
+    {
+        "id": "rp_mix_cancel_unneeded_pending",
+        "description": {
+            "purpose": "Cancel a pending order after the customer changes their mind.",
+            "relevant_policies": null,
+            "notes": "Mix-ECom after-sales eval/000001_a; intent=cancel_before_fulfillment; adapted to executable Retail Plus entities and policy."
+        },
+        "user_scenario": {
+            "persona": "You are a realistic ecommerce customer. Start with the concrete problem in your own words. Reveal authentication information only when the agent asks for it.",
+            "instructions": {
+                "domain": "retail_plus",
+                "reason_for_call": "You no longer need any of pending order #W1046662 and want the whole order cancelled before it is processed.",
+                "known_info": "You are Aarav Wilson. Your email is aarav.wilson8531@example.com. You know order #W1046662. The affected catalog item is 4982943126.",
+                "unknown_info": "You do not know internal user IDs, claim IDs, refund IDs, or other customers' data unless explicitly stated.",
+                "task_instructions": "Use the reason 'no longer needed'. Do not confirm in the initial request. Say yes only after the agent explains the cancellation and refund and asks for explicit confirmation."
+            }
+        },
+        "initial_state": null,
+        "evaluation_criteria": {
+            "actions": [
+                {
+                    "action_id": "rp_mix_cancel_unneeded_pending_0",
+                    "name": "find_user_id_by_email",
+                    "arguments": {
+                        "email": "aarav.wilson8531@example.com"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_cancel_unneeded_pending_1",
+                    "name": "get_order_details",
+                    "arguments": {
+                        "order_id": "#W1046662"
+                    },
+                    "info": null
+                },
+                {
+                    "action_id": "rp_mix_cancel_unneeded_pending_2",
+                    "name": "cancel_pending_order",
+                    "arguments": {
+                        "order_id": "#W1046662",
+                        "reason": "no longer needed"
+                    },
+                    "info": null
+                }
+            ],
+            "communicate_info": [
+                "1151.94",
+                "gift_card_9138722"
+            ],
+            "nl_assertions": null,
             "reward_basis": [
                 "DB",
                 "ACTION",

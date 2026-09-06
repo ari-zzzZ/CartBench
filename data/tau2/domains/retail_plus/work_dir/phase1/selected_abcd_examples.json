@@ -167,7 +167,7 @@
                     "reason_for_call": "You returned all items from order #W8587412, but refund REF-PLUS-1003 is not visible.",
                     "known_info": "You are Ava Sanchez. Your email is ava.sanchez1133@example.com. You know order ID #W8587412 and refund ID REF-PLUS-1003.",
                     "unknown_info": "You do not know whether the case is overdue or requires manual review.",
-                    "task_instructions": "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created. Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
+                    "task_instructions": "Say the returned items were accepted but the credit is not visible. Ask whether another refund should be created and ask: Which payment method is the refund going back to? Accept the explanation that the existing refund is still within its expected window and must not be duplicated."
                 }
             },
             "removed_or_replaced_abcd_rules": [
@@ -187,7 +187,7 @@
                     },
                     {
                         "action_id": "rp_abcd_mistimed_billing_normal_1",
-                        "name": "review_returned_item_billing",
+                        "name": "get_refund_status",
                         "arguments": {
                             "refund_id": "REF-PLUS-1003"
                         },
@@ -225,7 +225,7 @@
                     "reason_for_call": "You returned all items from order #W8068454, but refund REF-PLUS-1004 is not visible.",
                     "known_info": "You are Daiki Patel. Your email is daiki.patel3402@example.com. You know order ID #W8068454 and refund ID REF-PLUS-1004.",
                     "unknown_info": "You do not know whether the case is overdue or requires manual review.",
-                    "task_instructions": "Explain that the return credit is overdue and insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
+                    "task_instructions": "Explain that the return credit is overdue, ask: Which payment method is the refund going back to? Then insist on resolution. Do not ask for a second refund after the agent explains duplicate refunds are prohibited; accept human transfer."
                 }
             },
             "removed_or_replaced_abcd_rules": [

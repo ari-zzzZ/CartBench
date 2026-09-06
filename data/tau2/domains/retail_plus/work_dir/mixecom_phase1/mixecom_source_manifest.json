@@ -1,0 +1,31 @@
+{
+    "dataset": "zhourax977/Mix-ECom",
+    "url": "https://huggingface.co/datasets/zhourax977/Mix-ECom",
+    "license": "CC-BY-4.0",
+    "source_split": "eval/after-sales",
+    "source_file": "data/tau2/domains/retail_plus/work_dir/sources/mixEcom/eval/eval_gt_a.json",
+    "source_file_size": 719640,
+    "source_file_sha256": "c81012739cdb7bfab5a329179a887b6ac7732e134ca54b2dc9df865b75870fc3",
+    "source_row_count": 91,
+    "selected_source_ids": [
+        "000000_a",
+        "000001_a",
+        "000003_a",
+        "000008_a",
+        "000009_a",
+        "000013_a",
+        "000019_a",
+        "000024_a",
+        "000029_a",
+        "000035_a",
+        "000036_a",
+        "000044_a",
+        "000048_a",
+        "000059_a",
+        "000069_a",
+        "000075_a",
+        "000076_a",
+        "000090_a"
+    ],
+    "build_script": "data/tau2/domains/retail_plus/work_dir/scripts/build_mixecom_phase1.py"
+}

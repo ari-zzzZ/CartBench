@@ -1,7 +1,5 @@
 """Executable tools and hard business constraints for Retail Plus."""
 
-from __future__ import annotations
-
 import re
 from collections import Counter
 from datetime import date
@@ -25,10 +23,12 @@ from tau2.domains.retail_plus.constants import (
     REFERENCE_DATE,
 )
 from tau2.domains.retail_plus.data_model import (
+    CatalogItemDetails,
     RefundCase,
     RetailPlusDB,
     ShippingClaim,
     SupportCase,
+    SupportCaseType,
 )
 from tau2.domains.retail_plus.policy import (
     ADDRESS_CHANGE_CONFIRMATION,
@@ -147,6 +147,31 @@ class RetailPlusTools(RetailTools):
         """Get only the authenticated customer's profile."""
         self._require_authenticated_user(user_id)
         return super().get_user_details(user_id)
+
+    @is_tool(ToolType.READ)
+    def get_item_details(self, item_id: str) -> CatalogItemDetails:
+        """Get the catalog details for one item variant by its item ID.
+
+        Args:
+            item_id: The item/variant ID, such as ``6086499569``. Item IDs are
+                different from product IDs.
+
+        Returns:
+            CatalogItemDetails: Product ID, product name, item ID,
+                availability, price, and option values for the item.
+
+        Raises:
+            ValueError: If the item ID does not exist in the catalog.
+        """
+        variant, product = self._find_item_and_product(item_id)
+        return CatalogItemDetails(
+            product_id=product.product_id,
+            product_name=product.name,
+            item_id=variant.item_id,
+            options=variant.options,
+            available=variant.available,
+            price=variant.price,
+        )
 
     @is_tool(ToolType.WRITE)
     def cancel_pending_order(self, order_id: str, reason: str) -> Order:
@@ -363,11 +388,27 @@ class RetailPlusTools(RetailTools):
     @is_tool(ToolType.WRITE)
     def open_support_case(
         self,
-        case_type: str,
+        case_type: SupportCaseType,
         reference_id: str,
         summary: str,
     ) -> SupportCase:
-        """Open a support case that must be followed by transfer to a human agent."""
+        """Open a support case that must be followed by transfer to a human agent.
+
+        Args:
+            case_type: The support workflow type. Must be one of
+                ``delayed_refund``, ``high_value_fee``,
+                ``high_value_missing_item``, or ``other``.
+            reference_id: The refund ID, fee ID, or order ID that needs human
+                review.
+            summary: A concise handoff summary for the human agent.
+
+        Returns:
+            SupportCase: The newly opened support case.
+
+        Raises:
+            ValueError: If the case type is invalid, the reference does not
+                exist, or a support case already exists for the reference.
+        """
         user_id = self._require_authenticated_user()
         valid_types = {
             "delayed_refund",
@@ -376,7 +417,10 @@ class RetailPlusTools(RetailTools):
             "other",
         }
         if case_type not in valid_types:
-            raise ValueError("Invalid support case type")
+            raise ValueError(
+                "Invalid support case type. Allowed values: delayed_refund, "
+                "high_value_fee, high_value_missing_item, other"
+            )
 
         amount = 0.0
         if reference_id in self.db.refund_cases:

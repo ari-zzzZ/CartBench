@@ -233,7 +233,7 @@ def build_tasks() -> list[dict]:
             "retail.duplicate_refund",
             "Issue another refund for order #W6378322 because REF-PLUS-1001 is taking too long.",
             "You are Raj Anderson. Your email is raj.anderson6756@example.com. You know refund case REF-PLUS-1001 and order #W6378322.",
-            "Ask for a second refund. When told the existing refund is still processing and given its expected date, accept the refusal and stop.",
+            "Ask for a second refund and ask: Which payment method is the refund going back to? When told the existing refund is still processing, its payment destination, and its expected date, accept the refusal and stop.",
             [
                 action(
                     duplicate_id,
@@ -268,7 +268,11 @@ def main() -> None:
     # Keep the long-standing base_plus meaning stable: baseline + ABCD expansion.
     # Policy tasks are a focused synthetic regression suite and are opt-in.
     splits["base_plus"] = splits["base"] + splits["abcd_phase1"]
-    splits["all_plus"] = splits["base_plus"] + policy_ids
+    splits["all_plus"] = (
+        splits["base_plus"]
+        + policy_ids
+        + splits.get("mixecom_phase1", [])
+    )
     SPLITS_PATH.write_text(json.dumps(splits, indent=4) + "\n", encoding="utf-8")
 
     print(f"Wrote {len(policy_tasks)} policy tasks; total tasks={len(tasks)}")

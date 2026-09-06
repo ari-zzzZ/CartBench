@@ -1,0 +1,572 @@
+[
+    {
+        "retail_plus_task_id": "rp_mix_missing_component_replacement",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000003_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_0_0"
+        ],
+        "source_first_query": "我收到的柜子好像少了两个面板，这要怎么办？",
+        "source_user_profile": "你是一位来自甘肃省临夏回族自治州临夏县的买家，你购买了【NB】50面宽/三层奶油风储物柜加高可移动收纳折叠储物柜收纳柜。收到货时发现柜子少了两个面板，你要求商家补发缺少的两个面板。你目前的心情是平静的",
+        "selection_reason": "Concrete whole-item or quantity short-shipment report.",
+        "adapted_reason_for_call": "Your delivered order #W1166549 included the E-Reader and Electric Kettle, but the Desk Lamp was missing from the parcel. You want the missing lamp sent to you.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1166549"
+            ],
+            "item_ids": [
+                "1569765161"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "assess_missing_item_claim",
+                "file_missing_item_claim"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_missing_quantity_refund",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000008_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "我只收到了一个，其他的呢？",
+        "source_user_profile": "你是来自山东省青岛市市北区的一位买家，购买了3件灰灰家冰山熔岩原味糕点。你只收到了一件，少发了两件，你要求商家补发缺少的两件。你目前的心情是平静的",
+        "selection_reason": "Concrete whole-item or quantity short-shipment report.",
+        "adapted_reason_for_call": "Order #W1126085 is marked delivered, but the parcel contained only packing paper and the Skateboard was missing. You no longer want a replacement and want a refund for the missing item.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1126085"
+            ],
+            "item_ids": [
+                "6843647669"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "assess_missing_item_claim",
+                "file_missing_item_claim"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_missing_item_replacement",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000036_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "我只收到5桶洗衣精华液，请问剩下的一桶在哪呢？",
+        "source_user_profile": "你是来自内蒙古自治区赤峰市松山区的一位买家，购买了清盈新升级800g山茶花抗菌除螨洗衣精华液。订单应有6桶但实际只收到5桶，你希望商家补发缺少的一桶。你目前的心情是略微不耐烦的",
+        "selection_reason": "Concrete whole-item or quantity short-shipment report.",
+        "adapted_reason_for_call": "Order #W1355800 is marked delivered, but the Cycling Helmet was not inside the shipping box. You want the missing helmet replaced.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1355800"
+            ],
+            "item_ids": [
+                "5537798301"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "assess_missing_item_claim",
+                "file_missing_item_claim"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_add_forgotten_notebook",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000029_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "适配器到货了，但少了条数据线怎么办呢？",
+        "source_user_profile": "你是来自黑龙江省绥化市兰西县的一位买家，购买了一款USB接口适配器。收到货后你发现少了应有的数据线，导致无法正常使用适配器。你希望商家能够补发送一根适用于该适配器的数据线。你目前的心情是略微不耐烦的",
+        "selection_reason": "Uses Mix-ECom missing-component language, adapted to a problem caught before fulfillment.",
+        "adapted_reason_for_call": "Before shipment, you noticed that you forgot an item you intended to include in order #W1080318. You saved catalog item ID 9799386954 earlier, but no longer remember its product name, specifications, price, or availability. Ask the agent to identify and verify that exact item, then add it to the same pending order if it is available.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1080318"
+            ],
+            "item_ids": [
+                "9799386954"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_item_details",
+                "add_pending_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_add_matching_bottle",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000019_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "怎么少了一个扫把杆子啊？",
+        "source_user_profile": "你是来自山西省临汾市尧都区的一位买家，购买了一款大扫把扫地扫帚。到货后发现缺少了扫把的杆子，你希望商家可以补发该扫把的杆子。你目前的心情是平静的",
+        "selection_reason": "Uses Mix-ECom missing-component language, adapted to a problem caught before fulfillment.",
+        "adapted_reason_for_call": "Before shipment, you noticed that you forgot an item you intended to include in order #W1138897. You saved catalog item ID 3229676465 earlier, but no longer remember its product name, specifications, price, or availability. Ask the agent to identify and verify that exact item, then add it to the same pending order if it is available.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1138897"
+            ],
+            "item_ids": [
+                "3229676465"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_item_details",
+                "add_pending_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_add_desk_lamp",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000069_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "这个风扇少了根立柱，怎么办啊？",
+        "source_user_profile": "你是来自天津市天津市东丽区的一位买家，购买了扬子空气循环扇产品。收到货后发现少了一根立柱，无法完整组装和使用。你希望商家能尽快补发缺失的立柱。你目前的心情是平静的",
+        "selection_reason": "Uses Mix-ECom missing-component language, adapted to a problem caught before fulfillment.",
+        "adapted_reason_for_call": "Before shipment, you noticed that you forgot an item you intended to include in order #W1258841. You saved catalog item ID 6805564527 earlier, but no longer remember its product name, specifications, price, or availability. Ask the agent to identify and verify that exact item, then add it to the same pending order if it is available.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1258841"
+            ],
+            "item_ids": [
+                "6805564527"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_item_details",
+                "add_pending_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_payment_wrong_gift_card",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000013_a",
+        "question_type": [
+            "A_10"
+        ],
+        "source_first_query": "你好，我想取消订单。",
+        "source_user_profile": "你是一位来自江苏南京建邺区软件大道366号的买家，你购买了两件蕾琪美白防晒粉饼定妆持久防水防汗。你意识到自己不适合使用粉饼类产品，而且下单时因为误操作多拍了一件，因此想退款退货。你目前的心情是平静的",
+        "selection_reason": "Uses realistic pre-fulfillment order-correction language from generic cancellation cases.",
+        "adapted_reason_for_call": "You used gift_card_9105630 by mistake on pending order #W1068289. You want the full $3453.28 moved to paypal_5398626 before the order is processed.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1068289"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "modify_pending_order_payment"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_payment_switch_paypal",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000024_a",
+        "question_type": [
+            "A_10"
+        ],
+        "source_first_query": "请问这个订单能取消吗？",
+        "source_user_profile": "你是一位来自台湾高雄旗津区五5段光复路116号的买家，你购买了这款名为东之家2762（展会T恤）的商品。本来打算送给朋友作为夏季礼物，但不小心拍多了。由于尚未发货，因此你希望能够退款退货。你目前的心情是平静的",
+        "selection_reason": "Uses realistic pre-fulfillment order-correction language from generic cancellation cases.",
+        "adapted_reason_for_call": "You used gift_card_5427896 by mistake on pending order #W1130240. You want the full $512.88 moved to paypal_9619477 before the order is processed.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1130240"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "modify_pending_order_payment"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_payment_switch_credit_card",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000044_a",
+        "question_type": [
+            "A_10"
+        ],
+        "source_first_query": "可以帮我取消订单吗？",
+        "source_user_profile": "你是一位来自吉林长春宽城区北人民大街412号的买家，你购买了这款淘丁堡智能手表。你发现近期看中的另一款手表更符合自己的需求，并且你不太喜欢这款手表的屏幕尺寸，因此你希望退款退货。你目前的心情是平静的",
+        "selection_reason": "Uses realistic pre-fulfillment order-correction language from generic cancellation cases.",
+        "adapted_reason_for_call": "You used gift_card_5683713 by mistake on pending order #W1416704. You want the full $1024.6 moved to credit_card_7898168 before the order is processed.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1416704"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "modify_pending_order_payment"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_fee_transit_damage",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000048_a",
+        "question_type": [
+            "A_2",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "收到的产品包装破损严重，这可怎么办？",
+        "source_user_profile": "你是来自江苏省苏州市昆山市的一位买家，购买了左旋肉碱荷叶绿茶胶囊LB。商品在运输过程中受到了严重的损坏，包装破损，产品变形。你希望商家能够补发四盒全新的左旋肉碱荷叶绿茶胶囊。你目前的心情是略微不耐烦的",
+        "selection_reason": "Concrete transit damage with a clearly affected item.",
+        "adapted_reason_for_call": "The outer box of the Luggage Set arrived crushed, although you are keeping the usable product. A separate $12 damage-inspection fee appeared on the order and you want that incorrect fee removed.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1023987"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_order_fee_details",
+                "waive_order_fee"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_fee_quality_defect",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000059_a",
+        "question_type": [
+            "A_3",
+            "A_6",
+            "A_7",
+            "A_a_1_0"
+        ],
+        "source_first_query": "这个水杯盖子怎么扣不上啊？",
+        "source_user_profile": "你是来自天津市天津市宝坻区的一位买家。你购买了K159可爱大眼杯多巴胺水壶700ml S，但是当你尝试使用时，发现杯盖的扣件无法正常扣上，担心会影响实用性。你希望商家可以通过补偿红包10元来解决此问题，如果不能补偿就申请退款退货。你目前的心情是略微不耐烦的",
+        "selection_reason": "Specific observable functional or workmanship defect.",
+        "adapted_reason_for_call": "One key on the Mechanical Keyboard initially stuck, and support asked you to test it. The keyboard now works and you will keep it, but an $18 quality-review fee was incorrectly added to the order.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1341845"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_order_fee_details",
+                "waive_order_fee"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_fee_not_as_described",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000090_a",
+        "question_type": [
+            "A_3",
+            "A_8",
+            "A_a_1_0"
+        ],
+        "source_first_query": "这个花叶康的保质期和图片说明不太一样啊，喷头也坏了。",
+        "source_user_profile": "你是来自吉林省松原市扶余市的一位买家，购买了【抢！9.9元2瓶】植物花叶康。收到的商品和介绍的不符合，保质期只有20天，且喷头无法使用，关于质量问题不满意，你要求商家仅退款。你目前的心情是略微不耐烦的",
+        "selection_reason": "Specific catalog or listing mismatch rather than vague dissatisfaction.",
+        "adapted_reason_for_call": "The Coffee Maker listing was unclear about capacity. You decided to keep the one-cup product, but a separate $9 listing-clarification fee appeared and you want the incorrect fee removed.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1473345"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_order_fee_details",
+                "waive_order_fee"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_wrong_color_exchange",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000076_a",
+        "question_type": [
+            "A_1",
+            "A_5",
+            "A_a_0_0"
+        ],
+        "source_first_query": "眼线液笔发错颜色了，怎么办？",
+        "source_user_profile": "你是来自河南省商丘市宁陵县的一位买家，购买了ZEESEA滋色·灵动持妆眼线液笔。本来期望收到账面标示的黑色和棕色各一支，结果却收到两支棕色。你希望商家补发一支黑色眼线液笔。你目前的心情是略微不耐烦的",
+        "selection_reason": "A specific wrong-color shipment with a clear desired correction.",
+        "adapted_reason_for_call": "The 750ml Water Bottle in delivered order #W1326557 was supposed to be red, but you received the wrong color. You want the available black 500ml stainless-steel version, catalog item 3453331371, instead.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1326557"
+            ],
+            "item_ids": [
+                "3453331371",
+                "6777246137"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_product_details",
+                "calculate",
+                "exchange_delivered_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_size_mismatch_exchange",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000000_a",
+        "question_type": [
+            "A_4",
+            "A_7",
+            "A_a_-1_0"
+        ],
+        "source_first_query": "请问尺码不合适怎么处理？",
+        "source_user_profile": "你是来自内蒙古自治区包头市九原区的一位买家，购买了【高艳】铁粉必入•定制一体手工拉花镂空刺绣小西裤。你发现这款裤子的尺码不合适，腰围过大，穿着不舒服，因此想要发起退款退货。你目前的心情是平静的",
+        "selection_reason": "A concrete size mismatch with an available replacement variant.",
+        "adapted_reason_for_call": "The size-12 Hiking Boots in delivered order #W1075114 are too large. You want the available size-10 synthetic waterproof version, catalog item 1615379700.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1075114"
+            ],
+            "item_ids": [
+                "1615379700",
+                "4582956489"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "get_product_details",
+                "calculate",
+                "exchange_delivered_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_transit_damage_return",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000035_a",
+        "question_type": [
+            "A_2",
+            "A_7",
+            "A_a_1_0"
+        ],
+        "source_first_query": "项链收到时就断了，怎么办？",
+        "source_user_profile": "你是一位来自河北省保定市曲阳县的买家，你购买了W0W0“满天星”贝珠项链N2209【陶子专享】。收到商品时发现项链在运输途中发生了损坏，断裂且无法佩戴。你希望通过退款退货来解决问题。你目前的心情是略微不耐烦的",
+        "selection_reason": "Concrete transit damage with a clearly affected item.",
+        "adapted_reason_for_call": "The glass Electric Kettle in delivered order #W1519594 arrived cracked in transit and cannot be used. Return only the kettle and refund it to the original gift card.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1519594"
+            ],
+            "item_ids": [
+                "9472539378"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "return_delivered_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_quality_defect_return",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000075_a",
+        "question_type": [
+            "A_3",
+            "A_5",
+            "A_a_1_0"
+        ],
+        "source_first_query": "电饭煲的按键好像有些问题，能帮我看看吗？",
+        "source_user_profile": "你是一位来自河北省唐山市曹妃甸区的买家，购买了一款科帝哲品牌的家用电饭煲。这个电饭煲的按键出现了短路问题，影响了使用。你希望商家能尽快补发一个新的电饭煲。你目前的心情是平静的",
+        "selection_reason": "Specific observable functional or workmanship defect.",
+        "adapted_reason_for_call": "The Smart Thermostat in delivered order #W1523776 repeatedly loses power and cannot control heating. Return only that defective item and refund it to the original gift card.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1523776"
+            ],
+            "item_ids": [
+                "8593894906"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "return_delivered_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_description_mismatch_return",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000009_a",
+        "question_type": [
+            "A_4",
+            "A_7",
+            "A_a_-1_0"
+        ],
+        "source_first_query": "我买的空调扇好像和描述的不太一样。",
+        "source_user_profile": "你是来自山东省潍坊市高密市的一位买家，购买了一款美菱智能语音空气循环扇。收到的商品是机械款，没有语音控制功能。你想要语音款，因此想要发起退款退货。你目前的心情是平静的",
+        "selection_reason": "Specific catalog or listing mismatch rather than vague dissatisfaction.",
+        "adapted_reason_for_call": "You expected the Bluetooth Speaker in delivered order #W1539823 to be water resistant, but catalog item 7597543861 says water resistance is no. Return only that speaker to the original credit card.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1539823"
+            ],
+            "item_ids": [
+                "7597543861"
+            ],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "return_delivered_order_items"
+            ]
+        }
+    },
+    {
+        "retail_plus_task_id": "rp_mix_cancel_unneeded_pending",
+        "mix_ecom_split": "eval/after-sales",
+        "mix_ecom_task_id": "000001_a",
+        "question_type": [
+            "A_10"
+        ],
+        "source_first_query": "我想咨询一下关于订单的问题",
+        "source_user_profile": "你是一位来自云南昆明官渡区兴苑路113号的买家，你购买了这款9175王楠朴兮波点亚麻T恤。 由于你不小心多买了一件，而衣服还有很长一段时间没有发货，你决定不要了，希望进行退款退货。你目前的心情是平静的",
+        "selection_reason": "A realistic changed-mind cancellation before processing.",
+        "adapted_reason_for_call": "You no longer need any of pending order #W1046662 and want the whole order cancelled before it is processed.",
+        "removed_source_assumptions": [
+            "Mix-ECom shop, item, order, logistics, image, video, and coupon entities",
+            "Mix-ECom-specific tools and scripted resolution policy",
+            "Source mood and red-envelope compensation negotiation"
+        ],
+        "retail_plus_binding": {
+            "order_ids": [
+                "#W1046662"
+            ],
+            "item_ids": [],
+            "golden_tools": [
+                "find_user_id_by_email",
+                "get_order_details",
+                "cancel_pending_order"
+            ]
+        }
+    }
+]

@@ -50,22 +50,29 @@ def test_domain_data_and_phase1_audit_are_complete():
         "records"
     ]
 
-    assert len(tasks) == 137
+    assert len(tasks) == 155
     assert len(phase1) == 16
     assert len(splits["base"]) == 114
     assert len(splits["policy_phase1"]) == 7
+    assert len(splits["mixecom_phase1"]) == 18
     assert len(splits["base_plus"]) == 130
-    assert len(splits["all_plus"]) == 137
+    assert len(splits["all_plus"]) == 155
     assert splits["base"] == splits["train"] + splits["test"]
     assert splits["base_plus"] == splits["base"] + splits["abcd_phase1"]
-    assert splits["all_plus"] == splits["base_plus"] + splits["policy_phase1"]
+    assert splits["all_plus"] == (
+        splits["base_plus"]
+        + splits["policy_phase1"]
+        + splits["mixecom_phase1"]
+    )
     assert set(splits["train"]).isdisjoint(splits["test"])
     assert set(splits["base"]).isdisjoint(splits["abcd_phase1"])
     assert set(splits["base"]).isdisjoint(splits["policy_phase1"])
     assert set(splits["abcd_phase1"]).isdisjoint(splits["policy_phase1"])
+    assert set(splits["base_plus"]).isdisjoint(splits["mixecom_phase1"])
+    assert set(splits["policy_phase1"]).isdisjoint(splits["mixecom_phase1"])
     assert all(len(ids) == len(set(ids)) for ids in splits.values())
     assert len(get_tasks()) == 114
-    assert len({task.id for task in tasks}) == 137
+    assert len({task.id for task in tasks}) == 155
     assert len(audit) == 16
     assert {record["path_type"] for record in audit} == {"normal", "edge"}
     assert all(
@@ -174,7 +181,7 @@ def test_phase1_communication_checks_only_stable_facts():
         "rp_abcd_promo_expired_edge": ["2026-08-01"],
         "rp_abcd_mystery_fee_normal": [
             "25.0",
-            "gift_card_8862145",
+            "8862145",
             "REF-FEE-FEE-PLUS-25",
         ],
         "rp_abcd_mystery_fee_edge": ["650.0"],
@@ -198,6 +205,37 @@ def test_phase1_communication_checks_only_stable_facts():
         for task in get_tasks("abcd_phase1")
     }
     assert actual == expected
+
+
+def test_mistimed_billing_uses_status_lookup_normally_and_review_when_overdue():
+    tasks = {task.id: task for task in get_tasks("abcd_phase1")}
+    normal = tasks["rp_abcd_mistimed_billing_normal"]
+    edge = tasks["rp_abcd_mistimed_billing_edge"]
+
+    assert [action.name for action in normal.evaluation_criteria.actions] == [
+        "find_user_id_by_email",
+        "get_refund_status",
+    ]
+    assert "review_returned_item_billing" in {
+        action.name for action in edge.evaluation_criteria.actions
+    }
+    for task in (normal, edge):
+        assert (
+            "Which payment method is the refund going back to?"
+            in task.user_scenario.instructions.task_instructions
+        )
+
+
+def test_duplicate_refund_scenario_asks_for_payment_destination():
+    task = next(
+        task
+        for task in get_tasks("policy_phase1")
+        if task.id == "rp_policy_duplicate_refund"
+    )
+    assert (
+        "Which payment method is the refund going back to?"
+        in task.user_scenario.instructions.task_instructions
+    )
 
 
 def test_handoff_actions_ignore_free_text_arguments():
@@ -521,6 +559,31 @@ def test_manual_review_requires_support_case_then_transfer():
     complete.make_tool_call("transfer_to_human_agents", summary="High-value fee")
     complete.tools.finalize_policy_evaluation([], SimpleNamespace())
     assert MANUAL_REVIEW_REQUIRED not in _violation_rule_ids(complete)
+
+
+def test_support_case_schema_exposes_allowed_case_types():
+    environment = get_environment()
+    tool = environment.tools.get_tools()["open_support_case"]
+    case_type_schema = tool.openai_schema["function"]["parameters"]["properties"][
+        "case_type"
+    ]
+
+    assert case_type_schema["enum"] == [
+        "delayed_refund",
+        "high_value_fee",
+        "high_value_missing_item",
+        "other",
+    ]
+
+    binding = _bindings()["fee_edge"]
+    _authenticate(environment, binding)
+    with pytest.raises(ValueError, match="Allowed values: delayed_refund"):
+        environment.make_tool_call(
+            "open_support_case",
+            case_type="fee_dispute",
+            reference_id="FEE-PLUS-650",
+            summary="Fee dispute",
+        )
 
 
 def test_address_change_without_dialogue_confirmation_is_observed():

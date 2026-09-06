@@ -1,0 +1,206 @@
+{
+    "rp_mix_missing_component_replacement": {
+        "order_ids": [
+            "#W1166549"
+        ],
+        "user_ids": [
+            "daiki_hernandez_1356"
+        ],
+        "item_ids": [
+            "1569765161"
+        ],
+        "source_task_id": "000003_a"
+    },
+    "rp_mix_missing_quantity_refund": {
+        "order_ids": [
+            "#W1126085"
+        ],
+        "user_ids": [
+            "olivia_nguyen_6241"
+        ],
+        "item_ids": [
+            "6843647669"
+        ],
+        "source_task_id": "000008_a"
+    },
+    "rp_mix_missing_item_replacement": {
+        "order_ids": [
+            "#W1355800"
+        ],
+        "user_ids": [
+            "evelyn_lopez_5487"
+        ],
+        "item_ids": [
+            "5537798301"
+        ],
+        "source_task_id": "000036_a"
+    },
+    "rp_mix_add_forgotten_notebook": {
+        "order_ids": [
+            "#W1080318"
+        ],
+        "user_ids": [
+            "omar_kim_3528"
+        ],
+        "item_ids": [
+            "9799386954"
+        ],
+        "source_task_id": "000029_a"
+    },
+    "rp_mix_add_matching_bottle": {
+        "order_ids": [
+            "#W1138897"
+        ],
+        "user_ids": [
+            "ethan_smith_7905"
+        ],
+        "item_ids": [
+            "3229676465"
+        ],
+        "source_task_id": "000019_a"
+    },
+    "rp_mix_add_desk_lamp": {
+        "order_ids": [
+            "#W1258841"
+        ],
+        "user_ids": [
+            "isabella_gonzalez_4546"
+        ],
+        "item_ids": [
+            "6805564527"
+        ],
+        "source_task_id": "000069_a"
+    },
+    "rp_mix_payment_wrong_gift_card": {
+        "order_ids": [
+            "#W1068289"
+        ],
+        "user_ids": [
+            "yara_patel_8545"
+        ],
+        "item_ids": [],
+        "source_task_id": "000013_a"
+    },
+    "rp_mix_payment_switch_paypal": {
+        "order_ids": [
+            "#W1130240"
+        ],
+        "user_ids": [
+            "liam_li_8526"
+        ],
+        "item_ids": [],
+        "source_task_id": "000024_a"
+    },
+    "rp_mix_payment_switch_credit_card": {
+        "order_ids": [
+            "#W1416704"
+        ],
+        "user_ids": [
+            "evelyn_ahmed_3960"
+        ],
+        "item_ids": [],
+        "source_task_id": "000044_a"
+    },
+    "rp_mix_fee_transit_damage": {
+        "order_ids": [
+            "#W1023987"
+        ],
+        "user_ids": [
+            "sophia_garcia_1101"
+        ],
+        "item_ids": [],
+        "source_task_id": "000048_a"
+    },
+    "rp_mix_fee_quality_defect": {
+        "order_ids": [
+            "#W1341845"
+        ],
+        "user_ids": [
+            "yara_lee_7701"
+        ],
+        "item_ids": [],
+        "source_task_id": "000059_a"
+    },
+    "rp_mix_fee_not_as_described": {
+        "order_ids": [
+            "#W1473345"
+        ],
+        "user_ids": [
+            "raj_kovacs_9859"
+        ],
+        "item_ids": [],
+        "source_task_id": "000090_a"
+    },
+    "rp_mix_wrong_color_exchange": {
+        "order_ids": [
+            "#W1326557"
+        ],
+        "user_ids": [
+            "sophia_hernandez_2054"
+        ],
+        "item_ids": [
+            "3453331371",
+            "6777246137"
+        ],
+        "source_task_id": "000076_a"
+    },
+    "rp_mix_size_mismatch_exchange": {
+        "order_ids": [
+            "#W1075114"
+        ],
+        "user_ids": [
+            "olivia_garcia_1208"
+        ],
+        "item_ids": [
+            "1615379700",
+            "4582956489"
+        ],
+        "source_task_id": "000000_a"
+    },
+    "rp_mix_transit_damage_return": {
+        "order_ids": [
+            "#W1519594"
+        ],
+        "user_ids": [
+            "ivan_khan_7475"
+        ],
+        "item_ids": [
+            "9472539378"
+        ],
+        "source_task_id": "000035_a"
+    },
+    "rp_mix_quality_defect_return": {
+        "order_ids": [
+            "#W1523776"
+        ],
+        "user_ids": [
+            "lucas_muller_4380"
+        ],
+        "item_ids": [
+            "8593894906"
+        ],
+        "source_task_id": "000075_a"
+    },
+    "rp_mix_description_mismatch_return": {
+        "order_ids": [
+            "#W1539823"
+        ],
+        "user_ids": [
+            "emma_santos_9753"
+        ],
+        "item_ids": [
+            "7597543861"
+        ],
+        "source_task_id": "000009_a"
+    },
+    "rp_mix_cancel_unneeded_pending": {
+        "order_ids": [
+            "#W1046662"
+        ],
+        "user_ids": [
+            "aarav_wilson_9535"
+        ],
+        "item_ids": [],
+        "source_task_id": "000001_a"
+    }
+}
