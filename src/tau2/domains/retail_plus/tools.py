@@ -778,13 +778,25 @@ class RetailPlusTools(RetailTools):
 
     @staticmethod
     def _is_explicit_confirmation(text: str) -> bool:
-        normalized = text.strip().lower()
+        normalized = " ".join(text.strip().lower().split())
+        # Reject direct refusals and negations aimed at the confirmation or the
+        # requested mutation. Do not treat unrelated phrases such as "not
+        # cancelling the order" or "stop worrying" as a revoked confirmation.
+        negative_confirmation = re.search(
+            r"^(no|nope|don't|do not|stop|cancel)\b"
+            r"|\b(?:do not|don't|not)\s+"
+            r"(?:confirm|approve|agree|proceed|change|update|modify|go ahead|do it)\b"
+            r"|\bnot\s+(?:correct|approved|confirmed)\b"
+            r"|\b(?:withdraw|revoke)\s+(?:my\s+)?(?:confirmation|approval)\b",
+            normalized,
+        )
+        if negative_confirmation is not None:
+            return False
         affirmative = re.search(
             r"\b(yes|confirm|confirmed|approve|approved|proceed|go ahead|do it|correct)\b",
             normalized,
         )
-        negative = re.search(r"\b(no|not|don't|do not|stop|cancel)\b", normalized)
-        return affirmative is not None and negative is None
+        return affirmative is not None
 
     @staticmethod
     def _address_was_read_back(text: str, address_change: dict) -> bool:

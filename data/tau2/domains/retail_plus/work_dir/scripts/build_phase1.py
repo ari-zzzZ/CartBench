@@ -481,6 +481,12 @@ def main() -> None:
     ] + tasks
     splits["abcd_phase1"] = task_ids
     splits["base_plus"] = list(splits["base"]) + task_ids
+    splits["new"] = (
+        task_ids
+        + list(splits.get("policy_phase1", []))
+        + list(splits.get("mixecom_phase1", []))
+    )
+    splits["all_plus"] = list(splits["base"]) + splits["new"]
 
     dump(PLUS_DIR / "db.json", db)
     dump(PLUS_DIR / "tasks.json", merged_tasks)

@@ -7,6 +7,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from tau2.data_model.message import ToolCall
 from tau2.domains.retail_plus.environment import get_environment, get_tasks
 
 
@@ -133,6 +134,43 @@ def test_known_target_payment_methods_do_not_require_full_user_lookup():
         }
         assert "modify_pending_order_payment" in action_names
         assert "get_user_details" not in action_names
+
+
+def test_exchange_catalog_lookup_accepts_product_or_target_item_details():
+    tasks = {task.id: task for task in get_tasks("mixecom_phase1")}
+    expected = {
+        "rp_mix_wrong_color_exchange": ("8310926033", "3453331371"),
+        "rp_mix_size_mismatch_exchange": ("7363354090", "1615379700"),
+    }
+
+    for task_id, (product_id, item_id) in expected.items():
+        lookup = next(
+            action
+            for action in tasks[task_id].evaluation_criteria.actions
+            if action.name == "get_product_details"
+        )
+        assert lookup.compare_with_tool_call(
+            ToolCall(
+                id=f"{task_id}-product",
+                name="get_product_details",
+                arguments={"product_id": product_id},
+            )
+        )
+        assert lookup.compare_with_tool_call(
+            ToolCall(
+                id=f"{task_id}-item",
+                name="get_item_details",
+                arguments={"item_id": item_id},
+            )
+        )
+        assert not lookup.compare_with_tool_call(
+            ToolCall(
+                id=f"{task_id}-wrong-item",
+                name="get_item_details",
+                arguments={"item_id": "wrong-item"},
+            )
+        )
+
 
 def test_fee_communication_requires_refund_tracking_not_repeated_product_names():
     fee_tasks = {

@@ -55,6 +55,7 @@ def test_domain_data_and_phase1_audit_are_complete():
     assert len(splits["base"]) == 114
     assert len(splits["policy_phase1"]) == 7
     assert len(splits["mixecom_phase1"]) == 18
+    assert len(splits["new"]) == 41
     assert len(splits["base_plus"]) == 130
     assert len(splits["all_plus"]) == 155
     assert splits["base"] == splits["train"] + splits["test"]
@@ -64,6 +65,12 @@ def test_domain_data_and_phase1_audit_are_complete():
         + splits["policy_phase1"]
         + splits["mixecom_phase1"]
     )
+    assert splits["new"] == (
+        splits["abcd_phase1"]
+        + splits["policy_phase1"]
+        + splits["mixecom_phase1"]
+    )
+    assert splits["all_plus"] == splits["base"] + splits["new"]
     assert set(splits["train"]).isdisjoint(splits["test"])
     assert set(splits["base"]).isdisjoint(splits["abcd_phase1"])
     assert set(splits["base"]).isdisjoint(splits["policy_phase1"])
@@ -136,6 +143,18 @@ def test_policy_phase1_covers_all_rules_and_golden_actions_replay():
                 requestor=golden_action.requestor,
                 **golden_action.arguments,
             )
+
+
+def test_voucher_no_cash_uses_voucher_validation_without_redundant_order_read():
+    task = next(
+        task
+        for task in get_tasks("policy_phase1")
+        if task.id == "rp_policy_voucher_no_cash"
+    )
+    assert [action.name for action in task.evaluation_criteria.actions] == [
+        "find_user_id_by_email",
+        "validate_voucher",
+    ]
 
 
 def test_phase1_tasks_require_db_action_and_communication():
@@ -616,6 +635,25 @@ def test_address_change_without_dialogue_confirmation_is_observed():
     assert violation.rule_id == ADDRESS_CHANGE_CONFIRMATION
     assert violation.blocked is False
     assert violation.evidence["explicit_confirmation_found"] is False
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("Yes. I am not cancelling the order.", True),
+        ("Yes. I don't want to lose the hiking boots.", True),
+        ("Yes. I just want to stop worrying about it.", True),
+        ("Yes, I confirm those address changes.", True),
+        ("No, please leave the address as it is.", False),
+        ("Yes, but do not update the address.", False),
+        ("I do not confirm this change.", False),
+        ("I withdraw my confirmation.", False),
+    ],
+)
+def test_explicit_confirmation_ignores_unrelated_negative_words(
+    text: str, expected: bool
+):
+    assert get_environment().tools._is_explicit_confirmation(text) is expected
 
 
 def test_other_customer_access_records_critical_privacy_event():

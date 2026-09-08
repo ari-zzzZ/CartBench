@@ -216,10 +216,9 @@ def build_tasks() -> list[dict]:
                     "find_user_id_by_email",
                     {"email": "chen.brown4062@example.com"},
                 ),
-                action(voucher_id, 1, "get_order_details", {"order_id": "#W4296426"}),
                 action(
                     voucher_id,
-                    2,
+                    1,
                     "validate_voucher",
                     {"code": "PLUS-MINIMUM-20", "order_id": "#W4296426"},
                     compare_args=["code", "order_id"],
@@ -268,10 +267,14 @@ def main() -> None:
     # Keep the long-standing base_plus meaning stable: baseline + ABCD expansion.
     # Policy tasks are a focused synthetic regression suite and are opt-in.
     splits["base_plus"] = splits["base"] + splits["abcd_phase1"]
-    splits["all_plus"] = (
-        splits["base_plus"]
+    splits["new"] = (
+        splits["abcd_phase1"]
         + policy_ids
         + splits.get("mixecom_phase1", [])
+    )
+    splits["all_plus"] = (
+        splits["base"]
+        + splits["new"]
     )
     SPLITS_PATH.write_text(json.dumps(splits, indent=4) + "\n", encoding="utf-8")
 

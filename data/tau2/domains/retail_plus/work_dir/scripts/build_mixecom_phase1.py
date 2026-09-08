@@ -99,6 +99,7 @@ def action(
     name: str,
     arguments: dict[str, Any],
     compare_args: list[str] | None = None,
+    alternative_actions: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     result = {
         "action_id": f"{task_id}_{index}",
@@ -108,6 +109,8 @@ def action(
     }
     if compare_args is not None:
         result["compare_args"] = compare_args
+    if alternative_actions:
+        result["alternative_actions"] = alternative_actions
     return result
 
 
@@ -199,6 +202,7 @@ def make_task(
                     spec[0],
                     spec[1],
                     spec[2] if len(spec) > 2 else None,
+                    spec[3] if len(spec) > 3 else None,
                 )
                 for index, spec in enumerate(actions)
             ],
@@ -579,7 +583,17 @@ def build_core_after_sales_tasks(db: dict[str, Any]) -> list[dict[str, Any]]:
                 "price difference. Say yes when asked to confirm the exchange."
             ),
             "actions": [
-                ("get_product_details", {"product_id": "8310926033"}),
+                (
+                    "get_product_details",
+                    {"product_id": "8310926033"},
+                    None,
+                    [
+                        {
+                            "name": "get_item_details",
+                            "arguments": {"item_id": "3453331371"},
+                        }
+                    ],
+                ),
                 ("calculate", {"expression": "52.79 - 47.76"}, []),
                 (
                     "exchange_delivered_order_items",
@@ -610,7 +624,17 @@ def build_core_after_sales_tasks(db: dict[str, Any]) -> list[dict[str, Any]]:
                 "difference. Say yes when asked to confirm the exchange."
             ),
             "actions": [
-                ("get_product_details", {"product_id": "7363354090"}),
+                (
+                    "get_product_details",
+                    {"product_id": "7363354090"},
+                    None,
+                    [
+                        {
+                            "name": "get_item_details",
+                            "arguments": {"item_id": "1615379700"},
+                        }
+                    ],
+                ),
                 ("calculate", {"expression": "253.89 - 241.96"}, []),
                 (
                     "exchange_delivered_order_items",
@@ -900,10 +924,14 @@ def main() -> None:
     tasks = [task for task in tasks if not task["id"].startswith(TASK_PREFIX)]
     tasks.extend(new_tasks)
     splits["mixecom_phase1"] = new_ids
-    splits["all_plus"] = (
-        list(splits["base_plus"])
+    splits["new"] = (
+        list(splits["abcd_phase1"])
         + list(splits.get("policy_phase1", []))
         + new_ids
+    )
+    splits["all_plus"] = (
+        list(splits["base"])
+        + splits["new"]
     )
 
     dump_json(DB_PATH, db)

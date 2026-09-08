@@ -114,6 +114,47 @@ class Description(BaseModel):
         return "\n".join(lines)
 
 
+class ActionAlternative(BaseModel):
+    """A state-equivalent tool call that may satisfy a required action slot."""
+
+    name: str = Field(description="The name of the alternative action.")
+    arguments: dict = Field(description="The arguments for the alternative action.")
+    compare_args: Optional[list[str]] = Field(
+        description=(
+            "The alternative arguments to check. If None, all supplied tool-call "
+            "arguments are checked."
+        ),
+        default=None,
+    )
+
+    def compare_with_tool_call(self, tool_call: ToolCall) -> bool:
+        return _action_candidate_matches(
+            name=self.name,
+            arguments=self.arguments,
+            compare_args=self.compare_args,
+            tool_call=tool_call,
+        )
+
+
+def _action_candidate_matches(
+    *,
+    name: str,
+    arguments: dict,
+    compare_args: Optional[list[str]],
+    tool_call: ToolCall,
+) -> bool:
+    if name != tool_call.name:
+        return False
+    keys = tool_call.arguments.keys() if compare_args is None else compare_args
+    if len(keys) == 0:
+        return True
+    tool_args = {
+        key: value for key, value in tool_call.arguments.items() if key in keys
+    }
+    expected_args = {key: value for key, value in arguments.items() if key in keys}
+    return tool_args == expected_args
+
+
 class Action(BaseModel):
     """
     An Agent/User action.
@@ -142,8 +183,19 @@ class Action(BaseModel):
         description="Information about the action.", default=None
     )
     compare_args: Optional[list[str]] = Field(
-        description="The arguments to check in tool call. If None, will check all the arguments.",
+        description=(
+            "The arguments to check in tool call. If None, will check all the "
+            "arguments."
+        ),
         default=None,
+    )
+    alternative_actions: list[ActionAlternative] = Field(
+        description=(
+            "State-equivalent alternative tool calls that may satisfy this required "
+            "action slot. The primary action is still used for golden environment "
+            "replay."
+        ),
+        default_factory=list,
     )
 
     def __str__(self) -> str:
@@ -171,17 +223,17 @@ class Action(BaseModel):
         If compare_args is None, will check all the arguments.
         Otherwise, will check only the arguments in compare_args.
         """
-        if self.name != tool_call.name:
-            return False
-        if self.compare_args is None:
-            compare_args = tool_call.arguments.keys()
-        else:
-            compare_args = self.compare_args
-        if len(compare_args) == 0:
+        if _action_candidate_matches(
+            name=self.name,
+            arguments=self.arguments,
+            compare_args=self.compare_args,
+            tool_call=tool_call,
+        ):
             return True
-        tool_args = {k: v for k, v in tool_call.arguments.items() if k in compare_args}
-        action_args = {k: v for k, v in self.arguments.items() if k in compare_args}
-        return tool_args == action_args
+        return any(
+            alternative.compare_with_tool_call(tool_call)
+            for alternative in self.alternative_actions
+        )
 
 
 class EnvFunctionCall(BaseModel):

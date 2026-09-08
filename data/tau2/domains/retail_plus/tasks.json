@@ -9741,14 +9741,6 @@
                 },
                 {
                     "action_id": "rp_policy_voucher_no_cash_1",
-                    "name": "get_order_details",
-                    "arguments": {
-                        "order_id": "#W4296426"
-                    },
-                    "info": null
-                },
-                {
-                    "action_id": "rp_policy_voucher_no_cash_2",
                     "name": "validate_voucher",
                     "arguments": {
                         "code": "PLUS-MINIMUM-20",
@@ -10686,7 +10678,15 @@
                     "arguments": {
                         "product_id": "8310926033"
                     },
-                    "info": null
+                    "info": null,
+                    "alternative_actions": [
+                        {
+                            "name": "get_item_details",
+                            "arguments": {
+                                "item_id": "3453331371"
+                            }
+                        }
+                    ]
                 },
                 {
                     "action_id": "rp_mix_wrong_color_exchange_3",
@@ -10769,7 +10769,15 @@
                     "arguments": {
                         "product_id": "7363354090"
                     },
-                    "info": null
+                    "info": null,
+                    "alternative_actions": [
+                        {
+                            "name": "get_item_details",
+                            "arguments": {
+                                "item_id": "1615379700"
+                            }
+                        }
+                    ]
                 },
                 {
                     "action_id": "rp_mix_size_mismatch_exchange_3",
