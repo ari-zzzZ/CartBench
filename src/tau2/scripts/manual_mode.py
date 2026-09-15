@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+import json
 import logging
+from functools import wraps
 from typing import Optional
 
 from loguru import logger
@@ -10,12 +12,68 @@ from rich.prompt import Confirm, Prompt
 from rich.table import Table
 from rich.text import Text
 
+from tau2.data_model.message import AssistantMessage, ToolMessage
 from tau2.gym.gym_agent import AgentGymEnv, UserGymEnv
 from tau2.run import get_options, load_task_splits, load_tasks
 from tau2.utils.tools import is_functional_tool_call, parse_functional_tool_call
 
 # Initialize Rich console
 console = Console()
+
+
+def display_agent_debug(message):
+    """Display only model-provided reasoning and agent/tool traffic in play."""
+
+    def panel(title, content, style):
+        # Treat model and tool output as literal text, never Rich markup.
+        console.print(Panel(Text(content), title=title, border_style=style))
+
+    if isinstance(message, AssistantMessage):
+        raw_message = (message.raw_data or {}).get("message") or {}
+        reasoning = raw_message.get("reasoning_content")
+        if isinstance(reasoning, str) and reasoning.strip():
+            panel("AGENT REASONING (model output)", reasoning, "magenta")
+        else:
+            for block in raw_message.get("thinking_blocks") or []:
+                if isinstance(block, dict):
+                    text = block.get("thinking") or block.get("text")
+                    if isinstance(text, str) and text.strip():
+                        panel("AGENT REASONING (model output)", text, "magenta")
+        for call in message.tool_calls or []:
+            panel(
+                "AGENT TOOL CALL",
+                f"{call.name} (id={call.id})\n"
+                + json.dumps(call.arguments, ensure_ascii=False, indent=2),
+                "cyan",
+            )
+        if message.tool_calls and message.content:
+            panel("AGENT TEXT WITH TOOL CALL", message.content, "green")
+    elif isinstance(message, ToolMessage) and message.requestor == "assistant":
+        panel(
+            "AGENT TOOL ERROR" if message.error else "AGENT TOOL RESULT",
+            f"id={message.id}\n{message.content or ''}",
+            "red" if message.error else "cyan",
+        )
+
+
+class PlayUserGymEnv(UserGymEnv):
+    """Attach terminal debugging to this play session only."""
+
+    def _get_orchestrator(self):
+        orchestrator = super()._get_orchestrator()
+        original_step = orchestrator.step
+
+        @wraps(original_step)
+        def step_with_debug():
+            start = len(orchestrator.trajectory)
+            try:
+                return original_step()
+            finally:
+                for message in orchestrator.trajectory[start:]:
+                    display_agent_debug(message)
+
+        orchestrator.step = step_with_debug
+        return orchestrator
 
 
 def disable_logging():
@@ -622,7 +680,9 @@ This allows you to interact with the simulation as if you were the AI agent.
         # Step 7: Create appropriate GymEnv instance
         with console.status("[bold green]Initializing environment...", spinner="dots"):
             if play_as_user:
-                env = UserGymEnv(domain=domain, task_id=task.id, agent_llm=agent_llm)
+                env = PlayUserGymEnv(
+                    domain=domain, task_id=task.id, agent_llm=agent_llm
+                )
             else:
                 env = AgentGymEnv(
                     domain=domain,
@@ -633,6 +693,11 @@ This allows you to interact with the simulation as if you were the AI agent.
 
         # Step 8: Reset environment and get initial observation
         console.print("\n[bold green]🚀 Starting simulation...[/bold green]")
+        if play_as_user:
+            console.print(
+                "[dim]Agent tool calls and results are shown as they execute. "
+                "Reasoning is shown only when returned by the model.[/dim]"
+            )
         observation, info = env.reset()
 
         # Get tools and policy from info dictionary
@@ -703,6 +768,7 @@ This allows you to interact with the simulation as if you were the AI agent.
                 policy = info.get("policy", policy)
 
                 if terminated:
+                    format_observation(observation, step_count + 1)
                     console.print(
                         Panel(
                             f"[bold green]🏆 Simulation Completed![/bold green]\n"
@@ -714,6 +780,7 @@ This allows you to interact with the simulation as if you were the AI agent.
                     )
                     break
                 elif truncated:
+                    format_observation(observation, step_count + 1)
                     console.print(
                         Panel(
                             "[bold yellow]Simulation was truncated (time limit reached)[/bold yellow]",

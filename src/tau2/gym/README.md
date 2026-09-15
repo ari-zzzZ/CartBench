@@ -8,6 +8,15 @@ The Tau2 Gym module extends the standard `gym.Env` interface to provide a conver
 
 ## Usage
 
+### Terminal debugging with `tau2 play`
+
+When you choose **Play as User**, the terminal displays each agent tool call
+(name, call ID, and JSON arguments), its result or error, and any reasoning text
+returned by the model. Reasoning is optional: play does not enable thinking or
+change model parameters. Replies to the customer remain in the observation panel.
+This debug display applies only to `tau2 play`; `tau2 run` and the default Gym
+environments retain their existing behavior.
+
 ### Basic Setup
 
 There are two gym environments available:
