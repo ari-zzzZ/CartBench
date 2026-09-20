@@ -336,7 +336,14 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.READ)
     def get_refund_status(self, refund_id: str) -> dict:
-        """Return the status, amount, destination, and timing of a refund case."""
+        """Return the status, amount, destination, and timing of a refund.
+
+        A failed refund or a refund at or above the manual-review threshold
+        requires a case-backed handoff: successfully call ``open_support_case``
+        with ``case_type="delayed_refund"`` and this refund ID as the reference,
+        then call ``transfer_to_human_agents``. A normal status inquiry requires
+        neither action.
+        """
         user_id = self._require_authenticated_user()
         if refund_id not in self.db.refund_cases:
             raise ValueError("Refund case not found")
@@ -362,7 +369,12 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.READ)
     def review_returned_item_billing(self, refund_id: str) -> dict:
-        """Review whether a returned-item refund is overdue or requires manual review."""
+        """Review whether a returned-item refund requires manual review.
+
+        When the result reports an overdue refund or required human transfer,
+        successfully open a ``delayed_refund`` support case for this refund ID
+        and then transfer to a human. Do not create a second refund.
+        """
         case_data = self.get_refund_status(refund_id)
         case = self.db.refund_cases[refund_id]
         overdue = bool(
@@ -392,12 +404,21 @@ class RetailPlusTools(RetailTools):
         reference_id: str,
         summary: str,
     ) -> SupportCase:
-        """Open a support case that must be followed by transfer to a human agent.
+        """Open a manual-review case that must be followed by human transfer.
+
+        Use this tool only for a case-backed handoff required by policy or by a
+        trusted tool result. Do not use it for an ordinary request for a human,
+        an out-of-scope request, or as a standalone note. After this call
+        succeeds, call ``transfer_to_human_agents`` on the next turn; do not stop
+        or ask for another confirmation in between.
 
         Args:
-            case_type: The support workflow type. Must be one of
-                ``delayed_refund``, ``high_value_fee``,
-                ``high_value_missing_item``, or ``other``.
+            case_type: The manual-review workflow type. Use ``delayed_refund``
+                for failed, overdue, or manually reviewed refunds;
+                ``high_value_fee`` for a fee at or above the threshold;
+                ``high_value_missing_item`` for a missing-item claim at or above
+                the threshold; or ``other`` only when policy explicitly requires
+                manual review and none of the specific types applies.
             reference_id: The refund ID, fee ID, or order ID that needs human
                 review.
             summary: A concise handoff summary for the human agent.
@@ -467,7 +488,24 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.GENERIC)
     def transfer_to_human_agents(self, summary: str) -> str:
-        """Transfer the customer to a human agent with a concise issue summary."""
+        """Transfer the customer to a human agent with a concise issue summary.
+
+        Call this tool directly, without opening a support case, for an ordinary
+        request for a human or an out-of-scope request when no policy or trusted
+        tool result requires manual review. For failed or overdue refunds,
+        high-value fees, high-value missing-item claims, and every other
+        case-backed manual review, call this only after ``open_support_case`` has
+        succeeded for the exact reference. Never open a support case without
+        subsequently calling this tool.
+
+        Args:
+            summary: A concise transfer summary. For a case-backed handoff,
+                include the support case and business reference returned by
+                ``open_support_case``.
+
+        Returns:
+            str: Confirmation that the live-agent transfer was initiated.
+        """
         response = super().transfer_to_human_agents(summary=summary)
         self._policy_sequence += 1
         self._human_transfer_sequences.append(self._policy_sequence)
@@ -530,7 +568,13 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.READ)
     def get_order_fee_details(self, fee_id: str) -> dict:
-        """Get a disputed order fee and whether it may be automatically waived."""
+        """Get a disputed order fee and whether it may be automatically waived.
+
+        If the result requires human transfer, successfully open a
+        ``high_value_fee`` support case with this fee ID as the reference and
+        then transfer to a human. A smaller non-waivable fee is explained and
+        upheld without opening a support case.
+        """
         if fee_id not in self.db.order_fees:
             raise ValueError("Order fee not found")
         fee = self.db.order_fees[fee_id]
@@ -581,7 +625,12 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.READ)
     def assess_missing_item_claim(self, order_id: str, item_ids: List[str]) -> dict:
-        """Assess ownership, value, duplicates, and manual-review needs for missing items."""
+        """Assess ownership, value, duplicates, and review needs for missing items.
+
+        If the result requires human transfer, do not file the claim. Instead,
+        successfully open a ``high_value_missing_item`` support case with this
+        order ID as the reference and then transfer to a human.
+        """
         order = self._require_owned_order(order_id)
         if order.status != "delivered":
             raise ValueError("Missing-item claims require a delivered order")

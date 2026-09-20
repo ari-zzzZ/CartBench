@@ -277,6 +277,76 @@ def test_handoff_actions_ignore_free_text_arguments():
         assert actions["transfer_to_human_agents"].compare_args == []
 
 
+def test_new_split_handoff_golden_actions_follow_policy():
+    expected_case_backed_handoffs = {
+        "rp_abcd_refund_status_edge": ("delayed_refund", "REF-PLUS-1002"),
+        "rp_abcd_mistimed_billing_edge": ("delayed_refund", "REF-PLUS-1004"),
+        "rp_abcd_mystery_fee_edge": ("high_value_fee", "FEE-PLUS-650"),
+        "rp_abcd_shipping_missing_edge": (
+            "high_value_missing_item",
+            "#W4352605",
+        ),
+        "rp_policy_manual_review_required": (
+            "high_value_fee",
+            "FEE-PLUS-650",
+        ),
+    }
+    tasks = {task.id: task for task in get_tasks("new")}
+    handoff_tasks = set()
+
+    for task_id, task in tasks.items():
+        actions = task.evaluation_criteria.actions
+        names = [action.name for action in actions]
+        has_case = "open_support_case" in names
+        has_transfer = "transfer_to_human_agents" in names
+        if has_case or has_transfer:
+            handoff_tasks.add(task_id)
+
+        # Retail Plus has no support-case-only workflow.
+        assert not has_case or has_transfer
+
+        if task_id not in expected_case_backed_handoffs:
+            continue
+        expected_type, expected_reference = expected_case_backed_handoffs[task_id]
+        assert has_case and has_transfer
+        assert names.index("open_support_case") < names.index(
+            "transfer_to_human_agents"
+        )
+        case_action = actions[names.index("open_support_case")]
+        assert case_action.arguments["case_type"] == expected_type
+        assert case_action.arguments["reference_id"] == expected_reference
+        assert case_action.compare_args == ["case_type", "reference_id"]
+        transfer_action = actions[names.index("transfer_to_human_agents")]
+        assert transfer_action.compare_args == []
+
+    assert handoff_tasks == set(expected_case_backed_handoffs)
+
+
+def test_handoff_policy_and_tool_schemas_describe_the_same_workflows():
+    environment = get_environment()
+    policy = environment.get_policy()
+    schemas = {
+        name: " ".join(tool.openai_schema["function"]["description"].split())
+        for name, tool in environment.tools.get_tools().items()
+    }
+
+    assert "Direct human transfer (no support case)" in policy
+    assert "Support case followed by human transfer" in policy
+    assert "There is no support-case-only workflow" in policy
+
+    assert "must be followed by human transfer" in schemas["open_support_case"]
+    assert "as a standalone note" in schemas["open_support_case"]
+    assert "directly, without opening a support case" in schemas[
+        "transfer_to_human_agents"
+    ]
+    assert "call this only after ``open_support_case`` has succeeded" in schemas[
+        "transfer_to_human_agents"
+    ]
+    assert "``case_type=\"delayed_refund\"``" in schemas["get_refund_status"]
+    assert "``high_value_fee``" in schemas["get_order_fee_details"]
+    assert "``high_value_missing_item``" in schemas["assess_missing_item_claim"]
+
+
 def test_support_case_summary_is_retained_but_excluded_from_db_hash():
     binding = _bindings()["fee_edge"]
     first = get_environment()
