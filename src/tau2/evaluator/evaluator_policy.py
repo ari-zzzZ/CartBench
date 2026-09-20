@@ -2,15 +2,11 @@
 
 from typing import Callable
 
-from tau2.data_model.message import (
-    AssistantMessage,
-    Message,
-    ToolMessage,
-    UserMessage,
-)
+from tau2.data_model.message import Message
 from tau2.data_model.simulation import RewardInfo
 from tau2.data_model.tasks import RewardType, Task
 from tau2.environment.environment import Environment
+from tau2.evaluator.trajectory import executed_tool_trajectory
 
 
 class PolicyEvaluator:
@@ -18,35 +14,9 @@ class PolicyEvaluator:
 
     @staticmethod
     def _replayable_trajectory(full_trajectory: list[Message]) -> list[Message]:
-        """Drop only incomplete tool-call tails from prematurely ended runs."""
-        replayable: list[Message] = []
-        index = 0
-        while index < len(full_trajectory):
-            message = full_trajectory[index]
-            if isinstance(message, ToolMessage):
-                # An orphan tool response cannot be replayed safely.
-                index += 1
-                continue
-            if (
-                isinstance(message, (AssistantMessage, UserMessage))
-                and message.is_tool_call()
-            ):
-                tool_calls = message.tool_calls or []
-                responses = full_trajectory[index + 1 : index + 1 + len(tool_calls)]
-                complete = len(responses) == len(tool_calls) and all(
-                    isinstance(response, ToolMessage) and response.id == tool_call.id
-                    for tool_call, response in zip(tool_calls, responses)
-                )
-                if complete:
-                    replayable.append(message)
-                    replayable.extend(responses)
-                    index += 1 + len(responses)
-                    continue
-                index += 1
-                continue
-            replayable.append(message)
-            index += 1
-        return replayable
+        """Drop incomplete and explicitly non-executed tool calls."""
+
+        return executed_tool_trajectory(full_trajectory)
 
     @classmethod
     def calculate_reward(
@@ -92,13 +62,14 @@ class PolicyEvaluator:
         if task.initial_state is not None:
             initialization_data = task.initial_state.initialization_data
             initialization_actions = task.initial_state.initialization_actions
+        replayable_trajectory = cls._replayable_trajectory(full_trajectory)
         environment.set_state(
             initialization_data=initialization_data,
             initialization_actions=initialization_actions,
-            message_history=cls._replayable_trajectory(full_trajectory),
+            message_history=replayable_trajectory,
         )
         for toolkit in toolkits:
-            toolkit.finalize_policy_evaluation(full_trajectory, task)
+            toolkit.finalize_policy_evaluation(replayable_trajectory, task)
         violations = [
             violation
             for toolkit in toolkits

@@ -19,6 +19,7 @@ from tau2.data_model.message import (
 from tau2.data_model.simulation import SimulationRun, TerminationReason
 from tau2.data_model.tasks import EnvFunctionCall, InitializationData, Task
 from tau2.environment.environment import Environment, EnvironmentInfo
+from tau2.orchestrator.middleware import OrchestratorMiddleware
 from tau2.user.base import BaseUser, UserError, is_valid_user_history_message
 from tau2.user.user_simulator import DummyUser, UserSimulator, UserState
 from tau2.utils.llm_utils import get_cost
@@ -91,6 +92,7 @@ class Orchestrator:
         seed: Optional[int] = None,
         solo_mode: bool = False,
         validate_communication: bool = False,
+        middleware: Optional[OrchestratorMiddleware] = None,
     ):
         """
         Initialize the Orchestrator for managing simulation between Agent, User, and Environment.
@@ -119,6 +121,7 @@ class Orchestrator:
         self.seed = seed
         self.solo_mode = solo_mode
         self.validate_communication = validate_communication
+        self.middleware = middleware
         self.agent_state: Optional[Any] = None
         self.user_state: Optional[UserState] = None
         self.trajectory: list[Message] = []
@@ -278,7 +281,13 @@ class Orchestrator:
         else:
             self.user_state = self.user.get_init_state()
             if not self.solo_mode:
-                first_message = deepcopy(DEFAULT_FIRST_AGENT_MESSAGE)
+                configured_first_message = (
+                    self.middleware.initial_message
+                    if self.middleware is not None
+                    and self.middleware.initial_message is not None
+                    else DEFAULT_FIRST_AGENT_MESSAGE
+                )
+                first_message = deepcopy(configured_first_message)
                 first_message.timestamp = get_now()
                 self.agent_state = self.agent.get_init_state(
                     message_history=[first_message]
@@ -429,6 +438,8 @@ class Orchestrator:
             agent_cost, user_cost = None, None
         else:
             agent_cost, user_cost = res
+        if self.middleware is not None and self.middleware.additional_agent_cost:
+            agent_cost = (agent_cost or 0.0) + self.middleware.additional_agent_cost
         simulation_run = SimulationRun(
             id=str(uuid.uuid4()),
             task_id=self.task.id,
@@ -471,7 +482,24 @@ class Orchestrator:
             self.trajectory.append(user_msg)
             self.message = user_msg
             self.from_role = Role.USER
-            if user_msg.is_tool_call():
+            forced_message = None
+            if self.middleware is not None and not user_msg.is_tool_call():
+                forced_message = self.middleware.on_user_message(user_msg, self)
+            if forced_message is not None:
+                forced_message.validate()
+                state_messages = getattr(self.agent_state, "messages", None)
+                if state_messages is not None:
+                    # The main agent was bypassed, so keep its API history
+                    # coherent for the next ordinary turn.  This is required
+                    # when middleware emits a confirmed tool call directly.
+                    state_messages.extend([user_msg, forced_message])
+                self.trajectory.append(forced_message)
+                self.message = forced_message
+                self.from_role = Role.AGENT
+                self.to_role = (
+                    Role.ENV if forced_message.is_tool_call() else Role.USER
+                )
+            elif user_msg.is_tool_call():
                 self.to_role = Role.ENV
             else:
                 self.to_role = Role.AGENT
@@ -479,11 +507,37 @@ class Orchestrator:
         elif (
             self.from_role == Role.USER or self.from_role == Role.ENV
         ) and self.to_role == Role.AGENT:
-            agent_msg, self.agent_state = self.agent.generate_next_message(
-                self.message, self.agent_state
-            )
+            forced_message = None
+            if self.middleware is not None:
+                self.middleware.prepare_agent(self)
+                forced_message = self.middleware.before_agent_message(self)
+            if forced_message is None:
+                agent_msg, self.agent_state = self.agent.generate_next_message(
+                    self.message, self.agent_state
+                )
+            else:
+                agent_msg = forced_message
+            if self.middleware is not None:
+                original_agent_msg = agent_msg
+                agent_msg = self.middleware.after_agent_message(agent_msg, self)
+                # LLMAgent records its proposal before returning it.  If a
+                # middleware replaces that proposal, keep the private agent
+                # history consistent with the public trajectory.
+                state_messages = getattr(self.agent_state, "messages", None)
+                if (
+                    forced_message is None
+                    and agent_msg is not original_agent_msg
+                    and state_messages
+                    and state_messages[-1] is original_agent_msg
+                ):
+                    state_messages[-1] = agent_msg
             agent_msg.validate()
-            if self.agent.is_stop(agent_msg):
+            middleware_stop = (
+                self.middleware.should_stop_after_agent_message(agent_msg)
+                if self.middleware is not None
+                else False
+            )
+            if self.agent.is_stop(agent_msg) or middleware_stop:
                 self.done = True
                 self.termination_reason = TerminationReason.AGENT_STOP
             self.trajectory.append(agent_msg)
@@ -503,7 +557,15 @@ class Orchestrator:
                 raise ValueError("Agent or User should send tool call to environment")
             tool_msgs = []
             for tool_call in self.message.tool_calls:
-                tool_msg = self.environment.get_response(tool_call)
+                tool_msg = (
+                    self.middleware.before_tool_call(tool_call, self)
+                    if self.middleware is not None
+                    else None
+                )
+                if tool_msg is None:
+                    tool_msg = self.environment.get_response(tool_call)
+                if self.middleware is not None:
+                    self.middleware.after_tool_call(tool_call, tool_msg, self)
                 if tool_msg.error:
                     self.num_errors += 1
                 tool_msgs.append(tool_msg)

@@ -7,6 +7,7 @@ from tau2.data_model.simulation import DBCheck, EnvAssertionCheck, RewardInfo
 from tau2.data_model.tasks import RewardType, Task
 from tau2.environment.environment import Environment
 from tau2.evaluator.evaluator_base import EvaluatorBase
+from tau2.evaluator.trajectory import executed_tool_trajectory
 
 
 class EnvironmentEvaluator(EvaluatorBase):
@@ -69,14 +70,15 @@ class EnvironmentEvaluator(EvaluatorBase):
         ):
             message_history = task.initial_state.message_history
 
+        executed_trajectory = executed_tool_trajectory(full_trajectory)
         predicted_environment = environment_constructor(solo_mode=solo_mode)
         predicted_environment.set_state(
             initialization_data=initialization_data,
             initialization_actions=initialization_actions,
-            message_history=full_trajectory,
+            message_history=executed_trajectory,
         )
         predicted_tool_calls: list[ToolCall] = []
-        for message in full_trajectory:
+        for message in executed_trajectory:
             if (
                 isinstance(message, AssistantMessage)
                 or isinstance(message, UserMessage)

@@ -575,6 +575,7 @@ class AgentGymEnv(gym.Env):
         user_llm: Optional[str] = None,
         user_llm_args: Optional[dict] = None,
         all_messages_as_observation: bool = False,
+        task_split_name: Optional[str] = "base",
     ):
         """
         Initialize the Tau2 gym environment.
@@ -585,6 +586,7 @@ class AgentGymEnv(gym.Env):
         """
         self.domain = domain
         self.task_id = task_id
+        self.task_split_name = task_split_name
         self.max_steps = max_steps
         self.solo_mode = solo_mode
         self.user_llm = user_llm if user_llm else DEFAULT_LLM_USER
@@ -959,7 +961,7 @@ class AgentGymEnv(gym.Env):
             ValueError: If no task is found with the specified task_id
                        for the given domain
         """
-        tasks = registry.get_tasks_loader(self.domain)()
+        tasks = registry.get_tasks_loader(self.domain)(self.task_split_name)
         for task in tasks:
             if task.id == self.task_id:
                 return task
@@ -1106,6 +1108,7 @@ class UserGymEnv(gym.Env):
         agent_llm: Optional[str] = None,
         agent_llm_args: Optional[dict] = None,
         all_messages_as_observation: bool = False,
+        task_split_name: Optional[str] = "base",
     ):
         """
         Initialize the Tau2 user gym environment.
@@ -1120,6 +1123,7 @@ class UserGymEnv(gym.Env):
         """
         self.domain = domain
         self.task_id = task_id
+        self.task_split_name = task_split_name
         self.max_steps = max_steps
         self.agent_llm = agent_llm if agent_llm else DEFAULT_LLM_AGENT
         self.agent_llm_args = (
@@ -1441,7 +1445,7 @@ class UserGymEnv(gym.Env):
         Raises:
             ValueError: If no task is found with the specified task_id
         """
-        tasks = registry.get_tasks_loader(self.domain)()
+        tasks = registry.get_tasks_loader(self.domain)(self.task_split_name)
         for task in tasks:
             if task.id == self.task_id:
                 return task

@@ -1,6 +1,7 @@
 """Offline checks for play-only debug output."""
 
 from io import StringIO
+import json
 from types import SimpleNamespace
 
 from rich.console import Console
@@ -85,3 +86,30 @@ def test_play_thinking_blocks_and_user_traffic(monkeypatch):
     assert "Check availability" in text
     assert "private input" not in text
     assert "user tool result" not in text
+
+
+def test_play_trajectory_is_saved_as_readable_json(monkeypatch, tmp_path):
+    monkeypatch.setattr(manual_mode, "DATA_DIR", tmp_path)
+    messages = [
+        UserMessage(role="user", content="Where is my order?"),
+        AssistantMessage(role="assistant", content="I will check it."),
+    ]
+    middleware = SimpleNamespace(export=lambda: {"context": {"risk_level": "L0"}})
+    orchestrator = SimpleNamespace(
+        get_trajectory=lambda: messages,
+        middleware=middleware,
+    )
+    env = SimpleNamespace(_orchestrator=orchestrator, _simulation_run=None)
+    task = SimpleNamespace(id="play-task")
+    path = manual_mode.save_play_trajectory(
+        env,
+        domain="retail_plus",
+        task=task,
+        split="new",
+        play_as_user=True,
+        risk_enabled=True,
+    )
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    assert payload["format"] == "tau2-play-trajectory-v1"
+    assert payload["messages"][0]["content"] == "Where is my order?"
+    assert payload["risk_control"]["context"]["risk_level"] == "L0"

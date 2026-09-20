@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import json
 import logging
+from datetime import datetime
 from functools import wraps
+from pathlib import Path
 from typing import Optional
 
 from loguru import logger
@@ -13,8 +15,11 @@ from rich.table import Table
 from rich.text import Text
 
 from tau2.data_model.message import AssistantMessage, ToolMessage
+from tau2.agent.guarded_agent import GuardedAgent
 from tau2.gym.gym_agent import AgentGymEnv, UserGymEnv
+from tau2.risk_control.controller import RetailRiskController
 from tau2.run import get_options, load_task_splits, load_tasks
+from tau2.utils import DATA_DIR
 from tau2.utils.tools import is_functional_tool_call, parse_functional_tool_call
 
 # Initialize Rich console
@@ -74,6 +79,65 @@ class PlayUserGymEnv(UserGymEnv):
 
         orchestrator.step = step_with_debug
         return orchestrator
+
+
+class RiskPlayUserGymEnv(PlayUserGymEnv):
+    """Use the standard Orchestrator with Retail Plus risk middleware."""
+
+    def _get_agent(self):
+        environment = self._get_environment()
+        return GuardedAgent(
+            tools=environment.get_tools(),
+            domain_policy=environment.get_policy(),
+            llm=self.agent_llm,
+            llm_args=self.agent_llm_args,
+        )
+
+    def _get_orchestrator(self):
+        orchestrator = super()._get_orchestrator()
+        orchestrator.middleware = RetailRiskController(
+            environment=orchestrator.environment,
+            task_id=orchestrator.task.id,
+            llm=self.agent_llm,
+            llm_args=self.agent_llm_args,
+        )
+        return orchestrator
+
+
+def save_play_trajectory(env, *, domain, task, split, play_as_user, risk_enabled):
+    """Persist completed or manually-ended play traffic as readable JSON."""
+
+    orchestrator = getattr(env, "_orchestrator", None)
+    simulation = getattr(env, "_simulation_run", None)
+    if simulation is not None:
+        messages = simulation.messages
+        simulation_payload = simulation.model_dump(mode="json")
+    elif orchestrator is not None:
+        messages = orchestrator.get_trajectory()
+        simulation_payload = None
+    else:
+        messages = []
+        simulation_payload = None
+    middleware = getattr(orchestrator, "middleware", None)
+    payload = {
+        "format": "tau2-play-trajectory-v1",
+        "saved_at": datetime.now().astimezone().isoformat(),
+        "domain": domain,
+        "task_id": task.id,
+        "task_split_name": split,
+        "human_role": "user" if play_as_user else "agent",
+        "risk_control_enabled": risk_enabled,
+        "completed": simulation is not None,
+        "simulation": simulation_payload,
+        "messages": [message.model_dump(mode="json") for message in messages],
+        "risk_control": middleware.export() if middleware is not None else None,
+    }
+    output_dir = Path(DATA_DIR) / "simulations"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    path = output_dir / f"play_{domain}_{task.id}_{stamp}.json"
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
 def disable_logging():
@@ -591,6 +655,12 @@ def main():
     """Main function for the manual mode."""
     # Disable logging for cleaner CLI output
     disable_logging()
+    env = None
+    risk_enabled = False
+    domain = None
+    task = None
+    task_split_set = None
+    play_as_user = False
 
     # Welcome message with Rich styling
     welcome_text = Text()
@@ -677,16 +747,26 @@ This allows you to interact with the simulation as if you were the AI agent.
                 else:
                     console.print(f"\n[green]✅ User LLM:[/green] [bold]Default[/bold]")
 
+        if play_as_user and domain == "retail_plus":
+            risk_enabled = Confirm.ask(
+                "Enable L0/L1/L2 risk control?", default=False
+            )
+
         # Step 7: Create appropriate GymEnv instance
         with console.status("[bold green]Initializing environment...", spinner="dots"):
             if play_as_user:
-                env = PlayUserGymEnv(
-                    domain=domain, task_id=task.id, agent_llm=agent_llm
+                env_class = RiskPlayUserGymEnv if risk_enabled else PlayUserGymEnv
+                env = env_class(
+                    domain=domain,
+                    task_id=task.id,
+                    task_split_name=task_split_set,
+                    agent_llm=agent_llm,
                 )
             else:
                 env = AgentGymEnv(
                     domain=domain,
                     task_id=task.id,
+                    task_split_name=task_split_set,
                     solo_mode=solo_mode,
                     user_llm=user_llm,
                 )
@@ -817,6 +897,19 @@ This allows you to interact with the simulation as if you were the AI agent.
             )
         )
     finally:
+        if env is not None and domain is not None and task is not None:
+            try:
+                path = save_play_trajectory(
+                    env,
+                    domain=domain,
+                    task=task,
+                    split=task_split_set,
+                    play_as_user=play_as_user,
+                    risk_enabled=risk_enabled,
+                )
+                console.print(f"[green]Play trajectory saved to:[/green] {path}")
+            except Exception as exc:
+                console.print(f"[red]Could not save play trajectory: {exc}[/red]")
         # Re-enable logging when exiting
         enable_logging()
 

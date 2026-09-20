@@ -193,6 +193,10 @@ class ToolMessage(BaseModel):
     timestamp: Optional[str] = Field(
         description="The timestamp of the message.", default_factory=get_now
     )
+    raw_data: Optional[dict] = Field(
+        description="Provider or runtime metadata that is not tool output.",
+        default=None,
+    )
 
     def __str__(self) -> str:
         lines = [f"ToolMessage (responding to {self.requestor})"]

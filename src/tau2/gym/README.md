@@ -17,6 +17,11 @@ change model parameters. Replies to the customer remain in the observation panel
 This debug display applies only to `tau2 play`; `tau2 run` and the default Gym
 environments retain their existing behavior.
 
+For Retail Plus, Play as User also offers opt-in L0/L1/L2 risk middleware on the
+standard Orchestrator, with bounded writes, customer confirmation and immediate
+high-risk handoff. Play sessions are saved as readable JSON under
+`data/simulations`. See [risk-control usage](../../../docs/risk-control.md).
+
 ### Basic Setup
 
 There are two gym environments available:

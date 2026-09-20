@@ -2,6 +2,7 @@ from tau2.data_model.message import AssistantMessage, Message, ToolCall, UserMes
 from tau2.data_model.simulation import ActionCheck, RewardInfo
 from tau2.data_model.tasks import Action, RewardType, Task
 from tau2.evaluator.evaluator_base import EvaluatorBase
+from tau2.evaluator.trajectory import executed_tool_trajectory
 
 
 class ActionEvaluator(EvaluatorBase):
@@ -58,7 +59,7 @@ class ActionEvaluator(EvaluatorBase):
             return []
 
         predicted_tool_calls: list[ToolCall] = []
-        for message in full_trajectory:
+        for message in executed_tool_trajectory(full_trajectory):
             if (
                 isinstance(message, AssistantMessage)
                 or isinstance(message, UserMessage)
