@@ -293,9 +293,9 @@ class RetailTools(ToolKitBase):  # Tools
         if the user is not found by email or cannot remember email.
 
         Args:
-            first_name: The first name of the customer, such as 'John'.
-            last_name: The last name of the customer, such as 'Doe'.
-            zip: The zip code of the customer, such as '12345'.
+            first_name: The customer's exact first name. 
+            last_name: The customer's exact last name. 
+            zip: The customer's ZIP code. Format-only example: '00000'.
 
         Returns:
             str: The user id if found, otherwise an error message.
@@ -317,7 +317,7 @@ class RetailTools(ToolKitBase):  # Tools
         """Find user id by email. If the user is not found, the function will return an error message.
 
         Args:
-            email: The email of the user, such as 'something@example.com'.
+            email: The customer's email address.
 
         Returns:
             str: The user id if found, otherwise an error message.
@@ -335,7 +335,9 @@ class RetailTools(ToolKitBase):  # Tools
         """Get the status and details of an order.
 
         Args:
-            order_id: The order id, such as '#W0000000'. Be careful there is a '#' symbol at the beginning of the order id.
+            order_id: The order ID supplied by the customer or returned by
+                a trusted tool. Format-only example: '#W0000000'. The leading
+                '#' is required; never submit the example value.
 
         Returns:
             Order: The order details.
@@ -351,7 +353,10 @@ class RetailTools(ToolKitBase):  # Tools
         """Get the inventory details of a product.
 
         Args:
-            product_id: The product id, such as '6086499569'. Be careful the product id is different from the item id.
+            product_id: The product ID returned by a trusted tool, 
+                which is a seven-digit number.
+                Product IDs differ from itemIDs; 
+                never submit the example value.
 
         Returns:
             Product: The product details.
@@ -367,7 +372,9 @@ class RetailTools(ToolKitBase):  # Tools
         """Get the inventory details of an item.
 
         Args:
-            item_id: The item id, such as '6086499569'. Be careful the item id is different from the product id.
+            item_id: The item ID returned by a trusted tool. Format-only
+                example: '1111111111'. Item IDs differ from product IDs; never
+                submit the example value.
 
         Returns:
             Variant: The item details.
@@ -383,7 +390,9 @@ class RetailTools(ToolKitBase):  # Tools
         """Get the details of a user, including their orders.
 
         Args:
-            user_id: The user id, such as 'sara_doe_496'.
+            user_id: The exact user ID returned by an authentication tool.
+                Format-only example: 'sample_user_0000'. Never guess a user ID
+                or submit the example value.
 
         Returns:
             User: The user details.

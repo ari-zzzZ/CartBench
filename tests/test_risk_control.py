@@ -14,7 +14,11 @@ from tau2.evaluator.evaluator_action import ActionEvaluator
 from tau2.evaluator.trajectory import executed_tool_trajectory
 from tau2.orchestrator.orchestrator import Orchestrator
 from tau2.risk_control.action_gate import ActionGate
-from tau2.risk_control.controller import RISK_GREETING, RetailRiskController, _parse_level
+from tau2.risk_control.controller import (
+    RISK_GREETING,
+    RetailRiskController,
+    _parse_level,
+)
 from tau2.risk_control.models import RequestContext, SessionState
 from tau2.risk_control.permissions import deterministic_risk_signal
 
@@ -61,6 +65,31 @@ def test_sensitive_text_overrides_classifier(monkeypatch):
     )
     assert controller.state.context.risk_level == "L2"
     assert forced.tool_calls[0].name == "transfer_to_human_agents"
+
+
+@pytest.mark.parametrize("greeting", ["hello", "Hi!", "在吗", "你好？"])
+def test_greeting_defers_classification_and_does_not_scan_policy(
+    monkeypatch, greeting
+):
+    # The loaded Retail Plus policy/playbook deliberately contains L2 keywords.
+    # Only this visible user message is scanned, so a greeting remains L0 and
+    # the classifier is saved for the first substantive request.
+    _, controller = _controller(monkeypatch, [_reply("L1")])
+
+    assert controller.on_user_message(
+        UserMessage(role="user", content=greeting), Mock()
+    ) is None
+    assert controller.state.context.risk_level == "L0"
+    assert not controller.state.context.classified
+    assert controller.state.classifier_calls == 0
+    assert controller.state.events[-2].kind == "risk.classification_deferred"
+
+    assert controller.on_user_message(
+        UserMessage(role="user", content="Please change my address"), Mock()
+    ) is None
+    assert controller.state.context.risk_level == "L1"
+    assert controller.state.context.classified
+    assert controller.state.classifier_calls == 1
 
 
 @pytest.mark.parametrize(

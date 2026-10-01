@@ -6,6 +6,7 @@ from tau2.domains.retail_plus.data_model import RetailPlusDB
 from tau2.domains.retail_plus.tools import RetailPlusTools
 from tau2.domains.retail_plus.utils import (
     RETAIL_PLUS_DB_PATH,
+    RETAIL_PLUS_PLAYBOOK_PATH,
     RETAIL_PLUS_POLICY_PATH,
     RETAIL_PLUS_TASK_SET_PATH,
 )
@@ -22,6 +23,8 @@ def get_environment(
     if db is None:
         db = RetailPlusDB.load(RETAIL_PLUS_DB_PATH)
     policy = Path(RETAIL_PLUS_POLICY_PATH).read_text(encoding="utf-8")
+    playbook = Path(RETAIL_PLUS_PLAYBOOK_PATH).read_text(encoding="utf-8")
+    policy = f"{policy.rstrip()}\n\n<customer_service_playbook>\n{playbook.rstrip()}\n</customer_service_playbook>\n"
     return Environment(
         domain_name="retail_plus",
         policy=policy,

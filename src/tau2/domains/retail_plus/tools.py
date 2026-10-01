@@ -119,7 +119,15 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.READ)
     def find_user_id_by_email(self, email: str) -> str:
-        """Authenticate a customer by email and return their user ID."""
+        """Authenticate a customer by their email and return the user ID.
+
+        Args:
+            email: Email stated by the customer. Never derive, guess, or
+                substitute an example.
+
+        Returns:
+            str: The authenticated user ID.
+        """
         user_id = super().find_user_id_by_email(email)
         if self.authenticated_user_id not in {None, user_id}:
             raise ValueError("Only one customer can be authenticated per conversation")
@@ -130,7 +138,16 @@ class RetailPlusTools(RetailTools):
     def find_user_id_by_name_zip(
         self, first_name: str, last_name: str, zip: str
     ) -> str:
-        """Authenticate a customer by full name and ZIP code and return their user ID."""
+        """Authenticate by the customer's full name and ZIP code.
+
+        Args:
+            first_name: Exact first name stated by the customer.
+            last_name: Exact last name stated by the customer.
+            zip: Exact ZIP code stated by the customer.
+
+        Returns:
+            str: The authenticated user ID.
+        """
         user_id = super().find_user_id_by_name_zip(first_name, last_name, zip)
         if self.authenticated_user_id not in {None, user_id}:
             raise ValueError("Only one customer can be authenticated per conversation")
@@ -139,12 +156,28 @@ class RetailPlusTools(RetailTools):
 
     @is_tool(ToolType.READ)
     def get_order_details(self, order_id: str) -> Order:
-        """Get an order only when it belongs to the authenticated customer."""
+        """Get an authenticated customer's order, including fulfillment data.
+
+        Args:
+            order_id: Exact order ID supplied by the customer or returned by a
+                trusted tool. Format-only example: ``#W0000000``. The leading
+                ``#`` is required; never submit the example value.
+
+        Returns:
+            Order: Status, items, address, payment history, and any fulfillment
+                tracking IDs. Report requested fields exactly as returned, even
+                when an order status makes a stored value seem unusual.
+        """
         return self._require_owned_order(order_id)
 
     @is_tool(ToolType.READ)
     def get_user_details(self, user_id: str) -> User:
-        """Get only the authenticated customer's profile."""
+        """Get only the authenticated customer's profile and order IDs.
+
+        Args:
+            user_id: Exact ID returned by an authentication tool. Format-only
+                example: ``sample_user_0000``. Never guess or submit the example.
+        """
         self._require_authenticated_user(user_id)
         return super().get_user_details(user_id)
 
@@ -337,6 +370,11 @@ class RetailPlusTools(RetailTools):
     @is_tool(ToolType.READ)
     def get_refund_status(self, refund_id: str) -> dict:
         """Return the status, amount, destination, and timing of a refund.
+
+        ``REF-EXAMPLE-0000`` is a format-only refund ID; use only the exact ID
+        supplied by the customer or returned by a trusted tool. Tell the customer
+        the returned status, amount, complete destination payment-method ID, and
+        expected or completed date when answering a refund-status question.
 
         A failed refund or a refund at or above the manual-review threshold
         requires a case-backed handoff: successfully call ``open_support_case``
@@ -569,6 +607,9 @@ class RetailPlusTools(RetailTools):
     @is_tool(ToolType.READ)
     def get_order_fee_details(self, fee_id: str) -> dict:
         """Get a disputed order fee and whether it may be automatically waived.
+
+        ``FEE-EXAMPLE-0000`` is a format-only fee ID; use only the exact ID
+        supplied by the customer or returned by a trusted tool.
 
         If the result requires human transfer, successfully open a
         ``high_value_fee`` support case with this fee ID as the reference and

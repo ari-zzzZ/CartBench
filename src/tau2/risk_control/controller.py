@@ -60,6 +60,18 @@ def _parse_level(text: str | None) -> str | None:
     return next(iter(levels)) if len(levels) == 1 else None
 
 
+def _is_non_request_greeting(text: str | None) -> bool:
+    """Return True when the customer has not expressed a request yet."""
+
+    normalized = re.sub(r"[\s,.!?，。！？~～]+", " ", text or "").strip().lower()
+    return bool(
+        re.fullmatch(
+            r"(?:hi|hello|hey|hello there|hi there|你好|您好|在吗|有人吗|人呢)",
+            normalized,
+        )
+    )
+
+
 class RetailRiskController(OrchestratorMiddleware):
     """Three-level permissions and action interception for Retail Plus."""
 
@@ -223,7 +235,13 @@ class RetailRiskController(OrchestratorMiddleware):
 
         self.state.context = update_request(self.state.context, text)
         if not self.state.context.classified:
-            self._classify_first_request(text)
+            if _is_non_request_greeting(text):
+                self.audit(
+                    "risk.classification_deferred",
+                    reason="The customer has not expressed a substantive request yet.",
+                )
+            else:
+                self._classify_first_request(text)
         self._scan_visible_text(text, "user_message")
         self.audit("request.updated", context=self.state.context.model_dump(mode="json"))
         if self.state.context.risk_level == "L2":

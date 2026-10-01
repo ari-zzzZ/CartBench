@@ -5,7 +5,9 @@ import pytest
 
 from types import SimpleNamespace
 
+from tau2.agent.llm_agent import LLMAgent
 from tau2.data_model.message import AssistantMessage, ToolCall, UserMessage
+from tau2.domains.retail.environment import get_environment as get_retail_environment
 from tau2.domains.retail_plus.environment import (
     get_environment,
     get_tasks,
@@ -40,6 +42,20 @@ def _authenticate(environment, binding: dict) -> None:
         "find_user_id_by_email",
         email=email,
     )
+
+
+def test_customer_service_playbook_is_loaded_only_for_retail_plus():
+    environment = get_environment()
+    agent = LLMAgent(
+        tools=environment.get_tools(),
+        domain_policy=environment.get_policy(),
+    )
+
+    assert "<customer_service_playbook>" in agent.system_prompt
+    assert "Retail Plus Customer Service Playbook" in agent.system_prompt
+    assert "亲，在的" in agent.system_prompt
+    assert "Never provide lethal quantities" in agent.system_prompt
+    assert "<customer_service_playbook>" not in get_retail_environment().get_policy()
 
 
 def test_domain_data_and_phase1_audit_are_complete():

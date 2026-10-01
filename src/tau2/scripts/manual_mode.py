@@ -593,7 +593,8 @@ def get_agent_llm_config():
 Configure which LLM to use for the automated agent.
 Leave empty to use the default LLM.
 
-[dim]Examples: gpt-4o, claude-3-sonnet, gpt-4, etc.[/dim]""",
+[dim]Examples: dashscope/qwen3.7-flash, gpt-4o, claude-3-sonnet.[/dim]
+[dim]Use the provider's exact model ID; hyphens and underscores are not interchangeable.[/dim]""",
         title="⚙️ LLM Configuration",
         border_style="yellow",
         box=box.ROUNDED,
@@ -605,7 +606,7 @@ Leave empty to use the default LLM.
         default="",
     )
 
-    return agent_llm if agent_llm.strip() else None
+    return agent_llm.strip() or None
 
 
 def display_ticket(task):

@@ -27,6 +27,14 @@ You should transfer the user to a human agent if and only if the request cannot 
 
 - All times in the database are EST and 24 hour based. For example "02:30:00" means 2:30 AM EST.
 
+All identifier examples in this policy and in tool descriptions are fictional,
+format-only placeholders. Never use an example value in a tool call. Use only a
+value supplied by the customer or returned by a trusted tool. Example formats:
+user ID `sample_user_0000`, email `customer@example.invalid`, product ID
+`0000000000`, item ID `1111111111`, order ID `#W0000000`, tracking ID
+`000000000000`, and payment method IDs `gift_card_0000000`,
+`paypal_0000000`, or `credit_card_0000000`.
+
 ### User
 
 Each user has a profile containing:
@@ -76,6 +84,19 @@ Each order has the following attributes:
 The status of an order can be: **pending**, **processed**, **delivered**, or **cancelled**.
 
 Orders can have other optional attributes based on the actions that have been taken (cancellation reason, which items have been exchanged, what was the exchane price difference etc)
+
+### Answer requested values from tool evidence
+
+When the customer explicitly asks for a monetary amount, calculate and state the
+exact amount for the specific items or operation they asked about. Do not replace
+a requested item subtotal with the whole-order total, and do not omit the amount
+merely because the requested operation is unavailable. Use the `calculate` tool
+for arithmetic instead of relying on mental calculation.
+
+When the customer asks for a tracking number, report every matching tracking ID
+returned by the order tool. Treat the tool result as authoritative even when the
+order status makes the result seem unusual; for example, do not infer that a
+cancelled order has no tracking ID when its stored fulfillment data contains one.
 
 ## Generic action rules
 
